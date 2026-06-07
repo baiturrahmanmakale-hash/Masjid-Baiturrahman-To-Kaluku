@@ -1169,11 +1169,83 @@
       </a>
     </div>
   </div>
-  <div class="scroll-indicator">
-    <span>Gulir</span>
-    <i class="fas fa-chevron-down"></i>
+      <!-- Indikator gulir -->
+    <div class="scroll-indicator">
+      <span>Gulir</span>
+      <i class="fas fa-chevron-down"></i>
+    </div>
   </div>
 </section>
+
+<!-- ===================== BAGIAN SLIDESHOW GAMBAR ===================== -->
+<div class="slideshow-container">
+  <div class="mySlides fade">
+    <img src="gambar1.jpg" alt="Renovasi Tampak Depan">
+    <div class="slideshow-caption">
+      <h3>Renovasi Tampak Depan</h3>
+      <p>Progres pembangunan kubah utama dan fasad Masjid.</p>
+    </div>
+  </div>
+  <!-- Tambahkan .mySlides untuk gambar lainnya -->
+
+  <!-- Navigasi -->
+  <a class="prev-slide" onclick="plusSlides(-1)">&#10094;</a>
+  <a class="next-slide" onclick="plusSlides(1)">&#10095;</a>
+  <div class="slide-dots-container">
+    <span class="slide-dot" onclick="currentSlide(1)"></span>
+    <!-- Tambahkan .slide-dot untuk gambar lainnya -->
+  </div>
+</div>
+
+<!-- ===================== MODAL DONASI ===================== -->
+<div class="modal-overlay" id="donasiModal" onclick="closeDonasiOutside(event)">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeDonasi()"><i class="fas fa-times"></i></button>
+    <div style="text-align:center;margin-bottom:20px;">
+      <h2>Donasi Renovasi Masjid</h2>
+      <p class="modal-sub">Setiap donasi Anda adalah amal jariyah.</p>
+    </div>
+    
+    <div class="rekening-card" style="padding: 20px; text-align: left;">
+      <div style="display: flex; flex-direction: column; gap: 12px; margin: 20px 0;">
+        <div style="display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.1); padding: 12px 14px; border-radius: 8px;">
+          <span style="color: #ffffff;">BRI : 341301073669536</span>
+          <button onclick="salinRekening('341301073669536', this)" style="background: #e6b940; color: #0a4025; border: none; padding: 7px 14px; border-radius: 6px;">
+            <i class="fas fa-copy"></i> Salin
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== KODE GAYA & JAVASCRIPT ===================== -->
+<style>
+/* CSS untuk Slideshow */
+.slideshow-container { max-width: 1200px; position: relative; margin: 40px auto; overflow: hidden; }
+.mySlides { display: none; position: relative; }
+.mySlides img { width: 100%; height: 480px; object-fit: cover; }
+.slideshow-caption { position: absolute; bottom: 0; background: linear-gradient(transparent, rgba(0,0,0,0.8)); color: #fff; padding: 20px; }
+.prev-slide, .next-slide { cursor: pointer; position: absolute; top: 50%; padding: 16px; color: white; background-color: rgba(0,0,0,0.3); }
+.next-slide { right: 0; }
+</style>
+
+<script>
+// JavaScript Slideshow Otomatis
+let slideIndex = 1;
+showSlides(slideIndex);
+function plusSlides(n) { showSlides(slideIndex += n); }
+function currentSlide(n) { showSlides(slideIndex = n); }
+function showSlides(n) {
+  let i, slides = document.getElementsByClassName("mySlides");
+  if (n > slides.length) {slideIndex = 1} if (n < 1) {slideIndex = slides.length}
+  for (i = 0; i < slides.length; i++) { slides[i].style.display = "none"; }
+  if(slides.length > 0) { slides[slideIndex-1].style.display = "block"; }
+}
+setInterval(function() { plusSlides(1); }, 5000);
+function salinRekening(nomor, elemenTombol) { /* Fungsi salin */ }
+</script>
+
 
 <!-- ===================== TENTANG ===================== -->
 <section id="tentang">
