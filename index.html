@@ -1576,11 +1576,46 @@
       <h2>Donasi Renovasi Masjid</h2>
       <p class="modal-sub">Setiap donasi Anda adalah amal jariyah yang terus mengalir</p>
     </div>
-    <div class="rekening-card">
-      <div class="bank-name">a/n Panitia Pembangunan Masjid Baiturrahman To'Kaluku</div>
-      <div class="account-num">Bank BRI : 341301073669536 - Mandiri : 1700015569720 - BNI : 1903009155</div>
-      <div class="account-name">Masjid Baiturrahman To' Kaluku — Makale, Tana Toraja</div>
+    
+    <div class="rekening-card" style="padding: 20px; text-align: left;">
+      <div class="bank-name" style="text-align: center; font-weight: bold; margin-bottom: 15px;">
+        a/n Panitia Pembangunan Masjid Baiturrahman To'Kaluku
+      </div>
+      
+      <!-- Daftar Rekening Tersusun ke Bawah + Tombol Salin -->
+      <div style="display: flex; flex-direction: column; gap: 12px; margin: 20px 0;">
+        
+        <!-- BRI -->
+        <div style="display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.1); padding: 10px 14px; border-radius: 8px;">
+          <span style="font-size: 16px; font-weight: bold; color: #fff;">Bank BRI : 341301073669536</span>
+          <button onclick="salinRekening('341301073669536', this)" style="background: var(--gold-primary); color: var(--green-primary); border: none; padding: 6px 12px; border-radius: 6px; cursor: pointer; font-weight: bold; font-size: 13px; display: flex; align-items: center; gap: 5px;">
+            <i class="fas fa-copy"></i> Salin
+          </button>
+        </div>
+
+        <!-- Mandiri -->
+        <div style="display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.1); padding: 10px 14px; border-radius: 8px;">
+          <span style="font-size: 16px; font-weight: bold; color: #fff;">Mandiri : 1700015569720</span>
+          <button onclick="salinRekening('1700015569720', this)" style="background: var(--gold-primary); color: var(--green-primary); border: none; padding: 6px 12px; border-radius: 6px; cursor: pointer; font-weight: bold; font-size: 13px; display: flex; align-items: center; gap: 5px;">
+            <i class="fas fa-copy"></i> Salin
+          </button>
+        </div>
+
+        <!-- BNI -->
+        <div style="display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.1); padding: 10px 14px; border-radius: 8px;">
+          <span style="font-size: 16px; font-weight: bold; color: #fff;">BNI : 1903009155</span>
+          <button onclick="salinRekening('1903009155', this)" style="background: var(--gold-primary); color: var(--green-primary); border: none; padding: 6px 12px; border-radius: 6px; cursor: pointer; font-weight: bold; font-size: 13px; display: flex; align-items: center; gap: 5px;">
+            <i class="fas fa-copy"></i> Salin
+          </button>
+        </div>
+
+      </div>
+
+      <div class="account-name" style="text-align: center; font-size: 13px; opacity: 0.9;">
+        Masjid Baiturrahman To' Kaluku — Makale, Tana Toraja
+      </div>
     </div>
+
     <div style="background:#f9f9f9;border-radius:10px;padding:16px;margin-bottom:16px;">
       <p style="font-size:13px;color:var(--text-mid);line-height:1.7;">
         <i class="fas fa-info-circle" style="color:var(--gold-primary);margin-right:6px;"></i>
@@ -1593,6 +1628,29 @@
     </p>
   </div>
 </div>
+
+<!-- SCRIPT JAVASCRIPT UNTUK FUNGSI SALIN -->
+<script>
+function salinRekening(nomor, elemenTombol) {
+  navigator.clipboard.writeText(nomor).then(function() {
+    // Mengubah teks tombol saat berhasil disalin
+    const teksAsli = elemenTombol.innerHTML;
+    elemenTombol.innerHTML = '<i class="fas fa-check"></i> Tersalin';
+    elemenTombol.style.background = '#2e7d32'; // Berubah jadi hijau tanda sukses
+    elemenTombol.style.color = '#fff';
+    
+    // Mengembalikan tombol ke fungsi semula setelah 2 detik
+    setTimeout(function() {
+      elemenTombol.innerHTML = teksAsli;
+      elemenTombol.style.background = 'var(--gold-primary)';
+      elemenTombol.style.color = 'var(--green-primary)';
+    }, 2000);
+  }).catch(function(err) {
+    alert('Gagal menyalin teks: ', err);
+  });
+}
+</script>
+
 
 <!-- ===================== JAVASCRIPT ===================== -->
 <script>
