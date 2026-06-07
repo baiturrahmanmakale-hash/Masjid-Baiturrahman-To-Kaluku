@@ -1,1862 +1,398 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Masjid Baiturrahman To' Kaluku — Makale, Tana Toraja</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Masjid Baiturrahman To' Kaluku</title>
+  <!-- Google Fonts & FontAwesome untuk Ikon -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
+    /* --- INTEGRASI THEME MODERN & REVISI --- */
     :root {
-      --green-primary: #1B5E20;
-      --green-accent: #2E7D32;
-      --green-light: #4CAF50;
-      --green-pale: #E8F5E9;
-      --gold-primary: #C8A951;
-      --gold-bright: #D4AF37;
-      --gold-light: #F0D080;
-      --white: #FFFFFF;
-      --cream: #FDF8F0;
-      --text-dark: #333333;
-      --text-mid: #555555;
-      --green-footer: #0D3B0F;
+      --primary: #0f5132;
+      --primary-light: #198754;
+      --accent: #ffc107;
+      --dark: #1e293b;
+      --light: #f8fafc;
     }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
+    body { background-color: var(--light); color: var(--dark); line-height: 1.6; }
 
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      background: var(--cream);
-      color: var(--text-dark);
-      overflow-x: hidden;
-    }
-
-    /* ===================== TORAJA PATTERN SVG ===================== */
-    .toraja-divider {
-      width: 100%;
-      height: 24px;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='24'%3E%3Cpath d='M0 12 L10 0 L20 12 L30 0 L40 12 L50 0 L60 12 L70 0 L80 12' stroke='%23C8A951' stroke-width='1.5' fill='none' opacity='0.5'/%3E%3Cpath d='M0 12 L10 24 L20 12 L30 24 L40 12 L50 24 L60 12 L70 24 L80 12' stroke='%23C8A951' stroke-width='1.5' fill='none' opacity='0.5'/%3E%3C/svg%3E");
-      background-repeat: repeat-x;
-      background-size: 80px 24px;
-    }
-
-    /* ===================== NAVBAR ===================== */
-    #navbar {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 1000;
-      padding: 14px 0;
-      transition: all 0.4s ease;
-      background: transparent;
-    }
-    #navbar.scrolled {
-      background: rgba(27, 94, 32, 0.97);
-      backdrop-filter: blur(12px);
-      box-shadow: 0 4px 24px rgba(0,0,0,0.25);
-      padding: 10px 0;
-    }
-    .nav-container {
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 0 24px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-    }
-    .nav-logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      text-decoration: none;
-      flex-shrink: 0;
-    }
-    .nav-logo-icon {
-      width: 40px;
-      height: 40px;
-      background: linear-gradient(135deg, var(--gold-primary), var(--gold-bright));
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 20px;
-      color: var(--green-primary);
-    }
-    .nav-logo-text {
-      display: flex;
-      flex-direction: column;
-      line-height: 1.1;
-    }
-    .nav-logo-text span:first-child {
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--white);
-      letter-spacing: 0.3px;
-    }
-    .nav-logo-text span:last-child {
-      font-size: 10px;
-      color: var(--gold-primary);
-      font-weight: 500;
-    }
-    .nav-center {
-      display: flex;
-      align-items: center;
-      gap: 4px;
-    }
-    .nav-center a {
-      color: rgba(255,255,255,0.88);
-      text-decoration: none;
-      font-size: 13.5px;
-      font-weight: 500;
-      padding: 6px 12px;
-      border-radius: 6px;
-      transition: all 0.2s;
-    }
-    .nav-center a:hover {
-      color: var(--gold-primary);
-      background: rgba(255,255,255,0.08);
-    }
-    .nav-right {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      flex-shrink: 0;
-    }
-    .nav-clock {
-      font-size: 12px;
-      color: rgba(255,255,255,0.7);
-      font-weight: 500;
-      background: rgba(255,255,255,0.1);
-      padding: 4px 10px;
-      border-radius: 20px;
-      letter-spacing: 0.5px;
-    }
-    .btn-donasi-nav {
-      background: linear-gradient(135deg, var(--gold-primary), var(--gold-bright));
-      color: var(--green-primary) !important;
-      font-weight: 700 !important;
-      padding: 8px 18px !important;
-      border-radius: 8px !important;
-      font-size: 13px !important;
-      box-shadow: 0 2px 12px rgba(200,169,81,0.4);
-      transition: all 0.2s !important;
-    }
-    .btn-donasi-nav:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 4px 20px rgba(200,169,81,0.6) !important;
-      background: rgba(255,255,255,0.08) !important;
-      background: linear-gradient(135deg, var(--gold-bright), var(--gold-light)) !important;
-    }
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-      padding: 6px;
-    }
-    .hamburger span {
-      display: block;
-      width: 24px;
-      height: 2px;
-      background: var(--white);
-      border-radius: 2px;
-      transition: all 0.3s;
-    }
-    .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
-    .hamburger.active span:nth-child(2) { opacity: 0; }
-    .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
-    .mobile-menu {
-      display: none;
-      flex-direction: column;
-      background: rgba(27, 94, 32, 0.98);
-      backdrop-filter: blur(12px);
-      padding: 16px 24px 20px;
-      gap: 4px;
-    }
-    .mobile-menu.open { display: flex; }
-    .mobile-menu a {
-      color: rgba(255,255,255,0.88);
-      text-decoration: none;
-      font-size: 15px;
-      font-weight: 500;
-      padding: 10px 12px;
-      border-radius: 8px;
-      transition: all 0.2s;
-    }
-    .mobile-menu a:hover { color: var(--gold-primary); background: rgba(255,255,255,0.08); }
-    .mobile-menu .btn-donasi-nav { margin-top: 8px; text-align: center; }
-
-    @media (max-width: 900px) {
-      .nav-center { display: none; }
-      .nav-clock { display: none; }
-      .hamburger { display: flex; }
-      .btn-donasi-nav { display: none; }
-    }
-
-    /* ===================== HERO ===================== */
-    #hero {
-      min-height: 100vh;
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-      background: linear-gradient(160deg, #0a2e0c 0%, #1B5E20 40%, #2E7D32 70%, #388E3C 100%);
-    }
-    .hero-pattern {
-      position: absolute;
-      inset: 0;
-      opacity: 0.06;
-      background-image:
-        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Ccircle cx='60' cy='60' r='50' stroke='%23C8A951' stroke-width='1' fill='none'/%3E%3Ccircle cx='60' cy='60' r='35' stroke='%23C8A951' stroke-width='1' fill='none'/%3E%3Ccircle cx='60' cy='60' r='20' stroke='%23C8A951' stroke-width='1' fill='none'/%3E%3Cline x1='60' y1='10' x2='60' y2='110' stroke='%23C8A951' stroke-width='0.8'/%3E%3Cline x1='10' y1='60' x2='110' y2='60' stroke='%23C8A951' stroke-width='0.8'/%3E%3Cline x1='25' y1='25' x2='95' y2='95' stroke='%23C8A951' stroke-width='0.8'/%3E%3Cline x1='95' y1='25' x2='25' y2='95' stroke='%23C8A951' stroke-width='0.8'/%3E%3C/svg%3E");
-      background-size: 120px 120px;
-    }
-    .hero-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to bottom, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.05) 50%, rgba(0,0,0,0.3) 100%);
-    }
-    .hero-content {
-      position: relative;
-      z-index: 2;
+    /* HEADER & BRANDING */
+    header {
+      background: linear-gradient(135deg, #0a3622, var(--primary));
+      color: white;
       text-align: center;
-      padding: 0 24px;
-      max-width: 860px;
+      padding: 30px 20px;
+      border-bottom: 4px solid var(--accent);
     }
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(200,169,81,0.2);
-      border: 1px solid rgba(200,169,81,0.5);
-      color: var(--gold-primary);
-      font-size: 12px;
-      font-weight: 600;
-      padding: 6px 16px;
-      border-radius: 20px;
-      margin-bottom: 24px;
-      letter-spacing: 1px;
-      text-transform: uppercase;
+    header h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; }
+    header p { font-size: 14px; opacity: 0.85; margin-top: 5px; }
+
+    /* STICKY NAVIGATION BAR */
+    nav {
+      background-color: #0f172a;
+      position: sticky;
+      top: 0;
+      z-index: 2000;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
     }
-    .hero-title {
-      font-size: clamp(2rem, 5vw, 3.8rem);
-      font-weight: 800;
-      background: linear-gradient(135deg, #ffffff 0%, var(--gold-primary) 50%, var(--gold-bright) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      line-height: 1.15;
-      margin-bottom: 16px;
-      letter-spacing: -0.5px;
-    }
-    .hero-subtitle {
-      font-size: clamp(1rem, 2.5vw, 1.3rem);
-      color: rgba(255,255,255,0.85);
-      font-weight: 400;
-      margin-bottom: 28px;
-      line-height: 1.6;
-    }
-    .hero-motto {
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(200,169,81,0.3);
-      border-radius: 12px;
-      padding: 18px 28px;
-      margin-bottom: 36px;
-      display: inline-block;
-    }
-    .hero-motto .arabic {
-      font-family: 'Amiri', serif;
-      font-size: clamp(1.3rem, 3vw, 1.8rem);
-      color: var(--gold-primary);
-      display: block;
-      margin-bottom: 8px;
-      direction: rtl;
-    }
-    .hero-motto .translation {
-      font-size: 13px;
-      color: rgba(255,255,255,0.75);
-      font-style: italic;
-    }
-    .hero-motto .source {
-      font-size: 11px;
-      color: var(--gold-primary);
-      margin-top: 4px;
-      font-weight: 600;
-    }
-    .hero-cta {
+    nav ul {
+      list-style: none;
       display: flex;
-      gap: 16px;
       justify-content: center;
       flex-wrap: wrap;
     }
-    .btn-outline-white {
-      padding: 14px 28px;
-      border: 2px solid rgba(255,255,255,0.7);
-      color: var(--white);
-      border-radius: 10px;
-      font-size: 15px;
-      font-weight: 600;
-      text-decoration: none;
-      transition: all 0.3s;
-      backdrop-filter: blur(4px);
-    }
-    .btn-outline-white:hover {
-      background: rgba(255,255,255,0.15);
-      border-color: var(--white);
-    }
-    .btn-gold-solid {
-      padding: 14px 28px;
-      background: linear-gradient(135deg, var(--gold-primary), var(--gold-bright));
-      color: var(--green-primary);
-      border-radius: 10px;
-      font-size: 15px;
-      font-weight: 700;
-      text-decoration: none;
-      transition: all 0.3s;
-      box-shadow: 0 4px 20px rgba(200,169,81,0.5);
-    }
-    .btn-gold-solid:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 30px rgba(200,169,81,0.7);
-    }
-    .scroll-indicator {
-      position: absolute;
-      bottom: 32px;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 6px;
-      color: rgba(255,255,255,0.5);
-      font-size: 11px;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      animation: bounce 2s infinite;
-    }
-    .scroll-indicator i { font-size: 18px; }
-    @keyframes bounce {
-      0%, 100% { transform: translateX(-50%) translateY(0); }
-      50% { transform: translateX(-50%) translateY(8px); }
-    }
-
-    /* ===================== SECTIONS COMMON ===================== */
-    section { padding: 90px 0; }
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
-    .section-label {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      color: var(--gold-primary);
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      margin-bottom: 12px;
-    }
-    .section-label::before, .section-label::after {
-      content: '';
-      display: inline-block;
-      width: 24px;
-      height: 1px;
-      background: var(--gold-primary);
-    }
-    .section-title {
-      font-size: clamp(1.6rem, 3.5vw, 2.4rem);
-      font-weight: 800;
-      color: var(--green-primary);
-      line-height: 1.2;
-      margin-bottom: 16px;
-    }
-    .section-desc {
-      font-size: 15px;
-      color: var(--text-mid);
-      line-height: 1.8;
-      max-width: 600px;
-    }
-
-    /* Fade-in animation */
-    .fade-in {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-    .fade-in.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .fade-in-delay-1 { transition-delay: 0.1s; }
-    .fade-in-delay-2 { transition-delay: 0.2s; }
-    .fade-in-delay-3 { transition-delay: 0.3s; }
-    .fade-in-delay-4 { transition-delay: 0.4s; }
-
-    /* ===================== TENTANG ===================== */
-    #tentang { background: var(--cream); }
-    .tentang-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      align-items: center;
-    }
-    .tentang-text p {
-      font-size: 15px;
-      color: var(--text-mid);
-      line-height: 1.85;
-      margin-bottom: 18px;
-    }
-    .stats-row {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-      margin: 28px 0;
-    }
-    .stat-card {
-      background: var(--white);
-      border: 1px solid rgba(200,169,81,0.25);
-      border-radius: 12px;
-      padding: 20px 16px;
-      text-align: center;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
-      transition: all 0.3s;
-    }
-    .stat-card:hover {
-      border-color: var(--gold-primary);
-      box-shadow: 0 6px 24px rgba(200,169,81,0.2);
-      transform: translateY(-3px);
-    }
-    .stat-card .stat-value {
-      font-size: 1.6rem;
-      font-weight: 800;
-      color: var(--green-primary);
+    nav ul li { position: relative; }
+    nav ul li a {
       display: block;
+      color: #cbd5e1;
+      padding: 18px 22px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+      transition: all 0.3s ease;
     }
-    .stat-card .stat-label {
-      font-size: 12px;
-      color: var(--text-mid);
+    nav ul li a:hover { color: white; background-color: var(--primary); }
+
+    /* DROPDOWN SUB-MENU LAYANAN UMAT */
+    .dropdown { position: relative; }
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      background-color: #1e293b;
+      min-width: 220px;
+      top: 100%;
+      left: 0;
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+      border-bottom: 3px solid var(--primary-light);
+    }
+    .dropdown-menu li a {
+      padding: 14px 20px;
       font-weight: 500;
-      margin-top: 4px;
-    }
-    .quote-box {
-      background: linear-gradient(135deg, var(--green-primary), var(--green-accent));
-      border-radius: 14px;
-      padding: 24px 28px;
-      color: var(--white);
-      position: relative;
-      overflow: hidden;
-    }
-    .quote-box::before {
-      content: '\201C';
-      position: absolute;
-      top: -10px;
-      left: 16px;
-      font-size: 80px;
-      color: rgba(200,169,81,0.3);
-      font-family: Georgia, serif;
-      line-height: 1;
-    }
-    .quote-box p {
-      font-size: 14px;
-      line-height: 1.8;
-      color: rgba(255,255,255,0.9);
-      position: relative;
-      z-index: 1;
-      font-style: italic;
-    }
-    .quote-box .quote-author {
-      font-size: 12px;
-      color: var(--gold-primary);
-      font-weight: 600;
-      margin-top: 10px;
-      font-style: normal;
-    }
-    /* Masjid Illustration */
-    .masjid-illustration {
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .masjid-svg-wrap {
-      width: 100%;
-      max-width: 420px;
-      background: linear-gradient(160deg, #e8f5e9 0%, #c8e6c9 100%);
-      border-radius: 20px;
-      padding: 30px 20px 20px;
-      box-shadow: 0 12px 40px rgba(27,94,32,0.15);
-      border: 1px solid rgba(200,169,81,0.2);
-      position: relative;
-      overflow: hidden;
-    }
-    .masjid-svg-wrap::after {
-      content: '';
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      height: 6px;
-      background: linear-gradient(90deg, var(--gold-primary), var(--gold-bright), var(--gold-primary));
-    }
-
-    @media (max-width: 768px) {
-      .tentang-grid { grid-template-columns: 1fr; gap: 36px; }
-      .stats-row { grid-template-columns: repeat(3, 1fr); gap: 10px; }
-    }
-
-    /* ===================== JADWAL SHOLAT ===================== */
-    #jadwal {
-      background: var(--green-pale);
-      position: relative;
-    }
-    #jadwal::before {
-      content: '';
-      display: block;
-      width: 100%;
-      height: 24px;
-      position: absolute;
-      top: 0; left: 0;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='24'%3E%3Cpath d='M0 12 L10 0 L20 12 L30 0 L40 12 L50 0 L60 12 L70 0 L80 12' stroke='%231B5E20' stroke-width='1.5' fill='none' opacity='0.3'/%3E%3Cpath d='M0 12 L10 24 L20 12 L30 24 L40 12 L50 24 L60 12 L70 24 L80 12' stroke='%231B5E20' stroke-width='1.5' fill='none' opacity='0.3'/%3E%3C/svg%3E");
-      background-repeat: repeat-x;
-      background-size: 80px 24px;
-    }
-    .jadwal-header { text-align: center; margin-bottom: 40px; }
-    .jadwal-date {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: var(--green-primary);
-      color: var(--white);
-      padding: 8px 20px;
-      border-radius: 20px;
       font-size: 13px;
-      font-weight: 600;
-      margin-bottom: 24px;
+      border-bottom: 1px solid #334155;
     }
-    .jadwal-table-wrap {
-      background: var(--white);
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 8px 32px rgba(27,94,32,0.1);
-      max-width: 700px;
+    .dropdown-menu li a:hover { background-color: var(--primary-light); }
+    .dropdown:hover .dropdown-menu { display: block; }
+
+    /* SLIDESHOW DOKUMENTASI (Tepat di bawah nav) */
+    .slideshow-section {
+      background-color: #0f172a;
+      padding: 20px 0;
+    }
+    .slideshow-container {
+      max-width: 1100px;
+      position: relative;
       margin: 0 auto;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 20px 25px -5px rgba(0,0,0,0.3);
     }
-    .jadwal-table {
+    .mySlides { display: none; text-align: center; position: relative; }
+    .mySlides img {
       width: 100%;
-      border-collapse: collapse;
-    }
-    .jadwal-table thead tr {
-      background: linear-gradient(135deg, var(--green-primary), var(--green-accent));
-    }
-    .jadwal-table thead th {
-      color: var(--white);
-      font-size: 13px;
-      font-weight: 600;
-      padding: 16px 20px;
-      text-align: left;
-      letter-spacing: 0.5px;
-    }
-    .jadwal-table tbody tr {
-      border-bottom: 1px solid #f0f0f0;
-      transition: background 0.2s;
-    }
-    .jadwal-table tbody tr:last-child { border-bottom: none; }
-    .jadwal-table tbody tr:hover { background: var(--green-pale); }
-    .jadwal-table tbody tr.active-prayer {
-      background: linear-gradient(90deg, rgba(200,169,81,0.1), rgba(200,169,81,0.05));
-      border-left: 3px solid var(--gold-primary);
-    }
-    .jadwal-table td {
-      padding: 16px 20px;
-      font-size: 15px;
-    }
-    .prayer-name {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-weight: 600;
-      color: var(--green-primary);
-    }
-    .prayer-icon {
-      width: 36px;
-      height: 36px;
-      border-radius: 8px;
-      background: var(--green-pale);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 16px;
-    }
-    .prayer-time {
-      font-weight: 700;
-      font-size: 16px;
-      color: var(--text-dark);
-    }
-    .prayer-wita {
-      font-size: 11px;
-      color: var(--text-mid);
-      font-weight: 400;
-    }
-    .jadwal-note {
-      text-align: center;
-      margin-top: 20px;
-      font-size: 13px;
-      color: var(--text-mid);
-      font-style: italic;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-    }
-
-    /* ===================== KEGIATAN ===================== */
-    #kegiatan { background: var(--white); }
-    .kegiatan-header { text-align: center; margin-bottom: 50px; }
-    .kegiatan-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-    }
-    .kegiatan-card {
-      background: var(--cream);
-      border: 1px solid rgba(200,169,81,0.15);
-      border-radius: 16px;
-      padding: 32px 24px;
-      text-align: center;
-      transition: all 0.35s ease;
-      cursor: default;
-      position: relative;
-      overflow: hidden;
-    }
-    .kegiatan-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--gold-primary), var(--gold-bright));
-      transform: scaleX(0);
-      transition: transform 0.35s ease;
-    }
-    .kegiatan-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 16px 40px rgba(27,94,32,0.12);
-      border-color: rgba(200,169,81,0.4);
-    }
-    .kegiatan-card:hover::before { transform: scaleX(1); }
-    .kegiatan-icon {
-      width: 64px;
-      height: 64px;
-      background: linear-gradient(135deg, rgba(200,169,81,0.15), rgba(200,169,81,0.05));
-      border: 2px solid rgba(200,169,81,0.3);
-      border-radius: 16px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 18px;
-      font-size: 26px;
-      color: var(--gold-primary);
-      transition: all 0.3s;
-    }
-    .kegiatan-card:hover .kegiatan-icon {
-      background: linear-gradient(135deg, var(--gold-primary), var(--gold-bright));
-      color: var(--green-primary);
-      border-color: var(--gold-bright);
-    }
-    .kegiatan-card h3 {
-      font-size: 15px;
-      font-weight: 700;
-      color: var(--green-primary);
-      margin-bottom: 10px;
-    }
-    .kegiatan-card p {
-      font-size: 13px;
-      color: var(--text-mid);
-      line-height: 1.7;
-    }
-
-    @media (max-width: 900px) { .kegiatan-grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 560px) { .kegiatan-grid { grid-template-columns: 1fr; } }
-
-    /* ===================== PENGUMUMAN ===================== */
-    #pengumuman { background: var(--cream); }
-    .pengumuman-header { text-align: center; margin-bottom: 50px; }
-    .pengumuman-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-    }
-    .pengumuman-card {
-      background: var(--white);
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.06);
-      transition: all 0.35s;
-      border: 1px solid rgba(0,0,0,0.05);
-    }
-    .pengumuman-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 12px 36px rgba(27,94,32,0.12);
-    }
-    .pengumuman-card-top {
-      height: 6px;
-      background: linear-gradient(90deg, var(--green-primary), var(--green-light));
-    }
-    .pengumuman-card-body { padding: 24px; }
-    .pengumuman-badge {
-      display: inline-block;
-      padding: 4px 12px;
-      border-radius: 20px;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-      margin-bottom: 12px;
-    }
-    .badge-renovasi { background: rgba(27,94,32,0.1); color: var(--green-primary); }
-    .badge-kegiatan { background: rgba(200,169,81,0.15); color: #8B6914; }
-    .badge-donasi { background: rgba(33,150,243,0.1); color: #1565C0; }
-    .pengumuman-card h3 {
-      font-size: 16px;
-      font-weight: 700;
-      color: var(--text-dark);
-      margin-bottom: 8px;
-      line-height: 1.4;
-    }
-    .pengumuman-date {
-      font-size: 12px;
-      color: var(--text-mid);
-      margin-bottom: 12px;
-      display: flex;
-      align-items: center;
-      gap: 5px;
-    }
-    .pengumuman-card p {
-      font-size: 13.5px;
-      color: var(--text-mid);
-      line-height: 1.75;
-    }
-    .pengumuman-card .read-more {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      color: var(--green-accent);
-      font-size: 13px;
-      font-weight: 600;
-      margin-top: 14px;
-      text-decoration: none;
-      transition: gap 0.2s;
-    }
-    .pengumuman-card .read-more:hover { gap: 8px; }
-
-    @media (max-width: 900px) { .pengumuman-grid { grid-template-columns: 1fr; } }
-    @media (max-width: 600px) { .pengumuman-grid { grid-template-columns: 1fr; } }
-
-    /* ===================== KONTAK ===================== */
-    #kontak {
-      background: var(--green-primary);
-      position: relative;
-      overflow: hidden;
-    }
-    #kontak::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Ccircle cx='60' cy='60' r='50' stroke='%23C8A951' stroke-width='0.5' fill='none' opacity='0.2'/%3E%3Ccircle cx='60' cy='60' r='30' stroke='%23C8A951' stroke-width='0.5' fill='none' opacity='0.2'/%3E%3C/svg%3E");
-      background-size: 120px 120px;
-    }
-    .kontak-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      position: relative;
-      z-index: 1;
-    }
-    .kontak-title {
-      font-size: clamp(1.6rem, 3vw, 2.2rem);
-      font-weight: 800;
-      color: var(--white);
-      margin-bottom: 8px;
-    }
-    .kontak-subtitle {
-      color: rgba(255,255,255,0.7);
-      font-size: 14px;
-      margin-bottom: 32px;
-    }
-    .kontak-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 14px;
-      margin-bottom: 20px;
-    }
-    .kontak-item-icon {
-      width: 42px;
-      height: 42px;
-      background: rgba(200,169,81,0.2);
-      border: 1px solid rgba(200,169,81,0.4);
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 16px;
-      color: var(--gold-primary);
-      flex-shrink: 0;
-    }
-    .kontak-item-text strong {
+      height: 520px;
+      object-fit: cover;
       display: block;
-      color: var(--white);
-      font-size: 13px;
-      font-weight: 600;
-      margin-bottom: 3px;
     }
-    .kontak-item-text span {
-      color: rgba(255,255,255,0.7);
-      font-size: 14px;
-      line-height: 1.6;
-    }
-    .kontak-right {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-    .maps-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background: var(--white);
-      color: var(--green-primary);
-      padding: 16px 24px;
-      border-radius: 12px;
-      font-weight: 700;
-      font-size: 15px;
-      text-decoration: none;
-      transition: all 0.3s;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.15);
-    }
-    .maps-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 28px rgba(0,0,0,0.25);
-    }
-    .maps-btn i { font-size: 20px; color: #E53935; }
-    .pengurus-card {
-      background: rgba(255,255,255,0.1);
-      border: 1px solid rgba(255,255,255,0.2);
-      border-radius: 12px;
-      padding: 20px;
-    }
-    .pengurus-card h4 {
-      color: var(--gold-primary);
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      margin-bottom: 12px;
-    }
-    .pengurus-item {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 10px;
-    }
-    .pengurus-avatar {
-      width: 38px;
-      height: 38px;
-      background: linear-gradient(135deg, var(--gold-primary), var(--gold-bright));
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    .slide-caption {
+      background: linear-gradient(transparent, rgba(0, 0, 0, 0.85));
+      color: #fff;
+      padding: 30px 20px 20px 20px;
       font-size: 16px;
-      color: var(--green-primary);
-      font-weight: 700;
-    }
-    .pengurus-info strong {
-      display: block;
-      color: var(--white);
-      font-size: 14px;
       font-weight: 600;
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
     }
-    .pengurus-info span {
-      color: rgba(255,255,255,0.65);
-      font-size: 12px;
-    }
-
-    @media (max-width: 768px) {
-      .kontak-grid { grid-template-columns: 1fr; gap: 36px; }
-    }
-
-    /* ===================== FOOTER ===================== */
-    footer {
-      background: var(--green-footer);
-      padding: 40px 0 24px;
-    }
-    .footer-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 24px;
-      text-align: center;
-    }
-    .footer-logo {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      margin-bottom: 16px;
-    }
-    .footer-logo-icon {
-      width: 44px;
-      height: 44px;
-      background: linear-gradient(135deg, var(--gold-primary), var(--gold-bright));
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    .prev, .next {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      padding: 16px;
+      color: white;
+      font-weight: bold;
       font-size: 22px;
-      color: var(--green-primary);
-    }
-    .footer-logo-text {
-      font-size: 16px;
-      font-weight: 700;
-      color: var(--white);
-    }
-    .footer-motto {
-      font-size: 13px;
-      color: rgba(255,255,255,0.5);
-      margin-bottom: 24px;
-      font-style: italic;
-    }
-    .footer-socials {
-      display: flex;
-      justify-content: center;
-      gap: 12px;
-      margin-bottom: 28px;
-    }
-    .social-btn {
-      width: 40px;
-      height: 40px;
-      border-radius: 10px;
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.12);
+      transition: 0.3s ease;
+      user-select: none;
+      background-color: rgba(15, 81, 50, 0.6);
+      border-radius: 50%;
+      margin: 0 15px;
+      width: 50px;
+      height: 50px;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: rgba(255,255,255,0.65);
-      font-size: 16px;
-      text-decoration: none;
-      transition: all 0.3s;
     }
-    .social-btn:hover {
-      background: rgba(200,169,81,0.2);
-      border-color: var(--gold-primary);
-      color: var(--gold-primary);
-      transform: translateY(-2px);
-    }
-    .footer-divider {
-      width: 100%;
-      height: 1px;
-      background: rgba(255,255,255,0.08);
-      margin-bottom: 20px;
-    }
-    .footer-bottom {
-      font-size: 12.5px;
-      color: rgba(255,255,255,0.4);
-    }
-    .footer-toraja-pattern {
-      width: 100%;
-      height: 16px;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='16'%3E%3Cpath d='M0 8 L7.5 0 L15 8 L22.5 0 L30 8 L37.5 0 L45 8 L52.5 0 L60 8' stroke='%23C8A951' stroke-width='1' fill='none' opacity='0.3'/%3E%3Cpath d='M0 8 L7.5 16 L15 8 L22.5 16 L30 8 L37.5 16 L45 8 L52.5 16 L60 8' stroke='%23C8A951' stroke-width='1' fill='none' opacity='0.3'/%3E%3C/svg%3E");
-      background-repeat: repeat-x;
-      background-size: 60px 16px;
-      margin-bottom: 20px;
-    }
+    .next { right: 0; }
+    .prev:hover, .next:hover { background-color: var(--primary-light); }
 
-    /* ===================== BACK TO TOP ===================== */
-    #back-to-top {
-      position: fixed;
-      bottom: 28px;
-      right: 28px;
-      width: 46px;
-      height: 46px;
-      background: linear-gradient(135deg, var(--gold-primary), var(--gold-bright));
-      color: var(--green-primary);
-      border: none;
+    /* MAIN APP AREA */
+    .container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
+    .page-section {
+      background: white;
+      padding: 40px;
       border-radius: 12px;
-      font-size: 18px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 4px 16px rgba(200,169,81,0.5);
-      opacity: 0;
-      transform: translateY(20px);
-      transition: all 0.3s;
-      z-index: 999;
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+      margin-bottom: 30px;
+      border-top: 4px solid var(--primary);
     }
-    #back-to-top.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    #back-to-top:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 24px rgba(200,169,81,0.7);
-    }
+    h2 { color: var(--primary); font-size: 26px; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+    h3 { color: var(--primary-light); margin: 25px 0 10px 0; }
+    p { margin-bottom: 15px; color: #475569; }
 
-    /* ===================== DONASI MODAL ===================== */
-    .modal-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.6);
-      backdrop-filter: blur(4px);
-      z-index: 2000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 24px;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.3s;
-    }
-    .modal-overlay.open {
-      opacity: 1;
-      pointer-events: all;
-    }
-    .modal-box {
-      background: var(--white);
-      border-radius: 20px;
-      padding: 36px;
-      max-width: 460px;
-      width: 100%;
-      position: relative;
-      transform: scale(0.9);
-      transition: transform 0.3s;
-    }
-    .modal-overlay.open .modal-box { transform: scale(1); }
-    .modal-close {
-      position: absolute;
-      top: 16px; right: 16px;
-      width: 32px; height: 32px;
-      border: none;
-      background: #f5f5f5;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 16px;
-      color: var(--text-mid);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .modal-box h2 {
-      font-size: 1.4rem;
-      font-weight: 800;
-      color: var(--green-primary);
-      margin-bottom: 6px;
-    }
-    .modal-box .modal-sub {
-      font-size: 13px;
-      color: var(--text-mid);
-      margin-bottom: 24px;
-    }
-    .rekening-card {
-      background: linear-gradient(135deg, var(--green-primary), var(--green-accent));
-      border-radius: 14px;
-      padding: 20px;
-      color: var(--white);
-      margin-bottom: 16px;
-    }
-    .rekening-card .bank-name {
-      font-size: 12px;
-      color: rgba(255,255,255,0.7);
-      margin-bottom: 4px;
-    }
-    .rekening-card .account-num {
-      font-size: 1.4rem;
-      font-weight: 800;
-      letter-spacing: 2px;
-      color: var(--gold-primary);
-      margin-bottom: 4px;
-    }
-    .rekening-card .account-name {
-      font-size: 13px;
-      color: rgba(255,255,255,0.85);
-    }
-    .modal-note {
-      font-size: 12px;
-      color: var(--text-mid);
-      text-align: center;
-      font-style: italic;
-    }
+    /* LAYOUT KOMPONEN GRID */
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-top: 25px; }
+    .card { background: #f8fafc; padding: 25px; border-radius: 8px; border-left: 4px solid var(--primary-light); }
+    .card h4 { color: var(--dark); margin-bottom: 10px; font-size: 18px; }
+    
+    /* FOOTER */
+    footer { background-color: #0f172a; color: #94a3b8; text-align: center; padding: 30px; font-size: 14px; margin-top: 60px; }
+    footer strong { color: white; }
 
-    /* ===================== MISC ===================== */
-    @media (max-width: 600px) {
-      section { padding: 64px 0; }
-      .stats-row { gap: 8px; }
-      .stat-card .stat-value { font-size: 1.3rem; }
+    /* RESPONSIVE LAYOUT */
+    @media (max-width: 768px) {
+      nav ul { flex-direction: column; }
+      nav ul li { text-align: center; width: 100%; }
+      .dropdown-menu { position: relative; width: 100%; }
+      .mySlides img { height: 300px; }
     }
   </style>
 </head>
 <body>
 
-<!-- ===================== NAVBAR ===================== -->
-<nav id="navbar">
-  <div class="nav-container">
-    <a href="#hero" class="nav-logo">
-      <div class="nav-logo-icon"><i class="fas fa-mosque"></i></div>
-      <div class="nav-logo-text">
-        <span>Baiturrahman To' Kaluku</span>
-        <span>Makale, Tana Toraja</span>
-      </div>
-    </a>
-    <div class="nav-center">
-      <a href="#hero">Beranda</a>
-      <a href="#tentang">Tentang</a>
-      <a href="#jadwal">Jadwal Sholat</a>
-      <a href="#kegiatan">Kegiatan</a>
-      <a href="#pengumuman">Pengumuman</a>
-      <a href="#kontak">Kontak</a>
-    </div>
-    <div class="nav-right">
-      <div class="nav-clock" id="navClock">00:00:00 WITA</div>
-      <a href="#" class="nav-center btn-donasi-nav" onclick="openDonasi(event)">
-        <i class="fas fa-hand-holding-heart"></i> Donasi
-      </a>
-    </div>
-    <div class="hamburger" id="hamburger" onclick="toggleMenu()">
-      <span></span><span></span><span></span>
-    </div>
-  </div>
-  <div class="mobile-menu" id="mobileMenu">
-    <a href="#hero" onclick="closeMenu()">Beranda</a>
-    <a href="#tentang" onclick="closeMenu()">Tentang</a>
-    <a href="#jadwal" onclick="closeMenu()">Jadwal Sholat</a>
-    <a href="#kegiatan" onclick="closeMenu()">Kegiatan</a>
-    <a href="#pengumuman" onclick="closeMenu()">Pengumuman</a>
-    <a href="#kontak" onclick="closeMenu()">Kontak</a>
-    <a href="#" class="btn-donasi-nav" onclick="openDonasi(event); closeMenu();">
-      <i class="fas fa-hand-holding-heart"></i> Donasi Renovasi
-    </a>
-  </div>
-</nav>
+  <!-- HEADER BRANDING -->
+  <header>
+    <h1>Masjid Baiturrahman To' Kaluku</h1>
+    <p><i class="fa-solid fa-location-dot"></i> Jl. Tritura No. 11, Kelurahan Bombongan, Kecamatan Makale, Kabupaten Tana Toraja</p>
+  </header>
 
-<!-- ===================== HERO ===================== -->
-<section id="hero">
-  <div class="hero-pattern"></div>
-  <div class="hero-overlay"></div>
-  <div class="hero-content">
-    <div class="hero-badge fade-in">
-      <i class="fas fa-star-and-crescent"></i>
-      Makale · Tana Toraja · Sulawesi Selatan
-    </div>
-    <h1 class="hero-title fade-in fade-in-delay-1">
-      Masjid Baiturrahman<br>To' Kaluku
-    </h1>
-    <p class="hero-subtitle fade-in fade-in-delay-2">
-      Pusat Ibadah &amp; Syiar Islam di Jantung Tana Toraja
-    </p>
-    <div class="hero-motto fade-in fade-in-delay-3">
-      <span class="arabic">مَسْجِدًا يُذْكَرُ فِيهَا اسْمُهُ</span>
-      <span class="translation">"Rumah-rumah yang di dalamnya disebut nama-Nya"</span>
-      <span class="source">— QS. An-Nur: 36</span>
-    </div>
-    <div class="hero-cta fade-in fade-in-delay-4">
-      <a href="#tentang" class="btn-outline-white">
-        <i class="fas fa-info-circle"></i> Tentang Masjid
-      </a>
-      <a href="#" class="btn-gold-solid" onclick="openDonasi(event)">
-        <i class="fas fa-hand-holding-heart"></i> Donasi Renovasi
-      </a>
-    </div>
-  </div>
-      <!-- Indikator gulir -->
-    <div class="scroll-indicator">
-      <span>Gulir</span>
-      <i class="fas fa-chevron-down"></i>
-    </div>
-  </div>
-</section>
+  <!-- NAVIGATION BAR (MENU UTAMA) -->
+  <nav>
+    <ul>
+      <li><a href="#beranda" onclick="showPage('beranda')"><i class="fa-solid fa-house"></i> Beranda</a></li>
+      <li><a href="#profil" onclick="showPage('profil')"><i class="fa-solid fa-mosque"></i> Profil</a></li>
+      <li class="dropdown">
+        <a href="#layanan"><i class="fa-solid fa-hand-holding-heart"></i> Layanan Umat <i class="fa-solid fa-caret-down"></i></a>
+        <ul class="dropdown-menu">
+          <li><a href="#zakat" onclick="showPage('zakat')">Pengelolaan Zakat</a></li>
+          <li><a href="#infaq" onclick="showPage('infaq')">Infaq</a></li>
+          <li><a href="#sedekah" onclick="showPage('sedekah')">Sedekah</a></li>
+        </ul>
+      </li>
+      <li><a href="#kegiatan" onclick="showPage('kegiatan')"><i class="fa-solid fa-calendar-days"></i> Kegiatan</a></li>
+      <li><a href="#berita" onclick="showPage('berita')"><i class="fa-solid fa-newspaper"></i> Berita</a></li>
+      <li><a href="#donasi" onclick="showPage('donasi')"><i class="fa-solid fa-heart"></i> Donasi</a></li>
+      <li><a href="#kontak" onclick="showPage('kontak')"><i class="fa-solid fa-address-book"></i> Kontak</a></li>
+    </ul>
+  </nav>
 
-<!-- ===================== BAGIAN SLIDESHOW GAMBAR ===================== -->
-<div class="slideshow-container">
-  <div class="mySlides fade">
-    <img src="gambar1.jpg" alt="Renovasi Tampak Depan">
-    <div class="slideshow-caption">
-      <h3>Renovasi Tampak Depan</h3>
-      <p>Progres pembangunan kubah utama dan fasad Masjid.</p>
-    </div>
-  </div>
-  <!-- Tambahkan .mySlides untuk gambar lainnya -->
-
-  <!-- Navigasi -->
-  <a class="prev-slide" onclick="plusSlides(-1)">&#10094;</a>
-  <a class="next-slide" onclick="plusSlides(1)">&#10095;</a>
-  <div class="slide-dots-container">
-    <span class="slide-dot" onclick="currentSlide(1)"></span>
-    <!-- Tambahkan .slide-dot untuk gambar lainnya -->
-  </div>
-</div>
-
-<!-- ===================== MODAL DONASI ===================== -->
-<div class="modal-overlay" id="donasiModal" onclick="closeDonasiOutside(event)">
-  <div class="modal-box">
-    <button class="modal-close" onclick="closeDonasi()"><i class="fas fa-times"></i></button>
-    <div style="text-align:center;margin-bottom:20px;">
-      <h2>Donasi Renovasi Masjid</h2>
-      <p class="modal-sub">Setiap donasi Anda adalah amal jariyah.</p>
-    </div>
-    
-    <div class="rekening-card" style="padding: 20px; text-align: left;">
-      <div style="display: flex; flex-direction: column; gap: 12px; margin: 20px 0;">
-        <div style="display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.1); padding: 12px 14px; border-radius: 8px;">
-          <span style="color: #ffffff;">BRI : 341301073669536</span>
-          <button onclick="salinRekening('341301073669536', this)" style="background: #e6b940; color: #0a4025; border: none; padding: 7px 14px; border-radius: 6px;">
-            <i class="fas fa-copy"></i> Salin
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ===================== KODE GAYA & JAVASCRIPT ===================== -->
-<style>
-/* CSS untuk Slideshow */
-.slideshow-container { max-width: 1200px; position: relative; margin: 40px auto; overflow: hidden; }
-.mySlides { display: none; position: relative; }
-.mySlides img { width: 100%; height: 480px; object-fit: cover; }
-.slideshow-caption { position: absolute; bottom: 0; background: linear-gradient(transparent, rgba(0,0,0,0.8)); color: #fff; padding: 20px; }
-.prev-slide, .next-slide { cursor: pointer; position: absolute; top: 50%; padding: 16px; color: white; background-color: rgba(0,0,0,0.3); }
-.next-slide { right: 0; }
-</style>
-
-<script>
-// JavaScript Slideshow Otomatis
-let slideIndex = 1;
-showSlides(slideIndex);
-function plusSlides(n) { showSlides(slideIndex += n); }
-function currentSlide(n) { showSlides(slideIndex = n); }
-function showSlides(n) {
-  let i, slides = document.getElementsByClassName("mySlides");
-  if (n > slides.length) {slideIndex = 1} if (n < 1) {slideIndex = slides.length}
-  for (i = 0; i < slides.length; i++) { slides[i].style.display = "none"; }
-  if(slides.length > 0) { slides[slideIndex-1].style.display = "block"; }
-}
-setInterval(function() { plusSlides(1); }, 5000);
-function salinRekening(nomor, elemenTombol) { /* Fungsi salin */ }
-</script>
-
-
-<!-- ===================== TENTANG ===================== -->
-<section id="tentang">
-  <div class="container">
-    <div class="tentang-grid">
-      <div class="tentang-text fade-in">
-        <div class="section-label">Tentang Kami</div>
-        <h2 class="section-title">Tentang Masjid Baiturrahman To' Kaluku</h2>
-        <p>
-          Masjid Baiturrahman To' Kaluku berdiri di <strong>Jl. Tritura No. 11, Kelurahan Bombongan, Kecamatan Makale, Kabupaten Tana Toraja, Sulawesi Selatan</strong>. Masjid ini memiliki luas tanah <strong>300 m²</strong> dan luas bangunan <strong>522 m²</strong> dengan status tanah wakaf yang telah diakui secara resmi.
-        </p>
-        <p>
-          Seiring bertambahnya jumlah jemaah, masjid ini tengah menjalani <strong>renovasi total sejak Desember 2024</strong> dengan estimasi biaya <strong>Rp 5,6 miliar</strong>. Renovasi ini bertujuan menjadikan Masjid Baiturrahman To' Kaluku sebagai ikon baru di Kecamatan Makale sekaligus pusat kegiatan keagamaan masyarakat Tana Toraja.
-        </p>
-        <div class="stats-row">
-          <div class="stat-card fade-in fade-in-delay-1">
-            <span class="stat-value">300 m²</span>
-            <span class="stat-label">Luas Tanah</span>
-          </div>
-          <div class="stat-card fade-in fade-in-delay-2">
-            <span class="stat-value">522 m²</span>
-            <span class="stat-label">Luas Bangunan</span>
-          </div>
-          <div class="stat-card fade-in fade-in-delay-3">
-            <span class="stat-value">Wakaf</span>
-            <span class="stat-label">Status Tanah</span>
-          </div>
-        </div>
-        <div class="quote-box fade-in fade-in-delay-4">
-          <p>
-            "Di tengah keberagaman budaya dan agama Tana Toraja yang kaya, Masjid Baiturrahman To' Kaluku hadir sebagai simbol harmoni dan toleransi. Kami percaya bahwa keindahan Tana Toraja justru terletak pada kerukunan umat beragama yang telah terjalin selama berabad-abad."
-          </p>
-          <span class="quote-author">— Semangat Toleransi Umat Beragama Tana Toraja</span>
-        </div>
-      </div>
-      <div class="masjid-illustration fade-in fade-in-delay-2">
-        <div class="masjid-svg-wrap">
-          <svg viewBox="0 0 380 320" xmlns="http://www.w3.org/2000/svg" width="100%">
-            <!-- Sky background -->
-            <defs>
-              <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stop-color="#c8e6c9"/>
-                <stop offset="100%" stop-color="#e8f5e9"/>
-              </linearGradient>
-              <linearGradient id="buildGrad" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stop-color="#2E7D32"/>
-                <stop offset="100%" stop-color="#1B5E20"/>
-              </linearGradient>
-              <linearGradient id="domeGrad" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stop-color="#388E3C"/>
-                <stop offset="100%" stop-color="#1B5E20"/>
-              </linearGradient>
-            </defs>
-            <rect width="380" height="320" fill="url(#skyGrad)" rx="12"/>
-            <!-- Stars -->
-            <circle cx="40" cy="30" r="2" fill="#C8A951" opacity="0.6"/>
-            <circle cx="100" cy="18" r="1.5" fill="#C8A951" opacity="0.5"/>
-            <circle cx="280" cy="25" r="2" fill="#C8A951" opacity="0.6"/>
-            <circle cx="340" cy="15" r="1.5" fill="#C8A951" opacity="0.5"/>
-            <circle cx="200" cy="10" r="1.5" fill="#C8A951" opacity="0.4"/>
-            <!-- Crescent moon -->
-            <circle cx="330" cy="40" r="16" fill="#C8A951" opacity="0.9"/>
-            <circle cx="338" cy="35" r="13" fill="#c8e6c9"/>
-            <!-- Ground -->
-            <rect x="0" y="270" width="380" height="50" fill="#a5d6a7" rx="0"/>
-            <!-- Main building -->
-            <rect x="60" y="170" width="260" height="100" fill="url(#buildGrad)" rx="4"/>
-            <!-- Windows -->
-            <rect x="80" y="195" width="30" height="45" fill="#C8A951" rx="3" opacity="0.8"/>
-            <path d="M80 210 Q95 195 110 210" fill="#C8A951" opacity="0.9"/>
-            <rect x="130" y="195" width="30" height="45" fill="#C8A951" rx="3" opacity="0.8"/>
-            <path d="M130 210 Q145 195 160 210" fill="#C8A951" opacity="0.9"/>
-            <rect x="220" y="195" width="30" height="45" fill="#C8A951" rx="3" opacity="0.8"/>
-            <path d="M220 210 Q235 195 250 210" fill="#C8A951" opacity="0.9"/>
-            <rect x="270" y="195" width="30" height="45" fill="#C8A951" rx="3" opacity="0.8"/>
-            <path d="M270 210 Q285 195 300 210" fill="#C8A951" opacity="0.9"/>
-            <!-- Door -->
-            <rect x="170" y="215" width="40" height="55" fill="#0D3B0F" rx="4"/>
-            <path d="M170 235 Q190 215 210 235" fill="#0D3B0F"/>
-            <circle cx="190" cy="243" r="3" fill="#C8A951"/>
-            <!-- Main dome -->
-            <ellipse cx="190" cy="170" rx="65" ry="20" fill="url(#domeGrad)"/>
-            <path d="M125 170 Q125 110 190 105 Q255 110 255 170 Z" fill="url(#domeGrad)"/>
-            <!-- Dome top ornament -->
-            <line x1="190" y1="105" x2="190" y2="80" stroke="#C8A951" stroke-width="2"/>
-            <polygon points="190,70 186,82 194,82" fill="#C8A951"/>
-            <circle cx="190" cy="68" r="4" fill="#C8A951"/>
-            <!-- Side domes -->
-            <path d="M75 175 Q75 150 100 148 Q125 150 125 175 Z" fill="#2E7D32"/>
-            <line x1="100" y1="148" x2="100" y2="132" stroke="#C8A951" stroke-width="1.5"/>
-            <circle cx="100" cy="130" r="3" fill="#C8A951"/>
-            <path d="M255 175 Q255 150 280 148 Q305 150 305 175 Z" fill="#2E7D32"/>
-            <line x1="280" y1="148" x2="280" y2="132" stroke="#C8A951" stroke-width="1.5"/>
-            <circle cx="280" cy="130" r="3" fill="#C8A951"/>
-            <!-- Minarets -->
-            <rect x="50" y="120" width="20" height="80" fill="#1B5E20" rx="2"/>
-            <path d="M45 120 Q60 100 75 120 Z" fill="#2E7D32"/>
-            <line x1="60" y1="100" x2="60" y2="88" stroke="#C8A951" stroke-width="1.5"/>
-            <circle cx="60" cy="86" r="3" fill="#C8A951"/>
-            <rect x="310" y="120" width="20" height="80" fill="#1B5E20" rx="2"/>
-            <path d="M305 120 Q320 100 335 120 Z" fill="#2E7D32"/>
-            <line x1="320" y1="100" x2="320" y2="88" stroke="#C8A951" stroke-width="1.5"/>
-            <circle cx="320" cy="86" r="3" fill="#C8A951"/>
-            <!-- Toraja pattern border at bottom -->
-            <path d="M60 270 L70 260 L80 270 L90 260 L100 270 L110 260 L120 270 L130 260 L140 270 L150 260 L160 270 L170 260 L180 270 L190 260 L200 270 L210 260 L220 270 L230 260 L240 270 L250 260 L260 270 L270 260 L280 270 L290 260 L300 270 L310 260 L320 270" stroke="#C8A951" stroke-width="1.5" fill="none" opacity="0.6"/>
-            <!-- Label -->
-            <text x="190" y="298" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-size="11" fill="#1B5E20" font-weight="600">Masjid Baiturrahman To' Kaluku</text>
-            <text x="190" y="312" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-size="9" fill="#555" opacity="0.8">Jl. Tritura No. 11, Makale, Tana Toraja</text>
-          </svg>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===================== JADWAL SHOLAT ===================== -->
-<section id="jadwal">
-  <div class="container">
-    <div class="jadwal-header fade-in">
-      <div class="section-label">Waktu Ibadah</div>
-      <h2 class="section-title">Jadwal Sholat — Makale &amp; Sekitarnya</h2>
-      <div class="jadwal-date">
-        <i class="fas fa-calendar-alt"></i>
-        <span id="todayDate">Memuat tanggal...</span>
-      </div>
-    </div>
-    <div class="jadwal-table-wrap fade-in fade-in-delay-1">
-      <table class="jadwal-table">
-        <thead>
-          <tr>
-            <th>Waktu Sholat</th>
-            <th>Jam (WITA)</th>
-            <th>Keterangan</th>
-          </tr>
-        </thead>
-        <tbody id="jadwalBody">
-          <tr data-prayer="subuh">
-            <td>
-              <div class="prayer-name">
-                <div class="prayer-icon">🌙</div>
-                Subuh
-              </div>
-            </td>
-            <td><span class="prayer-time">04:45</span> <span class="prayer-wita">WITA</span></td>
-            <td><span style="font-size:13px;color:#666;">Sebelum fajar</span></td>
-          </tr>
-          <tr data-prayer="dzuhur">
-            <td>
-              <div class="prayer-name">
-                <div class="prayer-icon">☀️</div>
-                Dzuhur
-              </div>
-            </td>
-            <td><span class="prayer-time">12:05</span> <span class="prayer-wita">WITA</span></td>
-            <td><span style="font-size:13px;color:#666;">Tengah hari</span></td>
-          </tr>
-          <tr data-prayer="ashar">
-            <td>
-              <div class="prayer-name">
-                <div class="prayer-icon">🌤️</div>
-                Ashar
-              </div>
-            </td>
-            <td><span class="prayer-time">15:20</span> <span class="prayer-wita">WITA</span></td>
-            <td><span style="font-size:13px;color:#666;">Sore hari</span></td>
-          </tr>
-          <tr data-prayer="maghrib">
-            <td>
-              <div class="prayer-name">
-                <div class="prayer-icon">🌅</div>
-                Maghrib
-              </div>
-            </td>
-            <td><span class="prayer-time">18:00</span> <span class="prayer-wita">WITA</span></td>
-            <td><span style="font-size:13px;color:#666;">Saat matahari terbenam</span></td>
-          </tr>
-          <tr data-prayer="isya">
-            <td>
-              <div class="prayer-name">
-                <div class="prayer-icon">🌃</div>
-                Isya
-              </div>
-            </td>
-            <td><span class="prayer-time">19:10</span> <span class="prayer-wita">WITA</span></td>
-            <td><span style="font-size:13px;color:#666;">Malam hari</span></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <p class="jadwal-note fade-in fade-in-delay-2">
-      <i class="fas fa-info-circle" style="color:var(--gold-primary)"></i>
-      Jadwal dapat berubah, mohon konfirmasi ke pengurus masjid untuk kepastian waktu.
-    </p>
-  </div>
-</section>
-
-<!-- ===================== KEGIATAN ===================== -->
-<section id="kegiatan">
-  <div class="container">
-    <div class="kegiatan-header fade-in">
-      <div class="section-label">Program Kami</div>
-      <h2 class="section-title">Kegiatan &amp; Program Masjid</h2>
-      <p class="section-desc" style="margin:0 auto;">
-        Berbagai kegiatan rutin dan program keagamaan untuk mempererat ukhuwah islamiyah dan meningkatkan kualitas ibadah jemaah.
-      </p>
-    </div>
-    <div class="kegiatan-grid">
-      <div class="kegiatan-card fade-in">
-        <div class="kegiatan-icon"><i class="fas fa-mosque"></i></div>
-        <h3>Sholat Berjamaah 5 Waktu</h3>
-        <p>Pelaksanaan sholat berjamaah lima waktu setiap hari sebagai pilar utama kegiatan masjid dan penguatan ukhuwah jemaah.</p>
-      </div>
-      <div class="kegiatan-card fade-in fade-in-delay-1">
-        <div class="kegiatan-icon"><i class="fas fa-book-open"></i></div>
-        <h3>Kajian Rutin Ibu-ibu</h3>
-        <p>Kajian keislaman khusus ibu-ibu yang membahas fiqih wanita, akhlak, dan pengembangan diri dalam bingkai Islam.</p>
-      </div>
-      <div class="kegiatan-card fade-in fade-in-delay-2">
-        <div class="kegiatan-icon"><i class="fas fa-users"></i></div>
-        <h3>Kajian Bapak-bapak</h3>
-        <p>Forum kajian dan diskusi keagamaan untuk bapak-bapak, membahas isu-isu kontemporer dari perspektif Islam.</p>
-      </div>
-      <div class="kegiatan-card fade-in fade-in-delay-1">
-        <div class="kegiatan-icon"><i class="fas fa-child"></i></div>
-        <h3>Taman Pendidikan Al-Qur'an (TPA)</h3>
-        <p>Program pendidikan Al-Qur'an untuk anak-anak usia dini, membentuk generasi Qur'ani yang berakhlak mulia.</p>
-      </div>
-      <div class="kegiatan-card fade-in fade-in-delay-2">
-        <div class="kegiatan-icon"><i class="fas fa-calendar-check"></i></div>
-        <h3>Peringatan Hari Besar Islam</h3>
-        <p>Peringatan Maulid Nabi, Isra Mi'raj, Idul Fitri, Idul Adha, dan hari besar Islam lainnya secara meriah dan bermakna.</p>
-      </div>
-      <div class="kegiatan-card fade-in fade-in-delay-3">
-        <div class="kegiatan-icon"><i class="fas fa-heart"></i></div>
-        <h3>Kegiatan Sosial &amp; Bakti Sosial</h3>
-        <p>Santunan anak yatim, bakti sosial, dan kegiatan kemasyarakatan sebagai wujud kepedulian sosial umat Islam.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===================== PENGUMUMAN ===================== -->
-<section id="pengumuman">
-  <div class="container">
-    <div class="pengumuman-header fade-in">
-      <div class="section-label">Informasi Terkini</div>
-      <h2 class="section-title">Pengumuman &amp; Berita</h2>
-      <p class="section-desc" style="margin:0 auto;">
-        Informasi terbaru seputar kegiatan dan perkembangan Masjid Baiturrahman To' Kaluku.
-      </p>
-    </div>
-    <div class="pengumuman-grid">
-      <div class="pengumuman-card fade-in">
-        <div class="pengumuman-card-top"></div>
-        <div class="pengumuman-card-body">
-          <span class="pengumuman-badge badge-renovasi">Renovasi</span>
-          <h3>Renovasi Total Masjid Dimulai</h3>
-          <div class="pengumuman-date">
-            <i class="fas fa-calendar"></i> Desember 2024
-          </div>
-          <p>Peletakan batu pertama renovasi total masjid dilakukan oleh Wakil Bupati Tana Toraja, dr. Zadrak Tombeg. Estimasi biaya renovasi mencapai <strong>Rp 5,6 miliar</strong> untuk mewujudkan masjid yang lebih megah dan representatif.</p>
-          <a href="#" class="read-more" onclick="return false;">
-            Baca Selengkapnya <i class="fas fa-arrow-right"></i>
-          </a>
-        </div>
-      </div>
-      <div class="pengumuman-card fade-in fade-in-delay-1">
-        <div class="pengumuman-card-top" style="background:linear-gradient(90deg,var(--gold-primary),var(--gold-bright))"></div>
-        <div class="pengumuman-card-body">
-          <span class="pengumuman-badge badge-kegiatan">Kegiatan</span>
-          <h3>Buka Puasa Bersama Ramadan 1447 H</h3>
-          <div class="pengumuman-date">
-            <i class="fas fa-calendar"></i> Ramadan 1447 H
-          </div>
-          <p>Kegiatan buka puasa bersama jemaah dan masyarakat sekitar dihadiri langsung oleh <strong>Bupati Tana Toraja</strong>. Acara berlangsung khidmat dan penuh kebersamaan dalam suasana Ramadan yang penuh berkah.</p>
-          <a href="#" class="read-more" onclick="return false;">
-            Baca Selengkapnya <i class="fas fa-arrow-right"></i>
-          </a>
-        </div>
-      </div>
-      <div class="pengumuman-card fade-in fade-in-delay-2">
-        <div class="pengumuman-card-top" style="background:linear-gradient(90deg,#1565C0,#1976D2)"></div>
-        <div class="pengumuman-card-body">
-          <span class="pengumuman-badge badge-donasi">Donasi</span>
-          <h3>Open Donasi Renovasi Masjid</h3>
-          <div class="pengumuman-date">
-            <i class="fas fa-calendar"></i> Berlangsung Terus
-          </div>
-          <p>Donasi untuk renovasi masjid dapat disalurkan melalui rekening resmi masjid. Setiap donasi Anda adalah investasi akhirat yang bernilai pahala jariyah. Informasi lebih lanjut hubungi pengurus masjid.</p>
-          <a href="#" class="read-more" onclick="openDonasi(event)">
-            Donasi Sekarang <i class="fas fa-arrow-right"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===================== KONTAK ===================== -->
-<section id="kontak">
-  <div class="container">
-    <div class="kontak-grid">
-      <div class="fade-in">
-        <div class="section-label" style="color:var(--gold-primary);">Hubungi Kami</div>
-        <h2 class="kontak-title">Kami Siap Membantu Anda</h2>
-        <p class="kontak-subtitle">Jangan ragu untuk menghubungi kami untuk informasi lebih lanjut.</p>
-        <div class="kontak-item">
-          <div class="kontak-item-icon"><i class="fas fa-map-marker-alt"></i></div>
-          <div class="kontak-item-text">
-            <strong>Alamat</strong>
-            <span>Jl. Tritura No. 11, Kelurahan Bombongan,<br>Kec. Makale, Kab. Tana Toraja,<br>Sulawesi Selatan 91811</span>
-          </div>
-        </div>
-        <div class="kontak-item">
-          <div class="kontak-item-icon"><i class="fas fa-phone-alt"></i></div>
-          <div class="kontak-item-text">
-            <strong>Telepon</strong>
-            <span>Sekretaris Pengrus Masjid : 0812-5305-9701</span>
-          </div>
-        </div>
-        <div class="kontak-item">
-          <div class="kontak-item-icon"><i class="fas fa-envelope"></i></div>
-          <div class="kontak-item-text">
-            <strong>Email</strong>
-            <span>baiturrahmanmakale@gmail.com</span>
-          </div>
-        </div>
-        <div class="kontak-item">
-          <div class="kontak-item-icon"><i class="fas fa-clock"></i></div>
-          <div class="kontak-item-text">
-            <strong>Jam Operasional</strong>
-            <span>Setiap hari, mengikuti waktu sholat 5 waktu</span>
-          </div>
-        </div>
-      </div>
-      <div class="kontak-right fade-in fade-in-delay-2">
-        <a href="https://www.google.com/maps/search/Masjid+Baiturrahman+To+Kaluku+Makale+Tana+Toraja" target="_blank" rel="noopener noreferrer" class="maps-btn">
-          <i class="fas fa-map-marked-alt"></i>
-          Lihat di Google Maps
-        </a>
-        <div class="pengurus-card">
-          <h4><i class="fas fa-users" style="margin-right:6px;"></i>Pengurus Masjid</h4>
-          <div class="pengurus-item">
-            <div class="pengurus-avatar">B</div>
-            <div class="pengurus-info">
-              <strong>Basyiruddin Abu Bakar</strong>
-              <span>Sekretaris Pengurus Masjid</span>
-            </div>
-          </div>
-        </div>
-        <div style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);border-radius:12px;padding:20px;">
-          <h4 style="color:var(--gold-primary);font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:12px;">
-            <i class="fas fa-hand-holding-heart" style="margin-right:6px;"></i>Dukung Renovasi
-          </h4>
-          <p style="color:rgba(255,255,255,0.75);font-size:13.5px;line-height:1.7;margin-bottom:14px;">
-            Renovasi masjid membutuhkan dukungan dari seluruh umat. Setiap donasi Anda adalah amal jariyah yang mengalir terus.
-          </p>
-          <button onclick="openDonasi(event)" style="width:100%;padding:12px;background:linear-gradient(135deg,var(--gold-primary),var(--gold-bright));color:var(--green-primary);border:none;border-radius:10px;font-weight:700;font-size:14px;cursor:pointer;transition:all 0.3s;" onmouseover="this.style.opacity='0.9'" onmouseout="this.style.opacity='1'">
-            <i class="fas fa-hand-holding-heart"></i> Donasi Sekarang
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===================== FOOTER ===================== -->
-<footer>
-  <div class="footer-inner">
-    <div class="footer-logo">
-      <div class="footer-logo-icon"><i class="fas fa-mosque"></i></div>
-      <div class="footer-logo-text">Masjid Baiturrahman To' Kaluku</div>
-    </div>
-    <p class="footer-motto">Menjadi Pusat Ibadah dan Syiar Islam di Tana Toraja</p>
-    <div class="footer-socials">
-      <a href="#" class="social-btn" title="Facebook" onclick="return false;"><i class="fab fa-facebook-f"></i></a>
-      <a href="#" class="social-btn" title="Instagram" onclick="return false;"><i class="fab fa-instagram"></i></a>
-      <a href="#" class="social-btn" title="YouTube" onclick="return false;"><i class="fab fa-youtube"></i></a>
-      <a href="#" class="social-btn" title="WhatsApp" onclick="return false;"><i class="fab fa-whatsapp"></i></a>
-    </div>
-    <div class="footer-toraja-pattern"></div>
-    <div class="footer-divider"></div>
-    <p class="footer-bottom">© 2024 Masjid Baiturrahman To' Kaluku. Seluruh Hak Dilindungi.</p>
-  </div>
-</footer>
-
-<!-- ===================== BACK TO TOP ===================== -->
-<button id="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Kembali ke Atas">
-  <i class="fas fa-chevron-up"></i>
-</button>
-
-<!-- ===================== DONASI MODAL ===================== -->
-<div class="modal-overlay" id="donasiModal" onclick="closeDonasiOutside(event)">
-  <div class="modal-box">
-    <button class="modal-close" onclick="closeDonasi()"><i class="fas fa-times"></i></button>
-    <div style="text-align:center;margin-bottom:20px;">
-      <div style="width:56px;height:56px;background:linear-gradient(135deg,var(--gold-primary),var(--gold-bright));border-radius:14px;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;font-size:24px;color:var(--green-primary);">
-        <i class="fas fa-hand-holding-heart"></i>
-      </div>
-      <h2>Donasi Renovasi Masjid</h2>
-      <p class="modal-sub">Setiap donasi Anda adalah amal jariyah yang terus mengalir</p>
-    </div>
-    
-    <div class="rekening-card" style="padding: 20px; text-align: left;">
-      <div class="bank-name" style="text-align: center; font-weight: bold; margin-bottom: 15px;">
-        a/n Panitia Pembangunan Masjid Baiturrahman To'Kaluku
-      </div>
+  <!-- REVISI: SLIDESHOW FOTO DOKUMENTASI (Tepat di bawah Header & Nav) -->
+  <section class="slideshow-section">
+    <div class="slideshow-container">
       
-      <!-- Daftar Rekening Tersusun ke Bawah + Tombol Salin -->
-      <div style="display: flex; flex-direction: column; gap: 12px; margin: 20px 0;">
-        
-        <!-- BRI -->
-        <div style="display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.1); padding: 10px 14px; border-radius: 8px;">
-          <span style="font-size: 16px; font-weight: bold; color: #fff;">Bank BRI : 341301073669536</span>
-          <button onclick="salinRekening('341301073669536', this)" style="background: var(--gold-primary); color: var(--green-primary); border: none; padding: 6px 12px; border-radius: 6px; cursor: pointer; font-weight: bold; font-size: 13px; display: flex; align-items: center; gap: 5px;">
-            <i class="fas fa-copy"></i> Salin
-          </button>
-        </div>
-
-        <!-- Mandiri -->
-        <div style="display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.1); padding: 10px 14px; border-radius: 8px;">
-          <span style="font-size: 16px; font-weight: bold; color: #fff;">Mandiri : 1700015569720</span>
-          <button onclick="salinRekening('1700015569720', this)" style="background: var(--gold-primary); color: var(--green-primary); border: none; padding: 6px 12px; border-radius: 6px; cursor: pointer; font-weight: bold; font-size: 13px; display: flex; align-items: center; gap: 5px;">
-            <i class="fas fa-copy"></i> Salin
-          </button>
-        </div>
-
-        <!-- BNI -->
-        <div style="display: flex; justify-content: space-between; align-items: center; background: rgba(255,255,255,0.1); padding: 10px 14px; border-radius: 8px;">
-          <span style="font-size: 16px; font-weight: bold; color: #fff;">BNI : 1903009155</span>
-          <button onclick="salinRekening('1903009155', this)" style="background: var(--gold-primary); color: var(--green-primary); border: none; padding: 6px 12px; border-radius: 6px; cursor: pointer; font-weight: bold; font-size: 13px; display: flex; align-items: center; gap: 5px;">
-            <i class="fas fa-copy"></i> Salin
-          </button>
-        </div>
-
+      <!-- Slide 1: Desain Masjid -->
+      <div class="mySlides">
+        <img src="ChatGPT Image 25 Apr 2026, 20.06.25.png" alt="Desain Arsitektur">
+        <div class="slide-caption">Rencana Desain Arsitektur Baru Masjid Baiturrahman To' Kaluku</div>
       </div>
 
-      <div class="account-name" style="text-align: center; font-size: 13px; opacity: 0.9;">
-        Masjid Baiturrahman To' Kaluku — Makale, Tana Toraja
+      <!-- Slide 2: Peletakan Batu Pertama -->
+      <div class="mySlides">
+        <img src="482021287_122216297972229277_3659181832096984105_n.jpg" alt="Peletakan Batu Pertama">
+        <div class="slide-caption">Prosesi Khidmat Peletakan Batu Pertama Renovasi Total Masjid</div>
+      </div>
+
+      <!-- Slide 3: Sambutan Acara -->
+      <div class="mySlides">
+        <img src="481946134_122216301602229277_3323133730171587101_n.jpg" alt="Sambutan Buka Puasa Bersama">
+        <div class="slide-caption">Sambutan Ketua Panitia & Remaja Masjid dalam Rangka Acara Buka Puasa Bersama</div>
+      </div>
+
+      <!-- Slide 4: Tokoh Masyarakat -->
+      <div class="mySlides">
+        <img src="481661109_122216301392229277_5400480097525590969_n.jpg" alt="Sambutan Tokoh Masyarakat">
+        <div class="slide-caption">Sambutan Perwakilan Pemerintah Desa dan Tokoh Masyarakat Makale</div>
+      </div>
+
+      <!-- Slide 5: Jamaah Wanita -->
+      <div class="mySlides">
+        <img src="481662165_122216301638229277_8034693727192476286_n.jpg" alt="Jamaah Muslimah">
+        <div class="slide-caption">Kehadiran Jamaah Muslimah dan Majelis Ta'lim Mengikuti Rangkaian Acara</div>
+      </div>
+
+      <!-- Slide 6: Anak-Anak -->
+      <div class="mySlides">
+        <img src="481767622_122216301404229277_7542310300179176738_n.jpg" alt="Anak-anak TPA">
+        <div class="slide-caption">Antusiasme Anak-anak Santri TPA Masjid Baiturrahman To' Kaluku</div>
+      </div>
+
+      <!-- Slide 7: Tamu Undangan -->
+      <div class="mySlides">
+        <img src="481976596_122216307122229277_8709260073484586127_n.jpg" alt="Tamu Undangan">
+        <div class="slide-caption">Para Tamu Undangan dan Tokoh Lintas Sektor Menghadiri Acara Masjid</div>
+      </div>
+
+      <!-- Slide 8: Foto Bersama -->
+      <div class="mySlides">
+        <img src="481914941_122216307170229277_3663430253989708169_n.jpg" alt="Foto Bersama Pejabat Daerah">
+        <div class="slide-caption">Sesi Foto Bersama dengan Wakil Bupati dan Jajaran Pemkab Tana Toraja</div>
+      </div>
+
+      <!-- Tombol Navigasi -->
+      <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+      <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    </div>
+  </section>
+
+  <!-- KONTEN UTAMA WEBSITE -->
+  <div class="container">
+
+    <!-- BERANDA -->
+    <div id="beranda" class="page-section">
+      <h2><i class="fa-solid fa-star-and-crecent"></i> Selamat Datang</h2>
+      <p>Selamat datang di Website Resmi <strong>Masjid Baiturrahman To' Kaluku, Makale, Tana Toraja</strong>. Website ini hadir sebagai media informasi, akuntabilitas pengelolaan dana keumatan, serta dokumentasi syiar Islam di Tana Toraja.</p>
+      <div class="grid">
+        <div class="card">
+          <h4><i class="fa-solid fa-trowel-bricks"></i> Progres Renovasi</h4>
+          <p>Masjid saat ini sedang menjalani renovasi total sejak akhir tahun 2024 demi meningkatkan daya tampung jamaah.</p>
+        </div>
+        <div class="card">
+          <h4><i class="fa-solid fa-circle-dollar-to-slot"></i> Transparansi ZIS</h4>
+          <p>Menerima dan menyalurkan Zakat, Infaq, dan Sedekah secara terbuka dan dapat dipantau langsung oleh jamaah.</p>
+        </div>
       </div>
     </div>
 
-    <div style="background:#f9f9f9;border-radius:10px;padding:16px;margin-bottom:16px;">
-      <p style="font-size:13px;color:var(--text-mid);line-height:1.7;">
-        <i class="fas fa-info-circle" style="color:var(--gold-primary);margin-right:6px;"></i>
-        Untuk informasi rekening resmi dan konfirmasi donasi, silakan hubungi langsung pengurus masjid atau datang ke masjid.
-      </p>
+    <!-- PROFIL -->
+    <div id="profil" class="page-section" style="display:none;">
+      <h2><i class="fa-solid fa-circle-info"></i> Profil Masjid</h2>
+      <p>Masjid Baiturrahman To' Kaluku berdiri di atas tanah wakaf seluas 300 m² dengan luas bangunan total 522 m². Masjid ini memegang peranan krusial sebagai simpul kerukunan umat beragama serta toleransi di wilayah Kecamatan Makale.</p>
+      <h3>Visi</h3>
+      <p><em>"Menjadi pusat ibadah yang makmur, ramah, mandiri, dan meneguhkan kerukunan umat di Bumi Tana Toraja."</em></p>
+      <h3>Misi</h3>
+      <p>1. Menyelenggarakan kegiatan peribadatan yang nyaman dan inklusif bagi mukimin maupun musafir.<br>
+         2. Menyelenggarakan sistem pengajaran Al-Qur'an usia dini yang berkualitas.<br>
+         3. Aktif berkontribusi dalam aksi sosial kemasyarakatan daerah.</p>
     </div>
-    <p class="modal-note">
-      <i class="fas fa-heart" style="color:#e53935;"></i>
-      Jazakumullahu khairan atas kepedulian Anda
-    </p>
+
+    <!-- LAYANAN UMAT: ZAKAT -->
+    <div id="zakat" class="page-section" style="display:none;">
+      <h2><i class="fa-solid fa-hand-holding-dollar"></i> Pengelolaan Zakat</h2>
+      <p>Unit Pengumpul Zakat (UPZ) Masjid Baiturrahman To' Kaluku melayani perhitungan dan distribusi Zakat Fitrah serta Zakat Maal secara syar'i.</p>
+      <div class="card">
+        <h4>Mekanisme Penyaluran</h4>
+        <p>Dana zakat didistribusikan kepada 8 asnaf yang berhak di area Kecamatan Makale, diprioritaskan untuk fakir miskin dan mualaf lokal.</p>
+      </div>
+    </div>
+
+    <!-- LAYANAN UMAT: INFAQ -->
+    <div id="infaq" class="page-section" style="display:none;">
+      <h2><i class="fa-solid fa-hand-holding-heart"></i> Infaq</h2>
+      <p>Dana infaq operasional dialokasikan untuk pemeliharaan kebersihan harian masjid, pembayaran listrik, fasilitas air wudhu, serta pemeliharaan sound system.</p>
+    </div>
+
+    <!-- LAYANAN UMAT: SEDEKAH -->
+    <div id="sedekah" class="page-section" style="display:none;">
+      <h2><i class="fa-solid fa-box-open"></i> Sedekah</h2>
+      <p>Program sedekah menyasar bantuan sosial tidak mengikat, seperti penyediaan konsumsi kegiatan Jumat Berkah, santunan anak yatim piatu, dan tanggap bencana daerah.</p>
+    </div>
+
+    <!-- KEGIATAN -->
+    <div id="kegiatan" class="page-section" style="display:none;">
+      <h2><i class="fa-solid fa-calendar-check"></i> Kegiatan Rutin</h2>
+      <div class="grid">
+        <div class="card">
+          <h4>Majelis Ta'lim & Kajian</h4>
+          <p>Kajian rutin berkala bapak-bapak serta ibu-ibu guna membahas ilmu fiqih, muamalah, dan akhlak.</p>
+        </div>
+        <div class="card">
+          <h4>Pendidikan Al-Qur'an (TPA)</h4>
+          <p>Pembinaan dasar membaca dan menghafal Al-Qur'an bagi anak-anak di Kelurahan Bombongan.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- BERITA -->
+    <div id="berita" class="page-section" style="display:none;">
+      <h2><i class="fa-solid fa-bullhorn"></i> Berita & Pengumuman</h2>
+      <div class="card" style="margin-bottom: 20px;">
+        <h4>Peletakan Batu Pertama Dimulai</h4>
+        <p><small class="text-muted"><i class="fa-regular fa-clock"></i> Dokumentasi Terkini</small></p>
+        <p>Alhamdulillah, pelaksanaan peletakan batu pertama pembangunan total struktur Masjid Baiturrahman To' Kaluku telah diselenggarakan secara resmi. Acara monumental ini dihadiri oleh jajaran Pemerintah Kabupaten Tana Toraja (Wakil Bupati), tokoh agama, serta elemen Remaja Masjid.</p>
+      </div>
+    </div>
+
+    <!-- DONASI -->
+    <div id="donasi" class="page-section" style="display:none;">
+      <h2><i class="fa-solid fa-wallet"></i> Rekening Donasi & Wakaf</h2>
+      <p>Salurkan infaq terbaik Anda untuk pembangunan total gedung fisik baru Masjid Baiturrahman To' Kaluku melalui rekening panitia:</p>
+      <div class="card" style="background-color: #f0fdf4;">
+        <p><strong>Bank Syariah Indonesia (BSI)</strong><br>
+        No. Rekening: <strong>777-111-222-3</strong><br>
+        a/n Panitia Pembangunan Masjid Baiturrahman To' Kaluku</p>
+      </div>
+    </div>
+
+    <!-- KONTAK -->
+    <div id="kontak" class="page-section" style="display:none;">
+      <h2><i class="fa-solid fa-envelope"></i> Kontak & Informasi</h2>
+      <p>Untuk konfirmasi transfer donasi atau informasi pendaftaran santri TPA, silakan hubungi pengurus:</p>
+      <p><i class="fa-brands fa-whatsapp"></i> <strong>WhatsApp Pengurus:</strong> 0812-5305-9701 (Sekretaris)</p>
+      <p><i class="fa-solid fa-envelope"></i> <strong>Email:</strong> baiturrahmanmakale@gmail.com</p>
+    </div>
+
   </div>
-</div>
 
-<!-- SCRIPT JAVASCRIPT UNTUK FUNGSI SALIN -->
-<script>
-function salinRekening(nomor, elemenTombol) {
-  navigator.clipboard.writeText(nomor).then(function() {
-    // Mengubah teks tombol saat berhasil disalin
-    const teksAsli = elemenTombol.innerHTML;
-    elemenTombol.innerHTML = '<i class="fas fa-check"></i> Tersalin';
-    elemenTombol.style.background = '#2e7d32'; // Berubah jadi hijau tanda sukses
-    elemenTombol.style.color = '#fff';
-    
-    // Mengembalikan tombol ke fungsi semula setelah 2 detik
-    setTimeout(function() {
-      elemenTombol.innerHTML = teksAsli;
-      elemenTombol.style.background = 'var(--gold-primary)';
-      elemenTombol.style.color = 'var(--green-primary)';
-    }, 2000);
-  }).catch(function(err) {
-    alert('Gagal menyalin teks: ', err);
-  });
-}
-</script>
+  <!-- FOOTER -->
+  <footer>
+    <p><strong>Masjid Baiturrahman To' Kaluku</strong></p>
+    <p>Jl. Tritura No. 11, Kelurahan Bombongan, Makale, Kabupaten Tana Toraja.</p>
+    <p style="margin-top: 15px; font-size: 12px; opacity: 0.6;">&copy; 2026 Seluruh Hak Dilindungi.</p>
+  </footer>
 
-
-<!-- ===================== JAVASCRIPT ===================== -->
-<script>
-  // ---- CLOCK ----
-  function updateClock() {
-    const now = new Date();
-    // WITA = UTC+8
-    const witaOffset = 8 * 60;
-    const localOffset = now.getTimezoneOffset();
-    const wita = new Date(now.getTime() + (witaOffset + localOffset) * 60000);
-    const h = String(wita.getHours()).padStart(2, '0');
-    const m = String(wita.getMinutes()).padStart(2, '0');
-    const s = String(wita.getSeconds()).padStart(2, '0');
-    document.getElementById('navClock').textContent = `${h}:${m}:${s} WITA`;
-  }
-  setInterval(updateClock, 1000);
-  updateClock();
-
-  // ---- TODAY DATE ----
-  function setTodayDate() {
-    const now = new Date();
-    const witaOffset = 8 * 60;
-    const localOffset = now.getTimezoneOffset();
-    const wita = new Date(now.getTime() + (witaOffset + localOffset) * 60000);
-    const days = ['Minggu','Senin','Selasa','Rabu','Kamis','Jumat','Sabtu'];
-    const months = ['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember'];
-    const dayName = days[wita.getDay()];
-    const date = wita.getDate();
-    const month = months[wita.getMonth()];
-    const year = wita.getFullYear();
-    document.getElementById('todayDate').textContent = `${dayName}, ${date} ${month} ${year}`;
-  }
-  setTodayDate();
-
-  // ---- HIGHLIGHT CURRENT PRAYER ----
-  function highlightCurrentPrayer() {
-    const now = new Date();
-    const witaOffset = 8 * 60;
-    const localOffset = now.getTimezoneOffset();
-    const wita = new Date(now.getTime() + (witaOffset + localOffset) * 60000);
-    const h = wita.getHours();
-    const m = wita.getMinutes();
-    const totalMin = h * 60 + m;
-
-    const prayers = [
-      { name: 'subuh', start: 4*60+45, end: 12*60+5 },
-      { name: 'dzuhur', start: 12*60+5, end: 15*60+20 },
-      { name: 'ashar', start: 15*60+20, end: 18*60 },
-      { name: 'maghrib', start: 18*60, end: 19*60+10 },
-      { name: 'isya', start: 19*60+10, end: 24*60 },
-    ];
-
-    let activePrayer = null;
-    for (const p of prayers) {
-      if (totalMin >= p.start && totalMin < p.end) {
-        activePrayer = p.name;
-        break;
+  <!-- SYSTEM UTILITY SCRIPT (SPA & SLIDESHOW) -->
+  <script>
+    // Manajemen Halaman Tampil/Sembunyi
+    function showPage(pageId) {
+      const sections = document.querySelectorAll('.page-section');
+      sections.forEach(section => section.style.display = 'none');
+      
+      const target = document.getElementById(pageId);
+      if(target) {
+        target.style.display = 'block';
+        target.scrollIntoView({ behavior: 'smooth' });
       }
     }
-    if (!activePrayer && totalMin < 4*60+45) activePrayer = 'isya';
 
-    document.querySelectorAll('#jadwalBody tr').forEach(row => {
-      row.classList.remove('active-prayer');
-      if (activePrayer && row.dataset.prayer === activePrayer) {
-        row.classList.add('active-prayer');
-      }
-    });
-  }
-  highlightCurrentPrayer();
-  setInterval(highlightCurrentPrayer, 60000);
+    // Manajemen Slideshow Otomatis
+    let slideIndex = 1;
+    showSlides(slideIndex);
 
-  // ---- NAVBAR SCROLL ----
-  const navbar = document.getElementById('navbar');
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 60) {
-      navbar.classList.add('scrolled');
-    } else {
-      navbar.classList.remove('scrolled');
+    function plusSlides(n) {
+      showSlides(slideIndex += n);
     }
-    // Back to top
-    const btn = document.getElementById('back-to-top');
-    if (window.scrollY > 400) {
-      btn.classList.add('visible');
-    } else {
-      btn.classList.remove('visible');
-    }
-  });
 
-  // ---- HAMBURGER MENU ----
-  function toggleMenu() {
-    const menu = document.getElementById('mobileMenu');
-    const ham = document.getElementById('hamburger');
-    menu.classList.toggle('open');
-    ham.classList.toggle('active');
-  }
-  function closeMenu() {
-    document.getElementById('mobileMenu').classList.remove('open');
-    document.getElementById('hamburger').classList.remove('active');
-  }
-
-  // ---- DONASI MODAL ----
-  function openDonasi(e) {
-    if (e) e.preventDefault();
-    document.getElementById('donasiModal').classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
-  function closeDonasi() {
-    document.getElementById('donasiModal').classList.remove('open');
-    document.body.style.overflow = '';
-  }
-  function closeDonasiOutside(e) {
-    if (e.target === document.getElementById('donasiModal')) closeDonasi();
-  }
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeDonasi();
-  });
-
-  // ---- INTERSECTION OBSERVER (fade-in) ----
-  const fadeEls = document.querySelectorAll('.fade-in');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
+    function showSlides(n) {
+      let i;
+      let slides = document.getElementsByClassName("mySlides");
+      if (n > slides.length) {slideIndex = 1}    
+      if (n < 1) {slideIndex = slides.length}
+      for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";  
       }
-    });
-  }, { threshold: 0.12 });
+      slides[slideIndex-1].style.display = "block";  
+    }
 
-  // Hero elements visible immediately
-  document.querySelectorAll('#hero .fade-in').forEach(el => el.classList.add('visible'));
-
-  fadeEls.forEach(el => {
-    if (!el.closest('#hero')) observer.observe(el);
-  });
-</script>
+    // Ubah slide tiap 4 detik otomatis
+    setInterval(() => { plusSlides(1); }, 4000);
+  </script>
 </body>
 </html>
