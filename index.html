@@ -254,15 +254,17 @@ document.addEventListener('click', function(e) {
       background: linear-gradient(to top, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.18) 45%, transparent 100%);
     }
     .slide-caption {
-      position: absolute;
-      bottom: 60px;
-      left: 50%;
-      transform: translateX(-50%);
-      text-align: center;
-      color: #fff;
-      width: 90%;
-      max-width: 700px;
-    }
+  position: absolute;
+  bottom: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  color: #fff;
+  width: 80%;           /* Diturunkan dari 90% */
+  max-width: 480px;     /* Diturunkan dari 700px agar memanjang ke bawah bukan ke samping */
+}
+
+    
     .slide-caption h2 {
       font-family: 'Amiri', serif;
       font-size: 1.5rem;
@@ -684,105 +686,7 @@ document.addEventListener('click', function(e) {
       .berita-grid { grid-template-columns: 1fr; }
     }
 
-    /* ===== DONASI ===== */
-    #donasi {
-      background: linear-gradient(135deg, var(--green-dark) 0%, #1a4a1e 100%);
-      position: relative;
-      overflow: hidden;
-    }
-    #donasi::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image:
-        repeating-linear-gradient(45deg, rgba(212,175,55,0.04) 0, rgba(212,175,55,0.04) 1px, transparent 0, transparent 50%),
-        repeating-linear-gradient(-45deg, rgba(212,175,55,0.04) 0, rgba(212,175,55,0.04) 1px, transparent 0, transparent 50%);
-      background-size: 30px 30px;
-    }
-    #donasi .container { position: relative; z-index: 1; }
-    #donasi .section-heading { color: #fff; }
-    #donasi .section-heading::after { background: var(--gold); }
-    .donasi-cta {
-      text-align: center;
-      color: rgba(255,255,255,0.9);
-      font-size: 1.1rem;
-      margin-bottom: 12px;
-    }
-    .donasi-verse {
-      text-align: center;
-      font-family: 'Amiri', serif;
-      font-style: italic;
-      font-size: 1.05rem;
-      color: var(--gold);
-      margin-bottom: 40px;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    .donasi-verse small { display: block; font-size: 0.8rem; color: rgba(255,255,255,0.6); margin-top: 4px; font-style: normal; }
-    .donasi-cards {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 28px;
-      max-width: 800px;
-      margin: 0 auto;
-    }
-    .donasi-bank-card {
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(212,175,55,0.35);
-      border-radius: var(--radius);
-      padding: 28px;
-      color: #fff;
-      backdrop-filter: blur(8px);
-    }
-    .donasi-bank-card h4 {
-      font-family: 'Amiri', serif;
-      font-size: 1.2rem;
-      color: var(--gold);
-      margin-bottom: 16px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .donasi-bank-card .d-bank { font-size: 0.8rem; opacity: 0.7; margin-bottom: 4px; }
-    .donasi-bank-card .d-no { font-size: 1.4rem; font-weight: 700; letter-spacing: 2px; color: var(--gold); margin-bottom: 6px; }
-    .donasi-bank-card .d-name { font-size: 0.82rem; opacity: 0.85; }
-    .donasi-confirm {
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(212,175,55,0.35);
-      border-radius: var(--radius);
-      padding: 28px;
-      color: #fff;
-      backdrop-filter: blur(8px);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-    .donasi-confirm h4 {
-      font-family: 'Amiri', serif;
-      font-size: 1.2rem;
-      color: var(--gold);
-      margin-bottom: 14px;
-    }
-    .donasi-confirm p { font-size: 0.88rem; opacity: 0.85; margin-bottom: 12px; line-height: 1.7; }
-    .wa-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: #25D366;
-      color: #fff;
-      padding: 10px 20px;
-      border-radius: 8px;
-      font-size: 0.88rem;
-      font-weight: 600;
-      transition: var(--transition);
-      width: fit-content;
-    }
-    .wa-btn:hover { background: #1ebe5d; transform: translateY(-2px); }
-
-    @media (max-width: 768px) {
-      .donasi-cards { grid-template-columns: 1fr; }
-    }
+   
 
     /* ===== KONTAK ===== */
     #kontak {
@@ -1341,7 +1245,7 @@ document.addEventListener('click', function(e) {
 
       <div class="berita-card fade-in">
         <div class="berita-img">
-          <img src="https://image.youmind.com/user-files/993534944124b1a7dad2f0af4229297f3a66443868e5ecf0b02a41915ed48b38?format=jpeg&width=4000&height=4000&fit=scale-down" alt="Peletakan Batu Pertama" loading="lazy" />
+          <img src="FOTO/Foto54.jpg alt="Peletakan Batu Pertama" loading="lazy" />
           <span class="berita-date">📅 19 Desember 2024</span>
         </div>
         <div class="berita-body">
@@ -1354,7 +1258,7 @@ document.addEventListener('click', function(e) {
          <div class="berita-card fade-in">
         <div class="berita-img">
           <!-- Tautan sudah diperbaiki menggunakan nama file baru tanpa spasi -->
-          <img src="dukungan-kapolres.jpg" alt="dukungsn Polres Tana Toraja="lazy" />
+         <img src="FOTO/Dukungan Kapolres.jpg" alt="Kunjungan Polres Tana Toraja" loading="lazy" />
           <span class="berita-date">📅 10 Oktober 2025</span>
         </div>
         <div class="berita-body">
@@ -1386,35 +1290,245 @@ Menurutnya, melalui kolaborasi dan kebersamaan seluruh pihak, berbagai tantangan
 </section>
 
 <!-- ===== DONASI ===== -->
+<!-- ===== DONASI ===== -->
 <section id="donasi">
-  <div class="container">
-    <h2 class="section-heading fade-in">💛 Donasi Pembangunan</h2>
-    <p class="donasi-cta fade-in">Mari Berpartisipasi dalam Pembangunan Rumah Allah</p>
-    <div class="donasi-verse fade-in">
-      "Sesungguhnya yang memakmurkan masjid-masjid Allah hanyalah orang-orang yang beriman kepada Allah dan hari kemudian, serta tetap mendirikan shalat, menunaikan zakat, dan tidak takut (kepada siapapun) selain kepada Allah."
-      <small>— QS. At-Taubah: 18</small>
+  <div class="donasi-card">
+    
+    <!-- Bagian Ikon Emas Atas -->
+    <div class="donasi-icon-box">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+      </svg>
     </div>
-    <div class="donasi-cards">
-      <div class="donasi-bank-card fade-in">
-        <h4>🏦 Rekening Donasi</h4>
-        <div class="d-bank">BRI - BNI - Mandiri</div>
-        <div class="d-no">BRI - 341301073669536 - BNI - 1903009115 -  Mandiri - 1700015569720</div>
-        <div class="d-name">a/n.Panitia Pembangunan Masjid Baiturrahman To' Kaluku</div>
-        <br/>
-        <p style="font-size:0.8rem; opacity:0.75; margin-top:8px;">Setelah transfer, harap konfirmasi via WhatsApp dengan menyertakan nama, nominal, dan bukti transfer.</p>
+
+    <!-- Judul & Subjudul Utama -->
+    <h2 class="donasi-title">Donasi Renovasi Masjid</h2>
+    <p class="donasi-subtitle">Setiap donasi Anda adalah amal jariyah yang terus mengalir</p>
+
+    <!-- Kotak Hijau Konten Rekening -->
+    <div class="donasi-green-box">
+      <p class="donasi-an">a/n Panitia Pembangunan Masjid Baiturrahman To'Kaluku</p>
+      
+      <!-- Baris Bank BRI -->
+      <div class="bank-item">
+        <span class="bank-text">Bank BRI : <b class="bank-num">341301073669536</b></span>
+        <button class="btn-salin" onclick="salinNomor('341301073669536', this)">📋 Salin</button>
       </div>
-      <div class="donasi-confirm fade-in">
-        <h4>✅ Konfirmasi Donasi</h4>
-        <p>Setelah melakukan transfer, mohon konfirmasi donasi Anda melalui WhatsApp agar dapat dicatat dan didoakan oleh pengurus masjid.</p>
-        <a href="https://wa.me/6208XXXXXXXXXX" target="_blank" rel="noopener noreferrer" class="wa-btn">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          Konfirmasi via WhatsApp
-        </a>
-        <p style="font-size:0.78rem; opacity:0.65; margin-top:14px;">Donasi juga dapat diserahkan langsung ke kantor takmir Masjid Baiturrahman To' Kaluku, Jl. Tritura No. 11, Bombongan, Makale.</p>
+
+      <!-- Baris Bank Mandiri -->
+      <div class="bank-item">
+        <span class="bank-text">Mandiri : <b class="bank-num">1700015569720</b></span>
+        <button class="btn-salin" onclick="salinNomor('1700015569720', this)">📋 Salin</button>
       </div>
+
+      <!-- Baris Bank BNI -->
+      <div class="bank-item">
+        <span class="bank-text">BNI : <b class="bank-num">1903009115</b></span>
+        <button class="btn-salin" onclick="salinNomor('1903009115', this)">📋 Salin</button>
+      </div>
+
+      <p class="donasi-lokasi">Masjid Baiturrahman To' Kaluku — Makale, Tana Toraja</p>
     </div>
+
+    <!-- Kotak Informasi -->
+    <div class="donasi-notice-box">
+      <p class="donasi-notice">
+        ℹ️ Untuk informasi rekening resmi dan konfirmasi donasi, silakan hubungi langsung pengurus masjid atau datang ke masjid.
+      </p>
+    </div>
+
+    <!-- === TOMBOL WHATSAPP DENGAN NOMOR ANDA === -->
+        <!-- === TOMBOL WHATSAPP (SUDAH DIPERBAIKI) === -->
+        <!-- === TOMBOL WHATSAPP (VERSI AMAN & SUDAH DIPERBAIKI) === -->
+    <a href="https://wa.me" 
+       target="_blank" 
+       rel="noopener noreferrer" 
+       class="btn-whatsapp">
+      <!-- Ikon WhatsApp SVG Resmi -->
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+      </svg>
+      Konfirmasi via WhatsApp
+    </a>
+
+
+
+    <!-- Penutup -->
+    <p class="donasi-footer">✨ Jazakumullahu khairan atas kepedulian Anda</p>
+
   </div>
 </section>
+
+<!-- ===== GAYA DESAIN (CSS) ===== -->
+<style>
+  #donasi {
+    background-color: #0d1e15; 
+    padding: 80px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  }
+
+  .donasi-card {
+    background-color: #ffffff;
+    border-radius: 20px;
+    width: 100%;
+    max-width: 540px;
+    padding: 40px 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    text-align: center;
+    box-sizing: border-box;
+  }
+
+  .donasi-icon-box {
+    background-color: #dca343;
+    color: #ffffff;
+    width: 48px;
+    height: 48px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 20px auto;
+  }
+
+  .donasi-title {
+    color: #1a4229;
+    font-size: 1.55rem;
+    font-weight: 700;
+    margin: 0 0 8px 0;
+  }
+
+  .donasi-subtitle {
+    color: #666666;
+    font-size: 0.88rem;
+    margin: 0 0 25px 0;
+  }
+
+  .donasi-green-box {
+    background-color: #1c452c;
+    border-radius: 12px;
+    padding: 20px 18px;
+    text-align: left;
+    color: #ffffff;
+  }
+
+  .donasi-an {
+    font-size: 0.82rem;
+    color: #a3cbb3;
+    margin: 0 0 16px 0;
+    text-align: center;
+  }
+
+  .bank-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    padding: 12px 14px;
+    margin-bottom: 12px;
+  }
+
+  .bank-text {
+    font-size: 0.92rem;
+    color: #ffffff;
+  }
+
+  .bank-num {
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+  }
+
+  .btn-salin {
+    background-color: #dca343;
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    padding: 6px 14px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+
+  .btn-salin:hover {
+    background-color: #c79137;
+  }
+
+  .donasi-lokasi {
+    font-size: 0.8rem;
+    color: #a3cbb3;
+    text-align: center;
+    margin: 16px 0 0 0;
+  }
+
+  .donasi-notice-box {
+    background-color: #f7f9f8;
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-top: 24px;
+    text-align: left;
+  }
+
+  .donasi-notice {
+    font-size: 0.82rem;
+    color: #555555;
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  .btn-whatsapp {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    background-color: #25d366;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 10px;
+    padding: 14px;
+    margin-top: 16px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    box-shadow: 0 4px 12px rgba(37, 211, 102, 0.2);
+    transition: all 0.2s ease;
+  }
+
+  .btn-whatsapp:hover {
+    background-color: #20ba5a;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(37, 211, 102, 0.3);
+  }
+
+  .donasi-footer {
+    font-size: 0.82rem;
+    color: #888888;
+    font-style: italic;
+    margin: 24px 0 0 0;
+  }
+</style>
+
+<!-- ===== JAVASCRIPT ===== -->
+<script>
+  function salinNomor(teks, elemenTombol) {
+    navigator.clipboard.writeText(teks).then(() => {
+      const teksAsli = elemenTombol.innerText;
+      elemenTombol.innerText = "✓ Tersalin";
+      elemenTombol.style.backgroundColor = "#27ae60";
+      
+      setTimeout(() => {
+        elemenTombol.innerText = teksAsli;
+        elemenTombol.style.backgroundColor = "#dca343";
+      }, 2000);
+    }).catch(err => {
+      console.error("Gagal menyalin: ", err);
+    });
+  }
+</script>
+
+
 
 <!-- ===== KONTAK ===== -->
 <section id="kontak">
