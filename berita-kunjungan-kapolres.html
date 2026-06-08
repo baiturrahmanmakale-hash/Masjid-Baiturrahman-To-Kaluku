@@ -1,73 +1,47 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Kunjungan Kapolres Tana Toraja - Masjid Baiturrahman To' Kaluku</title>
-  <!-- Hubungkan dengan file CSS utama Anda -->
-  <link rel="stylesheet" href="style.css"> 
   <style>
-    /* Gaya detail halaman berita agar serasi */
-    .detail-berita-section {
-      padding: 120px 0 60px 0;
-      background-color: #f9f9f9;
-      min-height: 80vh;
+    @import url('https://googleapis.com');
+    
+    :root {
+      --green-dark: #1B5E20;
+      --green-mid: #2E7D32;
+      --gold: #D4AF37;
+      --shadow: 0 4px 20px rgba(0,0,0,0.05);
     }
-    .detail-container {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 40px;
-      background: #ffffff;
-      border-radius: 10px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-    }
-    .detail-img {
-      width: 100%;
-      max-height: 450px;
-      object-fit: cover;
-      border-radius: 8px;
-      margin-bottom: 25px;
-    }
-    .detail-meta {
-      font-size: 0.9rem;
-      color: #666;
-      margin-bottom: 15px;
-    }
-    .detail-title {
-      font-size: 2.2rem;
-      color: #2c3e50;
-      margin-bottom: 20px;
-      line-height: 1.3;
-    }
-    .detail-content p {
-      font-size: 1.1rem;
-      line-height: 1.8;
-      color: #444;
-      margin-bottom: 20px;
-      text-align: justify;
-    }
-    .btn-kembali {
-      display: inline-block;
-      margin-top: 30px;
-      padding: 10px 20px;
-      background-color: #2e7d32;
-      color: #fff;
-      text-decoration: none;
-      border-radius: 5px;
-      font-weight: bold;
-      transition: background 0.3s;
-    }
-    .btn-kembali:hover {
-      background-color: #1b5e20;
-    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Poppins', sans-serif; background: #FAFAFA; color: #333; line-height: 1.7; }
+    
+    #navbar { background: var(--green-dark); border-bottom: 1px solid rgba(212,175,55,0.25); position: sticky; top: 0; z-index: 1000; }
+    .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 20px; display: flex; align-items: center; justify-content: space-between; height: 58px; }
+    .nav-logo { font-family: 'Amiri', serif; font-size: 1.15rem; color: var(--gold); font-weight: 700; text-decoration: none; }
+    .nav-menu { display: flex; align-items: center; gap: 4px; list-style: none; }
+    .nav-menu a { color: #fff; font-size: 0.84rem; font-weight: 500; padding: 8px 12px; border-radius: 6px; text-decoration: none; }
+    .nav-menu a:hover, .nav-menu a.active { background: rgba(212,175,55,0.18); color: var(--gold); }
+
+    .detail-berita-section { padding: 50px 0; background-color: #FAFAFA; min-height: 80vh; }
+    .detail-container { max-width: 800px; margin: 0 auto; padding: 0 20px; }
+    .card-detail { background: #ffffff; padding: 35px; border-radius: 12px; box-shadow: var(--shadow); border: 1px solid #eee; }
+    .detail-meta { font-size: 0.85rem; color: #666; margin-bottom: 15px; display: flex; gap: 15px; }
+    .detail-title { font-family: 'Poppins', sans-serif; font-size: 1.8rem; color: #222; margin-bottom: 25px; line-height: 1.4; font-weight: 600; }
+    .detail-img { width: 100%; max-height: 450px; object-fit: cover; border-radius: 8px; margin-bottom: 25px; }
+    .detail-content p { font-size: 0.95rem; color: #444; margin-bottom: 20px; text-align: justify; }
+    .btn-kembali { display: inline-block; margin-top: 15px; padding: 10px 20px; background-color: var(--green-mid); color: #fff; text-decoration: none; border-radius: 6px; font-weight: 500; font-size: 0.85rem; transition: background 0.3s; }
+    .btn-kembali:hover { background-color: var(--green-dark); }
+
+    footer { background: var(--green-dark); color: #fff; text-align: center; padding: 20px; font-size: 0.85rem; margin-top: 40px; border-top: 3px solid var(--gold); }
   </style>
 </head>
 <body>
 
-  <!-- ===== NAVBAR ===== -->
-  <nav class="navbar">
-    <div class="nav-container">
-      <a href="index.html" class="nav-logo">Baiturrahman To' Kaluku</a>
+  <!-- NAVBAR -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">Masjid Baiturrahman To' Kaluku</a>
       <ul class="nav-menu">
         <li><a href="index.html#beranda">Beranda</a></li>
         <li><a href="index.html#profil">Profil</a></li>
@@ -80,36 +54,31 @@
     </div>
   </nav>
 
-  <!-- ===== KONTEN UTAMA ===== -->
+  <!-- KONTEN UTAMA -->
   <section class="detail-berita-section">
     <div class="detail-container">
-      
-      <div class="detail-meta">
-        <span>📅 10 Oktober 2025</span> | <span>👤 Admin Masjid</span>
-      </div>
-
-      <h1 class="detail-title">Kunjungan Kapolres Tana Toraja, AKBP Budi Hermawan S.I.K.</h1>
-      
-      <!-- Sesuai dengan tag src di index.html Anda -->
-      <img src="FOTO/Dukungan Kapolres.jpg" alt="Kunjungan Polres Tana Toraja" class="detail-img" />
-
-      <div class="detail-content">
-        <p>Sebagai bentuk dukungan terhadap kegiatan Renovasi Total Masjid Baiturrahman To' Kaluku, Kapolres Tana Toraja, AKBP Budi Hermawan S.I.K. melakukan kunjungan silaturahmi dan menyampaikan bantuan bagi pembangunan Masjid Baiturrahman To' Kaluku. Kegiatan ini mencerminkan bentuk dukungan Kapolres terhadap semangat kebersamaan dan ukhuwah Islamiyah yang kuat di tengah masyarakat Tana Toraja yang plural.</p>
+      <div class="card-detail">
+        <div class="detail-meta">
+          <span>📅 10 Oktober 2025</span>
+          <span>👤 Admin Masjid</span>
+        </div>
+        <h1 class="detail-title">Kunjungan Kapolres Tana Toraja, AKBP Budi Hermawan S.I.K.</h1>
         
-        <!-- Anda bisa menambahkan kelanjutan teks/paragraf berita lengkapnya di bawah ini -->
-        <p>Pengurus masjid menyambut hangat kunjungan ini dan menyampaikan apresiasi yang mendalam atas perhatian kepolisian terhadap pembangunan sarana ibadah di lingkungan masyarakat.</p>
+        <img src="FOTO/Dukungan Kapolres.jpg" alt="Kunjungan Polres Tana Toraja" class="detail-img" />
+
+        <div class="detail-content">
+          <p>Sebagai bentuk dukungan terhadap kegiatan Renovasi Total Masjid Baiturrahman To' Kaluku, Kapolres Tana Toraja, AKBP Budi Hermawan S.I.K. melakukan kunjungan silaturahmi dan menyampaikan bantuan bagi pembangunan Masjid Baiturrahman To' Kaluku. Kegiatan ini mencerminkan bentuk dukungan Kapolres terhadap semangat kebersamaan dan ukhuwah Islamiyah yang kuat di tengah masyarakat Tana Toraja yang plural.</p>
+          <p>Pihak pengurus masjid menyambut hangat jalinan silaturahmi ini dan menyampaikan apresiasi yang mendalam atas kepedulian jajaran Kepolisian Resor Tana Toraja dalam mendukung kelancaran pembangunan fasilitas keagamaan masyarakat.</p>
+        </div>
+
+        <a href="index.html#berita" class="btn-kembali">← Kembali ke Berita</a>
       </div>
-
-      <a href="index.html#berita" class="btn-kembali">← Kembali ke Berita</a>
-
     </div>
   </section>
 
-  <!-- ===== FOOTER ===== -->
+  <!-- FOOTER -->
   <footer>
-    <div class="footer-container">
-      <p>&copy; 2026 Masjid Baiturrahman To' Kaluku. All Rights Reserved.</p>
-    </div>
+    <p>&copy; 2026 Masjid Baiturrahman To' Kaluku. All Rights Reserved.</p>
   </footer>
 
 </body>
