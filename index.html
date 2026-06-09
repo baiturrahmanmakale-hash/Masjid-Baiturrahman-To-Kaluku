@@ -569,12 +569,14 @@ document.addEventListener('click', function(e) {
       font-weight: 500;
     }
 <!-- ===== INFORMASI KAS MASJID ===== -->
-<section id="kas-masjid" class="section section-white" style="scroll-margin-top: 100px;">
+<section id="kas-masjid" class="section section-white" style="background: #fff; scroll-margin-top: 100px; padding: 60px 0; display: block !important; opacity: 1 !important; visibility: visible !important;">
   <div class="container">
-    <h2 class="section-heading fade-in">Laporan Kas & Keuangan</h2>
-    <p class="section-sub fade-in">Bentuk transparansi amanah dana umat Masjid Baiturrahman To' Kaluku</p>
+    <!-- Di bawah ini kata fade-in sudah dihapus agar judul langsung terbaca oleh menu -->
+    <h2 class="section-heading" style="opacity: 1 !important; transform: none !important;">Laporan Kas & Keuangan</h2>
+    <p class="section-sub" style="opacity: 1 !important; transform: none !important;">Bentuk transparansi amanah dana umat Masjid Baiturrahman To' Kaluku</p>
     
-    <div class="kas-grid fade-in" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px;">
+    <!-- Di bawah ini kata fade-in juga dihapus agar kotak kas langsung bermunculan -->
+    <div class="kas-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 40px; opacity: 1 !important;">
       
       <!-- KAS OPERASIONAL MASJID -->
       <div class="kas-card" style="background: var(--warm-white); padding: 24px; border-radius: var(--radius); box-shadow: var(--shadow); border-top: 4px solid var(--green-mid); transition: transform 0.3s ease;">
@@ -611,8 +613,6 @@ document.addEventListener('click', function(e) {
     </div>
   </div>
 </section>
-
-
 
 
     /* ===== KEGIATAN ===== */
