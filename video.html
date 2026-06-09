@@ -1,1 +1,217 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galeri Video - Masjid Baiturrahman To' Kaluku</title>
+  
+  <!-- Font Bawaan Website Utama -->
+  <link rel="preconnect" href="https://googleapis.com">
+  <link rel="preconnect" href="https://gstatic.com" crossorigin>
+  <link href="https://googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* Variabel Warna Resmi Website Masjid */
+    :root {
+      --green-dark: #124624;
+      --green-mid: #1b5e32;
+      --green-light: #e8f5e9;
+      --gold: #b8943a;
+      --text-dark: #2c3e2f;
+      --text-light: #5a6e5e;
+      --warm-white: #f7f9f6;
+      --radius: 12px;
+      --shadow: 0 8px 24px rgba(0,0,0,0.04);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--warm-white);
+      color: var(--text-dark);
+      line-height: 1.6;
+    }
+
+    /* HEADER / NAVBAR SIMILAR TO HOMEPAGE */
+    header {
+      background-color: var(--green-dark);
+      padding: 15px 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .nav-logo {
+      color: #fff;
+      font-weight: 700;
+      font-size: 1.2rem;
+      text-decoration: none;
+    }
+    .btn-back-home {
+      color: #fff;
+      background-color: rgba(255,255,255,0.1);
+      text-decoration: none;
+      padding: 8px 18px;
+      border-radius: 20px;
+      font-size: 0.88rem;
+      font-weight: 500;
+      transition: 0.3s;
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+    .btn-back-home:hover {
+      background-color: var(--gold);
+      border-color: var(--gold);
+    }
+
+    /* MAIN CONTAINER (Semua Isi Tengah Halaman) */
+    .main-content {
+      max-width: 1200px;
+      margin: 50px auto;
+      padding: 0 20px;
+      text-align: center;
+    }
+
+    .section-heading {
+      font-family: 'Amiri', serif;
+      font-size: 2.5rem;
+      color: var(--green-dark);
+      margin-bottom: 10px;
+    }
+
+    .section-sub {
+      font-size: 1rem;
+      color: var(--text-light);
+      margin-bottom: 40px;
+    }
+
+    /* GRID VIDEO RESPONSIF TENGAH HALAMAN */
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 30px;
+      justify-content: center;
+      margin-bottom: 50px;
+    }
+
+    .video-card {
+      background: #fff;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      border-top: 4px solid var(--gold); /* Menggunakan aksen emas untuk video */
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .video-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+    }
+
+    /* WIDGET VIDEO EMBED YOUTUBE RESPONSIF */
+    .video-wrapper {
+      position: relative;
+      padding-bottom: 56.25%; /* Rasio standar video 16:9 */
+      height: 0;
+      overflow: hidden;
+      background-color: #000;
+    }
+
+    .video-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .card-body {
+      padding: 20px;
+      text-align: center;
+    }
+
+    .card-body h3 {
+      font-family: 'Amiri', serif;
+      font-size: 1.3rem;
+      color: var(--green-dark);
+      margin-bottom: 6px;
+    }
+
+    .card-body p {
+      font-size: 0.88rem;
+      color: var(--text-light);
+    }
+
+    /* FOOTER SIMILAR TO HOMEPAGE */
+    footer {
+      background-color: var(--green-dark);
+      color: rgba(255,255,255,0.7);
+      text-align: center;
+      padding: 25px 20px;
+      font-size: 0.88rem;
+      margin-top: 80px;
+      border-top: 3px solid var(--gold);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR ATAS BERGAYA BERANDA -->
+  <header>
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">☾ Baiturrahman To' Kaluku</a>
+      <a href="index.html" class="btn-back-home">← Kembali ke Beranda</a>
+    </div>
+  </header>
+
+  <!-- AREA KONTEN UTAMA DI TENGAH HALAMAN -->
+  <main class="main-content">
+    <h1 class="section-heading">🎥 Galeri Video Kegiatan</h1>
+    <p class="section-sub">Dokumentasi video ceramah, kajian, syiar, dan aktivitas umat di Masjid Baiturrahman To' Kaluku</p>
+
+    <!-- GRID DOKUMENTASI VIDEO -->
+    <div class="video-grid">
+      
+      <!-- VIDEO CARD 1 -->
+      <div class="video-card">
+        <div class="video-wrapper">
+          <!-- CONTOH: Tautan Sematan Video YouTube -->
+          <iframe src="https://youtube.com" allowfullscreen></iframe>
+        </div>
+        <div class="card-body">
+          <h3>Dokumentasi Syiar Ibadah</h3>
+          <p>Kompilasi momen kebersamaan dan pelaksanaan ibadah jamaah masjid.</p>
+        </div>
+      </div>
+
+      <!-- VIDEO CARD 2 -->
+      <div class="video-card">
+        <div class="video-wrapper">
+          <iframe src="https://youtube.com" allowfullscreen></iframe>
+        </div>
+        <div class="card-body">
+          <h3>Kajian Keagamaan & Ceramah</h3>
+          <p>Kajian rutin keislaman guna menambah wawasan dan ketakwaan umat.</p>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- FOOTER BAWAH BERGAYA BERANDA -->
+  <footer>
+    <p>&copy; 2026 Masjid Baiturrahman To' Kaluku Tana Toraja. All Rights Reserved.</p>
+  </footer>
+
+</body>
+</html>
 
