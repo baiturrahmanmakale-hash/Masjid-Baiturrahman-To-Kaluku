@@ -1811,36 +1811,32 @@ document.addEventListener('click', function(e) {
     });
   }
 
-  // ===== SMART SMOOTH SCROLL (SOLUSI MUTLAK ANTI-MACET) =====
+    // ===== SMART SMOOTH SCROLL (VERSI FINAL ANTI-MACET) =====
   document.querySelectorAll('.nav-menu a, .dropdown-menu a').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
-      const hrefValue = this.getAttribute('href');
+      const href = this.getAttribute('href');
       
-      // Mengabaikan menu kosong atau menu induk dropdown Layanan Umat
-      if (!hrefValue || hrefValue === '#' || hrefValue.includes('toggleDropdown')) return;
+      // Jika bukan menu lompat halaman internal, biarkan berjalan normal
+      if (!href || !href.startsWith('#') || href === '#' || href === '#layanan') return;
       
-      if (hrefValue.startsWith('#')) {
-        const targetId = hrefValue.substring(1);
-        const targetSection = document.getElementById(targetId);
+      const target = document.getElementById(href.substring(1));
+      if (target) {
+        e.preventDefault(); // Menghentikan lonjakan kasar browser
         
-        if (targetSection) {
-          e.preventDefault(); // Mencegah lompatan halaman yang kasar
-          
-          // Menyisakan jarak aman 85px agar judul menu tidak tertutup navbar atas
-          const offset = 85; 
-          const targetPosition = targetSection.getBoundingClientRect().top + window.scrollY - offset;
-          
-          window.scrollTo({
-            top: targetPosition,
-            behavior: 'smooth'
-          });
-          
-          // Otomatis menutup menu tirai saat dibuka dari layar HP
+        // Memaksa browser meluncur lancar ke elemen target secara akurat
+        target.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start'
+        });
+        
+        // Langsung menutup tirai menu jika dibuka lewat HP
+        if (typeof closeMenu === 'function') {
           closeMenu();
         }
       }
     });
   });
+
 
   // ===== FADE IN ANIMATION (Intersection Observer) =====
   const fadeEls = document.querySelectorAll('.fade-in');
