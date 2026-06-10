@@ -1036,21 +1036,52 @@ document.addEventListener('click', function(e) {
       </li>
       <li><a href="#kas-masjid" onclick="closeMenu()">Kas Keuangan</a></li>
       <!-- MENU GALERI DROPDOWN -->
-<li class="has-dropdown" id="dd-galeri">
-  <a href="#" onclick="toggleDropdown(event, 'dd-galeri')">Galeri <span class="dropdown-arrow">▾</span></a>
-  <div class="dropdown-menu">
-    <!-- target="_blank" digunakan agar halaman terbuka di tab baru -->
-    <a href="foto.html" target="_blank" onclick="closeMenu()">Galeri Foto</a>
-    <a href="video.html" target="_blank" onclick="closeMenu()">Galeri Video</a>
-  </div>
-</li>
+      <li class="has-dropdown" id="dd-galeri">
+        <a href="#" onclick="toggleDropdown(event, 'dd-galeri')">Galeri <span class="dropdown-arrow">▾</span></a>
+        <div class="dropdown-menu">
+          <!-- target="_blank" digunakan agar halaman terbuka di tab baru -->
+          <a href="foto.html" target="_blank" onclick="closeMenu()">Galeri Foto</a>
+          <a href="video.html" target="_blank" onclick="closeMenu()">Galeri Video</a>
+        </div>
+      </li>
       <li><a href="#kegiatan" onclick="closeMenu()">Kegiatan</a></li>
       <li><a href="#berita" onclick="closeMenu()">Berita</a></li>
       <li><a href="#donasi" onclick="closeMenu()">Donasi</a></li>
       <li><a href="#kontak" onclick="closeMenu()">Kontak</a></li>
+      
+      <!-- TOMBOL DASHBOARD PENGELOLA -->
+      <li>
+        <a href="#" id="btn-dashboard" onclick="closeMenu()" style="
+          background-color: #ffd700; 
+          color: #01411c; 
+          padding: 5px 12px; 
+          border-radius: 4px; 
+          font-weight: bold;
+          display: inline-block;
+        ">Dashboard</a>
+      </li>
     </ul>
   </div>
 </nav>
+
+<!-- SCRIPT KEAMANAN TOMBOL DASHBOARD -->
+<script>
+document.getElementById('btn-dashboard').addEventListener('click', function(event) {
+    // Mencegah halaman melompat ke atas saat diklik
+    event.preventDefault(); 
+    
+    // Meminta kata sandi kepada pengelola
+    var password = prompt("Masukkan Kata Sandi Pengelola untuk masuk ke Dashboard:");
+    
+    // Silakan ganti 'masjid2026' dengan kata sandi rahasia pilihan Anda
+    if (password === 'masjid2026') { 
+        window.open('https://github.com', '_blank');
+    } else if (password !== null) {
+        alert("Kata sandi salah! Akses ditolak.");
+    }
+});
+</script>
+
 
 <!-- KONTEN HERO UTAMA (SLIDESHOW BERSANDING JADWAL SHALAT) -->
 <div class="hero-flex-wrapper">
