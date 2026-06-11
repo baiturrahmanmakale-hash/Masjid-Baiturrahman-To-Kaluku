@@ -228,7 +228,7 @@
       .dropdown-menu a { padding-left: 40px; }
     }
 
-    /* ===== LAYOUT BARU: SLIDESHOW + JADWAL SHALAT (SAMPING KANAN) ===== */
+    /* =====  SLIDESHOW + JADWAL SHALAT (SAMPING KANAN) ===== */
     .hero-flex-wrapper {
       display: flex;
       max-width: 1200px;
@@ -382,7 +382,7 @@
       font-size: 1.4rem;
     }
 
-    /* MEDIA QUERIES UNTUK LAYAR MOBIL & TABLET */
+ /* MEDIA QUERIES UNTUK LAYAR MOBIL & TABLET */
     @media (max-width: 1000px) {
       .hero-flex-wrapper {
         flex-direction: column; /* Berubah menjadi menumpuk ke bawah di tablet/HP */
@@ -392,11 +392,31 @@
       .slide-caption h2 { font-size: 1.2rem; }
       .slide-caption { bottom: 40px; }
       .hero-prayer-sidebar { width: 100%; margin-top: 10px; padding: 20px; }
+      
+      /* TAMBAHAN TABLET: Membuat jadwal shalat susun ke samping agar hemat ruang */
+      .sidebar-prayer-list {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* Membagi 2 kolom sama rata */
+        gap: 10px;
+      }
+      .sidebar-prayer-item {
+        padding: 12px;
+      }
     }
     @media (max-width: 480px) {
       #hero { height: 260px; }
       .slide-caption h2 { font-size: 1rem; }
       .slide-arrow { width: 36px; height: 36px; font-size: 1rem; }
+      
+      /* TAMBAHAN HP: Mengatur teks jadwal shalat atas-bawah di dalam kotak kecil */
+      .sidebar-prayer-item {
+        flex-direction: column; /* Nama shalat di atas, jam di bawah */
+        gap: 4px;
+        text-align: center;
+        padding: 8px;
+      }
+      .sidebar-prayer-item .p-name { font-size: 0.95rem; }
+      .sidebar-prayer-item .p-time { font-size: 1.15rem; }
     }
 
 
