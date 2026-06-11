@@ -295,21 +295,22 @@ document.addEventListener('click', function(e) {
       width: 90%; 
       max-width: 650px; 
     }
-    .slide-caption h2 {
+       .slide-caption h2 {
       font-family: 'Amiri', serif;
-      /* OPSIONAL: Mengecilkan sedikit ukuran judul jika teks terlalu panjang */
       font-size: 1.35rem; 
       font-weight: 500;
-      text-shadow: 0 2px 8px rgba(0,0,0,0.5);
       line-height: 1.3;
+      /* UBAH: Menambahkan bayangan hitam berlapis agar teks putih sangat kontras */
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8), 0 0 10px rgba(0, 0, 0, 0.5);
     }
     .slide-caption p {
-      /* OPSIONAL: Mengecilkan sedikit ukuran deskripsi */
       font-size: 0.85rem; 
-      opacity: 0.88;
+      opacity: 1; /* UBAH: Diubah ke 1 agar warna teks putihnya maksimal (tidak transparan) */
       margin-top: 4px;
-      text-shadow: 0 1px 4px rgba(0,0,0,0.5);
+      /* UBAH: Menambahkan bayangan hitam yang tegas pada teks deskripsi */
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.9), 0 0 6px rgba(0, 0, 0, 0.6);
     }
+
 
     .slide-arrow {
       position: absolute;
