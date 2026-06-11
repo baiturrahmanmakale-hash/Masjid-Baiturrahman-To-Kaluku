@@ -1111,26 +1111,19 @@ document.getElementById('btn-dashboard').addEventListener('click', function(even
 
   <!-- HERO SLIDESHOW -->
   <div id="hero">
-      <div class="slide" data-index="0">
-      <!-- Kode di bawah ini sudah diperbaiki dan dibersihkan dari tag ganda -->
-       <img src="FOTO/To'Kaluku.png" loading="eager" />
-      <div class="slide-overlay"></div>
-      <div class="slide-caption">
-        <h2>Masjid Baiturrahman To' Kaluku</h2>
-        <p>Rencana Desain Arsitektur — Rumah Allah di Tana Toraja</p>
-      </div>
-    </div>
     
+    <!-- Slide 1 (Dibuat aktif dari awal) -->
     <div class="slide active" data-index="0">
-      <img src="FOTO/To' Kaluku.png" loading="eager" />
+      <img src="FOTO/To'Kaluku.png" loading="eager" alt="Desain Masjid" />
       <div class="slide-overlay"></div>
       <div class="slide-caption">
         <h2>Masjid Baiturrahman To' Kaluku</h2>
         <p>Rencana Desain Arsitektur — Rumah Allah di Tana Toraja</p>
       </div>
     </div>
-      <div class="slide" data-index="1">
-      <!-- Kode di bawah ini sudah diperbaiki dan dibersihkan dari tag ganda -->
+      
+    <!-- Slide 2 -->
+    <div class="slide" data-index="1">
       <img src="FOTO/Foto19.jpg" alt="Gotong Royong Renovasi Masjid" loading="lazy" />
       <div class="slide-overlay"></div>
       <div class="slide-caption">
@@ -1139,6 +1132,7 @@ document.getElementById('btn-dashboard').addEventListener('click', function(even
       </div>
     </div>
 
+    <!-- Slide 3 -->
     <div class="slide" data-index="2">
       <img src="slide4.jpg" alt="Peletakan Batu Pertama" loading="lazy" />
       <div class="slide-overlay"></div>
@@ -1147,6 +1141,8 @@ document.getElementById('btn-dashboard').addEventListener('click', function(even
         <p>dr. Zadrak Tombeg, Sp. A</p>
       </div>
     </div>
+
+    <!-- Slide 4 -->
     <div class="slide" data-index="3">
       <img src="FOTO/Foto51.jpg" alt="Sosialisasi kepada Masyarakat" loading="lazy" />
       <div class="slide-overlay"></div>
@@ -1155,6 +1151,8 @@ document.getElementById('btn-dashboard').addEventListener('click', function(even
         <p>Apresiasi atas gotong royong masyarakat, dan ajakan untuk menjaga kerukunan.</p>
       </div>
     </div>
+
+    <!-- Slide 5 -->
     <div class="slide" data-index="4">
       <img src="FOTO/Foto47.jpg" alt="Foto Bersama Masyarakat" loading="lazy" />
       <div class="slide-overlay"></div>
@@ -1164,9 +1162,11 @@ document.getElementById('btn-dashboard').addEventListener('click', function(even
       </div>
     </div>
 
+    <!-- Tombol Navigasi -->
     <button class="slide-arrow prev" onclick="changeSlide(-1)" aria-label="Previous slide">‹</button>
     <button class="slide-arrow next" onclick="changeSlide(1)" aria-label="Next slide">›</button>
 
+    <!-- Titik Indikator -->
     <div class="slide-dots" id="slide-dots">
       <div class="dot active" onclick="goToSlide(0)"></div>
       <div class="dot" onclick="goToSlide(1)"></div>
@@ -1175,6 +1175,8 @@ document.getElementById('btn-dashboard').addEventListener('click', function(even
       <div class="dot" onclick="goToSlide(4)"></div>
     </div>
   </div>
+</div>
+
 
   <!-- ===== JADWAL SHALAT BARU DI SAMPING KANAN ===== -->
   <div class="hero-prayer-sidebar">
