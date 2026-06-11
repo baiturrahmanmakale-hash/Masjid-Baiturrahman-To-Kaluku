@@ -2,24 +2,6 @@
 <!-- Masjid Baiturrahman To' Kaluku - Website siap deploy ke GitHub Pages. Cukup upload file index.html ini ke repository Anda. -->
 <html lang="id">
 <head>
-<script>
-window.contextInfo = {"files":[],"materials":[],"crafts":[]};
-// 处理锚点链接跳转（srcDoc iframe 中锚点链接默认行为不正确）
-document.addEventListener('click', function(e) {
-  var anchor = e.target.closest('a');
-  if (anchor) {
-    var href = anchor.getAttribute('href');
-    if (href && href.startsWith('#')) {
-      e.preventDefault();
-      var targetId = href.slice(1);
-      var target = document.getElementById(targetId);
-      if (target) {
-        target.scrollIntoView({ behavior: 'smooth' });
-      }
-    }
-  }
-});
-</script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Masjid Baiturrahman To' Kaluku — Tana Toraja</title>
@@ -28,6 +10,7 @@ document.addEventListener('click', function(e) {
     @import url('https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap');
 
     /* ===== RESET & BASE ===== */
+
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body {
