@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Galeri Video - Masjid Baiturrahman To' Kaluku</title>
   
-  <!-- PERBAIKAN: Tautan Google Fonts Utama yang Benar -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Tautan Google Fonts Utama -->
+  <link rel="preconnect" href="https://googleapis.com">
+  <link rel="preconnect" href="https://gstatic.com" crossorigin>
+  <link href="https://googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     /* Variabel Warna Resmi Website Masjid */
@@ -33,7 +33,7 @@
       line-height: 1.6;
     }
 
-    /* HEADER / NAVBAR SIMILAR TO HOMEPAGE */
+    /* HEADER / NAVBAR */
     header {
       background-color: var(--green-dark);
       padding: 15px 0;
@@ -72,7 +72,7 @@
       border-color: var(--gold);
     }
 
-    /* MAIN CONTAINER (Semua Isi Tengah Halaman) */
+    /* MAIN CONTAINER */
     .main-content {
       max-width: 1200px;
       margin: 50px auto;
@@ -93,7 +93,7 @@
       margin-bottom: 40px;
     }
 
-    /* GRID VIDEO RESPONSIF TENGAH HALAMAN */
+    /* GRID VIDEO */
     .video-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
@@ -107,8 +107,10 @@
       border-radius: var(--radius);
       overflow: hidden;
       box-shadow: var(--shadow);
-      border-top: 4px solid var(--gold); /* Menggunakan aksen emas untuk video */
+      border-top: 4px solid var(--gold);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
     }
 
     .video-card:hover {
@@ -116,27 +118,69 @@
       box-shadow: 0 12px 30px rgba(0,0,0,0.08);
     }
 
-    /* WIDGET VIDEO EMBED YOUTUBE RESPONSIF */
-    .video-wrapper {
+    /* SAMPUL VIDEO DENGAN TOMBOL PLAY */
+    .video-thumbnail-wrapper {
       position: relative;
-      padding-bottom: 56.25%; /* Rasio standar video 16:9 */
-      height: 0;
-      overflow: hidden;
+      width: 100%;
+      padding-bottom: 56.25%; /* Rasio 16:9 */
       background-color: #000;
+      overflow: hidden;
     }
 
-    .video-wrapper iframe {
+    .video-thumbnail-wrapper img {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      border: 0;
+      object-fit: cover;
+      opacity: 0.8;
+      transition: transform 0.3s ease;
+    }
+
+    .video-card:hover .video-thumbnail-wrapper img {
+      transform: scale(1.05);
+    }
+
+    /* Tombol Play Khas YouTube di Tengah */
+    .play-button-overlay {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 68px;
+      height: 48px;
+      background-color: rgba(230, 33, 23, 0.9);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color 0.2s ease, transform 0.2s ease;
+      z-index: 2;
+    }
+
+    .play-button-overlay::after {
+      content: '';
+      display: block;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 10px 0 10px 18px;
+      border-color: transparent transparent transparent #ffffff;
+      margin-left: 4px;
+    }
+
+    .video-card:hover .play-button-overlay {
+      background-color: #ff0000;
     }
 
     .card-body {
       padding: 20px;
       text-align: center;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
     .card-body h3 {
@@ -149,9 +193,28 @@
     .card-body p {
       font-size: 0.88rem;
       color: var(--text-light);
+      margin-bottom: 15px;
     }
 
-    /* FOOTER SIMILAR TO HOMEPAGE */
+    /* TOMBOL LINK NON-BLOCK */
+    .btn-play-video {
+      display: inline-block;
+      background-color: var(--green-mid);
+      color: #fff;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      transition: 0.2s;
+    }
+
+    .btn-play-video:hover {
+      background-color: var(--green-dark);
+      box-shadow: 0 4px 12px rgba(27,94,50,0.2);
+    }
+
+    /* FOOTER */
     footer {
       background-color: var(--green-dark);
       color: rgba(255,255,255,0.7);
@@ -165,7 +228,7 @@
 </head>
 <body>
 
-  <!-- NAVBAR ATAS BERGAYA BERANDA -->
+  <!-- NAVBAR ATAS -->
   <header>
     <div class="nav-container">
       <a href="index.html" class="nav-logo">☾ Baiturrahman To' Kaluku</a>
@@ -173,71 +236,70 @@
     </div>
   </header>
 
-  <!-- AREA KONTEN UTAMA DI TENGAH HALAMAN -->
+  <!-- AREA KONTEN UTAMA -->
   <main class="main-content">
     <h1 class="section-heading">🎥 Galeri Video Kegiatan</h1>
     <p class="section-sub">Dokumentasi video ceramah, kajian, syiar, dan aktivitas umat di Masjid Baiturrahman To' Kaluku</p>
 
-         <!-- GRID DOKUMENTASI VIDEO -->
+    <!-- GRID DOKUMENTASI VIDEO -->
     <div class="video-grid">
       
-      <!-- VIDEO CARD 1 -->
+      <!-- VIDEO CARD 1 (Video Syiar Aktif) -->
       <div class="video-card">
-        <div class="video-wrapper">
-          <!-- PERBAIKAN: Ditambahkan referrerpolicy untuk izin muat dari GitHub Pages -->
-          <iframe 
-            src="https://www.youtube.com/watch?v=W-_LS0firGQ" 
-            title="YouTube video player" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-            referrerpolicy="strict-origin-when-cross-origin"
-            allowfullscreen>
-          </iframe>
-        </div>
+        <a href="https://youtube.com" target="_blank" style="text-decoration: none; color: inherit;">
+          <div class="video-thumbnail-wrapper">
+            <div class="play-button-overlay"></div>
+            <img src="https://youtube.com" alt="Sampul Video Syiar">
+          </div>
+        </a>
         <div class="card-body">
-          <h3>Dokumentasi Syiar Ibadah</h3>
-          <p>Kompilasi momen kebersamaan, pelaksanaan ibadah, dan suasana lingkungan Masjid Baiturrahman To' Kaluku.</p>
+          <div>
+            <h3>Dokumentasi Syiar Ibadah</h3>
+            <p>Kompilasi momen kebersamaan, pelaksanaan ibadah, dan suasana lingkungan Masjid Baiturrahman To' Kaluku.</p>
+          </div>
+          <a href="https://youtube.com" target="_blank" class="btn-play-video">Putar Video di YouTube ↗</a>
         </div>
       </div>
 
-      <!-- VIDEO CARD 2 -->
+      <!-- VIDEO CARD 2 (Video Alternatif Pencarian) -->
       <div class="video-card">
-        <div class="video-wrapper">
-          <!-- PERBAIKAN: Ditambahkan referrerpolicy untuk izin muat dari GitHub Pages -->
-          <iframe 
-            src="https://www.youtube.e.com/watch?v=71K9oFPCIVg.com" 
-            title="YouTube video player" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-            referrerpolicy="strict-origin-when-cross-origin"
-            allowfullscreen>
-          </iframe>
-        </div>
+        <a href="https://youtube.com" target="_blank" style="text-decoration: none; color: inherit;">
+          <div class="video-thumbnail-wrapper">
+            <div class="play-button-overlay"></div>
+            <!-- Menggunakan gambar default masjid yang elegan -->
+            <img src="https://unsplash.com" alt="Sampul Kajian">
+          </div>
+        </a>
         <div class="card-body">
-          <h3>Kajian Keagamaan & Ceramah</h3>
-          <p>Kajian rutin keislaman guna menambah wawasan, mempertebal keimanan, dan meningkatkan ketakwaan jamaah.</p>
+          <div>
+            <h3>Kajian Keagamaan & Ceramah</h3>
+            <p>Kumpulan rekaman ceramah keagamaan, lomba semarak Ramadan, dan tausiyah para ustaz di Makale.</p>
+          </div>
+          <a href="https://youtube.com" target="_blank" class="btn-play-video">Lihat Daftar Video ↗</a>
         </div>
       </div>
 
-      <!-- VIDEO CARD 3 -->
+      <!-- VIDEO CARD 3 (Kanal Dokumentasi) -->
       <div class="video-card">
-        <div class="video-wrapper">
-          <!-- PERBAIKAN: Ditambahkan referrerpolicy untuk izin muat dari GitHub Pages -->
-          <iframe 
-            src="https://www.youtube.com/watch?v=OtyW0TgqICQ.com" 
-            title="YouTube video player" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-            referrerpolicy="strict-origin-when-cross-origin"
-            allowfullscreen>
-          </iframe>
-        </div>
+        <a href="https://youtube.com" target="_blank" style="text-decoration: none; color: inherit;">
+          <div class="video-thumbnail-wrapper">
+            <div class="play-button-overlay"></div>
+            <img src="https://unsplash.com" alt="Sampul Aktivitas">
+          </div>
+        </a>
         <div class="card-body">
-          <h3>Aktivitas Sosial & Kemasyarakatan</h3>
-          <p>Dokumentasi berbagai program sosial dan kebersamaan masyarakat di sekitar lingkungan kota Makale.</p>
+          <div>
+            <h3>Aktivitas Sosial Umat</h3>
+            <p>Dokumentasi berbagai program sosial, agenda kemasyarakatan, serta kegiatan hari besar Islam di Tana Toraja.</p>
+          </div>
+          <a href="https://youtube.com" target="_blank" class="btn-play-video">Cari Video Terkait ↗</a>
         </div>
       </div>
+
     </div>
   </main>
 
-  <!-- FOOTER BAWAH BERGAYA BERANDA -->
+  <!-- FOOTER BAWAH -->
   <footer>
     <p>&copy; 2026 Masjid Baiturrahman To' Kaluku Tana Toraja. All Rights Reserved.</p>
   </footer>
