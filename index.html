@@ -382,7 +382,10 @@
       font-size: 1.4rem;
     }
 
-/* MEDIA QUERIES UNTUK LAYAR MOBIL & TABLET */
+/* =========================================================
+   MEDIA QUERIES UNTUK LAYAR MOBIL & TABLET 
+   ========================================================= */
+
     @media (max-width: 1000px) {
       .hero-flex-wrapper {
         flex-direction: column; /* Berubah menjadi menumpuk ke bawah di tablet/HP */
@@ -390,14 +393,15 @@
       }
       #hero { height: 320px; flex: none; width: 100%; }
       
-      /* Mengatur ukuran dan jarak baris di tablet */
+      /* Mengatur ukuran dan jarak baris di tablet agar proporsional */
       .slide-caption h2 { 
-        font-size: 1.0rem; 
-        line-height: 1.0; /* Memperkecil jarak antar baris kalimat */
-        margin-bottom: 2px; /* Mengurangi jarak ke tulisan di bawahnya */
+        font-size: 1.2rem; 
+        line-height: 1.3; /* Jarak baris yang sehat agar kalimat bertingkat tidak menumpuk */
+        margin-bottom: 6px; 
       }
       .slide-caption p {
-        line-height: 1.1;
+        font-size: 0.95rem;
+        line-height: 1.4;
       }
       
       .slide-caption { bottom: 40px; }
@@ -417,15 +421,15 @@
     @media (max-width: 480px) {
       #hero { height: 260px; }
       
-      /* Mengatur ukuran dan jarak baris khusus di HP agar lebih rapat */
+      /* FIX CAPTION SLIDESHOW HP: Jarak baris dibuat ideal agar rapi & tidak tabrakan */
       .slide-caption h2 { 
-        font-size: 0.8rem; 
-        line-height: 1.0; /* Jarak baris dibuat lebih rapat untuk layar HP */
-        margin-bottom: 2px;
+        font-size: 1.0rem; 
+        line-height: 1.25 !important; /* Jarak antar baris kalimat pas untuk layar HP */
+        margin-bottom: 4px;
       }
       .slide-caption p {
-        font-size: 0.65rem; /* Menyesuaikan ukuran teks deskripsi di HP jika ada */
-        line-height: 1.0;
+        font-size: 0.8rem; /* Menyesuaikan ukuran deskripsi di HP */
+        line-height: 1.3 !important;
       }
       
       .slide-arrow { width: 36px; height: 36px; font-size: 1rem; }
@@ -439,10 +443,36 @@
       }
       .sidebar-prayer-item .p-name { font-size: 0.95rem; }
       .sidebar-prayer-item .p-time { font-size: 1.15rem; }
+
+      /* =========================================================
+         FIX PERBAIKAN TOP BAR (BAGIAN MERAH DI HP)
+         Menyesuaikan teks info kontak agar kecil, rapi, dan berjarak
+         ========================================================= */
+      .top-bar, .header-top, [class*="topbar"] {
+        padding: 10px 8px !important;
+        text-align: left !important;
+      }
+      
+      /* Mengecilkan teks alamat, nomor telepon, dan email */
+      .top-bar text, .top-bar p, .top-bar span, .top-bar a,
+      [class*="topbar"] p, [class*="topbar"] a, [class*="topbar"] span {
+        font-size: 0.8rem !important;   /* Memperkecil huruf agar muat di HP */
+        line-height: 1.4 !important;    /* Memberi ruang vertikal agar tidak menempel */
+        margin-bottom: 5px !important;  /* Memberi jarak renggang antar baris informasi */
+        display: block !important;       /* Memaksa susunan turun ke bawah demi kerapian */
+      }
+
+      /* Merapikan posisi ikon di samping teks */
+      .top-bar i, [class*="topbar"] i, .top-bar img, [class*="topbar"] img {
+        font-size: 0.85rem !important;
+        margin-right: 6px !important;
+        display: inline-block !important;
+        vertical-align: middle;
+      }
     }
 
-
     /* ===== SECTION COMMON ===== */
+
 
     section {
       padding: 72px 20px;
