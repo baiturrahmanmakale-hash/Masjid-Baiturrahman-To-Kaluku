@@ -382,14 +382,24 @@
       font-size: 1.4rem;
     }
 
- /* MEDIA QUERIES UNTUK LAYAR MOBIL & TABLET */
+/* MEDIA QUERIES UNTUK LAYAR MOBIL & TABLET */
     @media (max-width: 1000px) {
       .hero-flex-wrapper {
         flex-direction: column; /* Berubah menjadi menumpuk ke bawah di tablet/HP */
         padding: 15px;
       }
       #hero { height: 320px; flex: none; width: 100%; }
-      .slide-caption h2 { font-size: 1.2rem; }
+      
+      /* Mengatur ukuran dan jarak baris di tablet */
+      .slide-caption h2 { 
+        font-size: 1.2rem; 
+        line-height: 1.2; /* Memperkecil jarak antar baris kalimat */
+        margin-bottom: 4px; /* Mengurangi jarak ke tulisan di bawahnya */
+      }
+      .slide-caption p {
+        line-height: 1.3;
+      }
+      
       .slide-caption { bottom: 40px; }
       .hero-prayer-sidebar { width: 100%; margin-top: 10px; padding: 20px; }
       
@@ -403,9 +413,21 @@
         padding: 12px;
       }
     }
+    
     @media (max-width: 480px) {
       #hero { height: 260px; }
-      .slide-caption h2 { font-size: 1rem; }
+      
+      /* Mengatur ukuran dan jarak baris khusus di HP agar lebih rapat */
+      .slide-caption h2 { 
+        font-size: 1rem; 
+        line-height: 1.15; /* Jarak baris dibuat lebih rapat untuk layar HP */
+        margin-bottom: 2px;
+      }
+      .slide-caption p {
+        font-size: 0.85rem; /* Menyesuaikan ukuran teks deskripsi di HP jika ada */
+        line-height: 1.25;
+      }
+      
       .slide-arrow { width: 36px; height: 36px; font-size: 1rem; }
       
       /* TAMBAHAN HP: Mengatur teks jadwal shalat atas-bawah di dalam kotak kecil */
@@ -421,6 +443,7 @@
 
 
     /* ===== SECTION COMMON ===== */
+
     section {
       padding: 72px 20px;
     }
