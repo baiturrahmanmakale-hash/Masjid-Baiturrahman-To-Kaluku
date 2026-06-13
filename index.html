@@ -2260,29 +2260,26 @@ document.getElementById('btn-dashboard').addEventListener('click', function(even
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-    // 🟢 MENGGUNAKAN HTTPS + TRIK PEMUTUS CACHE AGAR DATA SELALU SEGAR
-    const apiURL = "https://masjidbaiturrahmantokaluku.great-site.net/get_berita.php?v=" + Math.random(); 
+    // URL mengarah ke domain hosting Anda yang benar menggunakan HTTPS + bypass cache browser
+    const apiURL = "https://masjidbaiturrahmantokaluku.great-site.net/get_berita.php?v=" + new Date().getTime(); 
     const container = document.getElementById("berita-dinamis");
 
     if (!container) return; 
 
     fetch(apiURL)
         .then(response => {
-            if (!response.ok) {
-                throw new Error("Respon server bermasalah: " + response.status);
-            }
+            if (!response.ok) throw new Error("Respons server bermasalah");
             return response.json();
         })
         .then(data => {
-            // Jika data kosong, biarkan sistem berjalan normal
             if (!data || data.length === 0) return;
 
             let htmlBeritaBaru = "";
             data.forEach(item => {
-                // Menggunakan tanggal teks langsung dari file teks Anda (misal: 13 Juni 2026)
+                // Trik aman: Ambil teks tanggal langsung dari database hosting tanpa diubah JavaScript
                 let tglFormat = item.tanggal ? item.tanggal : "Baru"; 
                 
-                // 🟢 ALAMAT FOTO DIHOSTING MENGGUNAKAN HTTPS
+                // Pastikan alamat gambar mengarah langsung ke folder uploads online Anda
                 const urlFotoOnline = `https://masjidbaiturrahmantokaluku.great-site.net/uploads/${item.foto}`;
 
                 htmlBeritaBaru += `
@@ -2300,13 +2297,14 @@ document.addEventListener("DOMContentLoaded", function() {
                 `;
             });
             
-            // Menyisipkan berita baru dari hosting ke posisi paling atas website
+            // Menyisipkan berita baru dari admin ke posisi paling atas wadah berita
             container.insertAdjacentHTML('afterbegin', htmlBeritaBaru);
         })
         .catch(err => {
-            console.error("Gagal memuat berita berbasis file teks online:", err);
+            console.error("Gagal memuat berita:", err);
         });
 });
 </script>
+
 </body>
 </html>
