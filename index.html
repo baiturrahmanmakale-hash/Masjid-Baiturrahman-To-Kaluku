@@ -2260,29 +2260,35 @@ document.getElementById('btn-dashboard').addEventListener('click', function(even
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-    // 1. Menggunakan HTTPS agar sinkron dengan keamanan GitHub Pages + trik Anti-Cache (Math.random)
+    // 🟢 MENGGUNAKAN HTTPS + TRIK PEMUTUS CACHE AGAR DATA SELALU SEGAR
     const apiURL = "https://masjidbaiturrahmantokaluku.great-site.net/get_berita.php?v=" + Math.random(); 
     const container = document.getElementById("berita-dinamis");
 
     if (!container) return; 
 
     fetch(apiURL)
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Respon server bermasalah: " + response.status);
+            }
+            return response.json();
+        })
         .then(data => {
+            // Jika data kosong, biarkan sistem berjalan normal
             if (!data || data.length === 0) return;
 
             let htmlBeritaBaru = "";
             data.forEach(item => {
-                // 2. SOLUSI TANGGAL: Jika format teks langsung tampilkan, jika gagal gunakan teks bawaan
-                let tglFormat = item.tanggal; 
+                // Menggunakan tanggal teks langsung dari file teks Anda (misal: 13 Juni 2026)
+                let tglFormat = item.tanggal ? item.tanggal : "Baru"; 
                 
-                // 3. SOLUSI JALUR FOTO: Mengarah tepat ke folder uploads milik InfinityFree
+                // 🟢 ALAMAT FOTO DIHOSTING MENGGUNAKAN HTTPS
                 const urlFotoOnline = `https://masjidbaiturrahmantokaluku.great-site.net/uploads/${item.foto}`;
 
                 htmlBeritaBaru += `
                     <div class="berita-card fade-in">
                         <div class="berita-img">
-                            <img src="${urlFotoOnline}" alt="${item.judul}" loading="lazy" />
+                            <img src="${urlFotoOnline}" alt="${item.judul}" loading="lazy" onerror="this.src='https://masjidbaiturrahmantokaluku.great-site.net/Foto32.jpg'"/>
                             <span class="berita-date">📅 ${tglFormat}</span>
                         </div>
                         <div class="berita-body">
@@ -2294,7 +2300,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 `;
             });
             
-            // Menyisipkan berita baru dari admin ke posisi paling atas
+            // Menyisipkan berita baru dari hosting ke posisi paling atas website
             container.insertAdjacentHTML('afterbegin', htmlBeritaBaru);
         })
         .catch(err => {
