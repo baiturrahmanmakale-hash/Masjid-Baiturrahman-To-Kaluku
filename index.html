@@ -2223,6 +2223,43 @@ document.getElementById('btn-dashboard').addEventListener('click', function(even
   setInterval(updatePrayerHighlight, 60000);
 </script>
 
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    // Mengarah ke file get_berita.php yang membaca file teks
+    const apiURL = "https://masjidbaiturrahmankaluku.great-site.net/get_berita.php"; 
+    const container = document.getElementById("berita-dinamis");
 
+    fetch(apiURL)
+        .then(response => response.json())
+        .then(data => {
+            if (!data || data.length === 0) return;
+
+            let htmlBerita = "";
+            data.forEach(item => {
+                // Mengubah timestamp acak menjadi format tanggal Indonesia yang cantik
+                const opsiTanggal = { year: 'numeric', month: 'long', day: 'numeric' };
+                const tglFormat = new Date(item.tanggal).toLocaleDateString('id-ID', opsiTanggal);
+
+                htmlBerita += `
+                    <div class="berita-card fade-in">
+                        <div class="berita-img">
+                            <img src="${item.foto}" alt="${item.judul}" loading="lazy" />
+                            <span class="berita-date">📅 ${tglFormat}</span>
+                        </div>
+                        <div class="berita-body">
+                            <h4>${item.judul}</h4>
+                            <p>${item.deskripsi}</p>
+                            <a href="#" class="berita-link" onclick="alert('Detail cerita sudah ditampilkan sepenuhnya.'); return false;">Baca selengkapnya →</a>
+                        </div>
+                    </div>
+                `;
+            });
+            container.innerHTML = htmlBerita;
+        })
+        .catch(err => {
+            console.error("Gagal memuat berita berbasis file teks:", err);
+        });
+});
+</script>
 </body>
 </html>
