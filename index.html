@@ -2225,22 +2225,25 @@ document.getElementById('btn-dashboard').addEventListener('click', function(even
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-    // Mengarah ke file get_berita.php yang membaca file teks
+    // Alamat mengarah ke file get_berita.php online di InfinityFree
     const apiURL = "https://masjidbaiturrahmankaluku.great-site.net/get_berita.php"; 
     const container = document.getElementById("berita-dinamis");
+
+    if (!container) return; 
 
     fetch(apiURL)
         .then(response => response.json())
         .then(data => {
+            // Jika file galeri_data.txt di hosting masih kosong, biarkan berita bawaan tetap tampil
             if (!data || data.length === 0) return;
 
-            let htmlBerita = "";
+            let htmlBeritaBaru = "";
             data.forEach(item => {
-                // Mengubah timestamp acak menjadi format tanggal Indonesia yang cantik
+                // Format penanggalan otomatis bahasa Indonesia yang rapi
                 const opsiTanggal = { year: 'numeric', month: 'long', day: 'numeric' };
                 const tglFormat = new Date(item.tanggal).toLocaleDateString('id-ID', opsiTanggal);
 
-                htmlBerita += `
+                htmlBeritaBaru += `
                     <div class="berita-card fade-in">
                         <div class="berita-img">
                             <img src="${item.foto}" alt="${item.judul}" loading="lazy" />
@@ -2254,10 +2257,13 @@ document.addEventListener("DOMContentLoaded", function() {
                     </div>
                 `;
             });
-            container.innerHTML = htmlBerita;
+            
+            // KUNCI UTAMA: Menyisipkan berita baru dari admin ke posisi paling atas
+            // tanpa menghancurkan atau menghapus 3 berita statis lama Anda.
+            container.insertAdjacentHTML('afterbegin', htmlBeritaBaru);
         })
         .catch(err => {
-            console.error("Gagal memuat berita berbasis file teks:", err);
+            console.error("Gagal memuat berita berbasis file teks online:", err);
         });
 });
 </script>
