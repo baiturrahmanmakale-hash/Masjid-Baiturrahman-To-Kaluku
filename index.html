@@ -228,6 +228,34 @@
       .dropdown-menu a { padding-left: 40px; }
     }
 
+/* ===== TOMBOL TAMBAH BERITA BARU ===== */
+.nav-menu .nav-btn-upload {
+  background: #2e7d32; /* Warna hijau cerah premium */
+  color: #ffffff !important;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: 6px;
+  border: 1px solid rgba(212, 175, 55, 0.4); /* Garis tepi tipis warna emas */
+  margin-right: 4px;
+  transition: all 0.3s ease;
+}
+
+/* Efek saat kursor mouse menyentuh tombol */
+.nav-menu .nav-btn-upload:hover {
+  background: #1b5e20; /* Hijau agak gelap saat di-hover */
+  color: #d4af37 !important; /* Teks berubah menjadi warna emas */
+  box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+}
+
+/* Penyesuaian khusus tampilan HP agar tidak berantakan */
+@media (max-width: 768px) {
+  .nav-menu .nav-btn-upload {
+    margin: 8px 24px;
+    justify-content: center;
+    border-radius: 4px;
+  }
+}
+    
     /* =====  SLIDESHOW + JADWAL SHALAT (SAMPING KANAN) ===== */
     .hero-flex-wrapper {
       display: flex;
@@ -1156,6 +1184,17 @@
       <li><a href="#kontak" onclick="closeMenu()">Kontak</a></li>
       
       <!-- TOMBOL DASHBOARD PENGELOLA -->
+      <ul class="nav-menu">
+  <li><a href="#kontak">Kontak</a></li>
+
+  <li>
+    <a href="upload.php" class="nav-btn-upload">+ Tambah Berita</a>
+  </li>
+
+  <li>
+    <a href="#" class="btn-dashboard">Dashboard</a>
+  </li>
+</ul>
       <li>
         <a href="#" id="btn-dashboard" onclick="closeMenu()" style="
           background-color: #ffd700; 
