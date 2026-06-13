@@ -2260,49 +2260,52 @@ document.getElementById('btn-dashboard').addEventListener('click', function(even
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-    // URL mengarah ke domain hosting Anda yang benar menggunakan HTTPS + bypass cache browser
+    // Alamat Backend InfinityFree Anda (Menggunakan HTTPS + Bypass Cache browser)
     const apiURL = "https://masjidbaiturrahmantokaluku.great-site.net/get_berita.php?v=" + new Date().getTime(); 
-    const container = document.getElementById("berita-dinamis");
+    
+    // 🟢 KUNCI UTAMA: Menembak tepat pada kontainer pembungkus berita asli Anda (.berita-grid)
+    const container = document.querySelector(".berita-grid");
 
-    if (!container) return; 
+    // Jika wadah .berita-grid ditemukan di halaman HTML, jalankan proses penarikan data
+    if (container) {
+        fetch(apiURL)
+            .then(response => {
+                if (!response.ok) throw new Error("Respon server InfinityFree terhambat keamanan browser");
+                return response.json();
+            })
+            .then(data => {
+                if (!data || data.length === 0) return;
 
-    fetch(apiURL)
-        .then(response => {
-            if (!response.ok) throw new Error("Respons server bermasalah");
-            return response.json();
-        })
-        .then(data => {
-            if (!data || data.length === 0) return;
+                let htmlBeritaBaru = "";
+                data.forEach(item => {
+                    // Ambil string tanggal langsung dari database teks hosting Anda (misal: 13 Juni 2026)
+                    let tglFormat = item.tanggal ? item.tanggal : "Baru"; 
+                    
+                    // Alamat gambar dipaksa membaca ke folder uploads online InfinityFree Anda
+                    const urlFotoOnline = `https://masjidbaiturrahmantokaluku.great-site.net/uploads/${item.foto}`;
 
-            let htmlBeritaBaru = "";
-            data.forEach(item => {
-                // Trik aman: Ambil teks tanggal langsung dari database hosting tanpa diubah JavaScript
-                let tglFormat = item.tanggal ? item.tanggal : "Baru"; 
+                    htmlBeritaBaru += `
+                        <div class="berita-card fade-in">
+                            <div class="berita-img">
+                                <img src="${urlFotoOnline}" alt="${item.judul}" loading="lazy" onerror="this.src='https://masjidbaiturrahmantokaluku.great-site.net/Foto32.jpg'"/>
+                                <span class="berita-date">📅 ${tglFormat}</span>
+                            </div>
+                            <div class="berita-body">
+                                <h4>${item.judul}</h4>
+                                <p>${item.deskripsi}</p>
+                                <a href="#" class="berita-link" onclick="alert('Detail cerita sudah ditampilkan sepenuhnya.'); return false;">Baca selengkapnya →</a>
+                            </div>
+                        </div>
+                    `;
+                });
                 
-                // Pastikan alamat gambar mengarah langsung ke folder uploads online Anda
-                const urlFotoOnline = `https://masjidbaiturrahmantokaluku.great-site.net/uploads/${item.foto}`;
-
-                htmlBeritaBaru += `
-                    <div class="berita-card fade-in">
-                        <div class="berita-img">
-                            <img src="${urlFotoOnline}" alt="${item.judul}" loading="lazy" onerror="this.src='https://masjidbaiturrahmantokaluku.great-site.net/Foto32.jpg'"/>
-                            <span class="berita-date">📅 ${tglFormat}</span>
-                        </div>
-                        <div class="berita-body">
-                            <h4>${item.judul}</h4>
-                            <p>${item.deskripsi}</p>
-                            <a href="#" class="berita-link" onclick="alert('Detail cerita sudah ditampilkan sepenuhnya.'); return false;">Baca selengkapnya →</a>
-                        </div>
-                    </div>
-                `;
+                // 🟢 SISIPKAN BERITA BARU KE POSISI PALING ATAS DI DALAM .berita-grid
+                container.insertAdjacentHTML('afterbegin', htmlBeritaBaru);
+            })
+            .catch(err => {
+                console.error("Gagal menyisipkan berita dinamis online:", err);
             });
-            
-            // Menyisipkan berita baru dari admin ke posisi paling atas wadah berita
-            container.insertAdjacentHTML('afterbegin', htmlBeritaBaru);
-        })
-        .catch(err => {
-            console.error("Gagal memuat berita:", err);
-        });
+    }
 });
 </script>
 
