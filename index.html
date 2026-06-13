@@ -2260,50 +2260,62 @@ document.getElementById('btn-dashboard').addEventListener('click', function(even
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-    // Alamat Backend InfinityFree Anda (Menggunakan HTTPS + Bypass Cache browser)
-    const apiURL = "https://masjidbaiturrahmantokaluku.great-site.net/get_berita.php?v=" + new Date().getTime(); 
-    
-    // 🟢 KUNCI UTAMA: Menembak tepat pada kontainer pembungkus berita asli Anda (.berita-grid)
+    // Menembak langsung file galeri_data.txt + trik anti-cache browser (getTime)
+    const apiURL = "https://masjidbaiturrahmantokaluku.great-site.net/galeri_data.txt?v=" + new Date().getTime(); 
     const container = document.querySelector(".berita-grid");
 
-    // Jika wadah .berita-grid ditemukan di halaman HTML, jalankan proses penarikan data
     if (container) {
         fetch(apiURL)
             .then(response => {
-                if (!response.ok) throw new Error("Respon server InfinityFree terhambat keamanan browser");
-                return response.json();
+                if (!response.ok) throw new Error("Gagal memuat file database teks");
+                return response.text(); // 🟢 MEMBACA SEBAGAI TEKS MENTAH, BUKAN JSON
             })
-            .then(data => {
-                if (!data || data.length === 0) return;
+            .then(textData => {
+                if (!textData || textData.trim() === "") return;
+
+                // Memecah dokumen teks menjadi baris-baris data
+                const lines = textData.split("\n").filter(line => line.trim() !== "");
+                
+                // Balik urutan baris agar berita yang baru diinput admin muncul di paling kiri atas
+                lines.reverse();
 
                 let htmlBeritaBaru = "";
-                data.forEach(item => {
-                    // Ambil string tanggal langsung dari database teks hosting Anda (misal: 13 Juni 2026)
-                    let tglFormat = item.tanggal ? item.tanggal : "Baru"; 
-                    
-                    // Alamat gambar dipaksa membaca ke folder uploads online InfinityFree Anda
-                    const urlFotoOnline = `https://masjidbaiturrahmantokaluku.great-site.net/uploads/${item.foto}`;
-
-                    htmlBeritaBaru += `
-                        <div class="berita-card fade-in">
-                            <div class="berita-img">
-                                <img src="${urlFotoOnline}" alt="${item.judul}" loading="lazy" onerror="this.src='https://masjidbaiturrahmantokaluku.great-site.net/Foto32.jpg'"/>
-                                <span class="berita-date">📅 ${tglFormat}</span>
-                            </div>
-                            <div class="berita-body">
-                                <h4>${item.judul}</h4>
-                                <p>${item.deskripsi}</p>
-                                <a href="#" class="berita-link" onclick="alert('Detail cerita sudah ditampilkan sepenuhnya.'); return false;">Baca selengkapnya →</a>
-                            </div>
-                        </div>
-                    `;
-                });
                 
-                // 🟢 SISIPKAN BERITA BARU KE POSISI PALING ATAS DI DALAM .berita-grid
+                lines.forEach(line => {
+                    // Memecah baris data berdasarkan tanda pembatas garis tegak (|)
+                    const elemenData = line.split("|");
+                    
+                    // Memastikan baris data tersebut valid (minimal berisi nama foto, judul, deskripsi)
+                    if (elemenData.length >= 3) {
+                        const namaFoto = elemenData[0].trim();
+                        const judulBerita = elemenData[1].trim();
+                        const deskripsiBerita = elemenData[2].trim();
+                        const tanggalRilis = elemenData[3] ? elemenData[3].trim() : "Baru";
+
+                        // Mengarahkan folder gambar tepat ke direktori uploads online InfinityFree Anda
+                        const urlFotoOnline = `https://masjidbaiturrahmantokaluku.great-site.net/uploads/${namaFoto}`;
+
+                        htmlBeritaBaru += `
+                            <div class="berita-card fade-in">
+                                <div class="berita-img">
+                                    <img src="${urlFotoOnline}" alt="${judulBerita}" loading="lazy" onerror="this.src='https://masjidbaiturrahmantokaluku.great-site.net/Foto32.jpg'"/>
+                                    <span class="berita-date">📅 ${tanggalRilis}</span>
+                                </div>
+                                <div class="berita-body">
+                                    <h4>${judulBerita}</h4>
+                                    <p>${deskripsiBerita}</p>
+                                    <a href="#" class="berita-link" onclick="alert('Detail cerita sudah ditampilkan sepenuhnya.'); return false;">Baca selengkapnya →</a>
+                                </div>
+                            </div>
+                        `;
+                    }
+                });
+
+                // Menyisipkan tumpukan berita baru dari admin tepat di barisan awal kelas .berita-grid
                 container.insertAdjacentHTML('afterbegin', htmlBeritaBaru);
             })
             .catch(err => {
-                console.error("Gagal menyisipkan berita dinamis online:", err);
+                console.error("Gagal menyinkronkan berita dinamis:", err);
             });
     }
 });
