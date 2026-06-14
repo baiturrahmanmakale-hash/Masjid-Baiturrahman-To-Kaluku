@@ -2260,39 +2260,39 @@ document.getElementById('btn-dashboard').addEventListener('click', function(even
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-    // Menembak langsung ke file teks database + trik anti-cache browser (?v=time)
+    // URL database teks dengan bypass cache menggunakan timestamp waktu
     const apiURL = "https://masjidbaiturrahmantokaluku.great-site.net/galeri_data.txt?v=" + new Date().getTime(); 
     const container = document.querySelector(".berita-grid");
 
     if (container) {
-        fetch(apiURL)
+        // Menggunakan mode cors untuk meminta izin akses ke server luar
+        fetch(apiURL, { mode: 'cors' })
             .then(response => {
-                if (!response.ok) throw new Error("Gagal mengambil file data teks");
-                return response.text(); // 🟢 MEMBACA SEBAGAI TEKS MENTAH (ANTI-BLOKIR)
+                if (!response.ok) throw new Error("Gagal memuat file database teks dari server");
+                return response.text(); // Membaca data mentah sebagai teks biasa
             })
             .then(textData => {
                 if (!textData || textData.trim() === "") return;
 
-                // Memecah isi file teks menjadi baris-baris terpisah
+                // Memecah dokumen teks menjadi baris-baris berita terpisah
                 const lines = textData.split("\n").filter(line => line.trim() !== "");
                 
-                // Balik urutan baris agar berita yang baru Anda unggah muncul di paling depan/kiri
+                // Balik urutan baris agar inputan berita terbaru dari admin tampil di paling depan
                 lines.reverse();
 
                 let htmlBeritaBaru = "";
                 
                 lines.forEach(line => {
-                    // Memecah data berdasarkan tanda pembatas garis tegak (|)
                     const data = line.split("|");
                     
-                    // Memastikan baris data tersebut utuh dan sah
+                    // Memastikan format baris data valid (Foto, Judul, Deskripsi)
                     if (data.length >= 3) {
                         const foto = data[0].trim();
                         const judul = data[1].trim();
                         const deskripsi = data[2].trim();
                         const tanggal = data[3] ? data[3].trim() : "Baru";
 
-                        // Alamat folder uploads online di server InfinityFree Anda
+                        // Alamat folder upload foto online di hosting InfinityFree Anda
                         const urlFotoOnline = `https://masjidbaiturrahmantokaluku.great-site.net/uploads/${foto}`;
 
                         htmlBeritaBaru += `
@@ -2304,18 +2304,18 @@ document.addEventListener("DOMContentLoaded", function() {
                                 <div class="berita-body">
                                     <h4>${judul}</h4>
                                     <p>${deskripsi}</p>
-                                    <a href="#" class="berita-link" onclick="alert('Detail cerita telah ditampilkan sepenuhnya.'); return false;">Baca selengkapnya →</a>
+                                    <a href="#" class="berita-link" onclick="alert('Detail cerita sudah ditampilkan sepenuhnya.'); return false;">Baca selengkapnya →</a>
                                 </div>
                             </div>
                         `;
                     }
                 });
 
-                // Menyisipkan susunan berita baru tepat di barisan pertama .berita-grid
+                // Menyisipkan tumpukan berita baru tepat di posisi awal kontainer .berita-grid
                 container.insertAdjacentHTML('afterbegin', htmlBeritaBaru);
             })
             .catch(err => {
-                console.error("Sistem keamanan browser menggagalkan sinkronisasi data:", err);
+                console.error("Terjadi kendala sinkronisasi data lintas domain:", err);
             });
     }
 });
