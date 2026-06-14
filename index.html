@@ -1635,13 +1635,53 @@ document.getElementById('btn-dashboard').addEventListener('click', function(even
   </div>
 </section>
 
+<!-- ===== BERITA ===== -->
 <section id="berita">
   <div class="container">
     <h2 class="section-heading fade-in">Berita &amp; Pengumuman</h2>
     <p class="section-sub fade-in">Informasi terkini seputar kegiatan dan perkembangan Masjid Baiturrahman To' Kaluku</p>
-    
-    <div class="berita-grid"></div>
-    
+    <div class="berita-grid">
+
+      <!-- BERITA 1: PELETAKAN BATU PERTAMA -->
+      <div class="berita-card fade-in">
+        <div class="berita-img">
+          <img src="FOTO/Foto54.jpg" alt="Peletakan Batu Pertama" loading="lazy" />
+          <span class="berita-date">📅 19 Desember 2024</span>
+        </div>
+        <div class="berita-body">
+          <h4>Bupati Tana Toraja, dr. Zadrak Tombeg, Sp.A melakukan Peletakan Batu Pertama Renovasi Total Masjid Baiturrahman To' Kaluku</h4>
+          <p>TO' KALUKU – Momen bersejarah bagi umat Islam Tana Toraja! Prosesi peletakan batu pertama Masjid Baiturrahman To' Kaluku resmi dilaksanakan dengan penuh khidmat. Acara dihadiri oleh tokoh masyarakat, ulama, dan pejabat pemerintah Kabupaten Tana Toraja, menandai dimulainya pembangunan masjid yang telah lama dinantikan.</p>
+          <a href="berita-peletakan-batu.html" class="berita-link">Baca selengkapnya →</a>
+        </div>
+      </div>
+
+      <!-- BERITA 2: KUNJUNGAN KAPOLRES -->
+      <div class="berita-card fade-in">
+        <div class="berita-img">
+          <img src="FOTO/Dukungan Kapolres.jpg" alt="Kunjungan Polres Tana Toraja" loading="lazy" />
+          <span class="berita-date">📅 10 Oktober 2025</span>
+        </div>
+        <div class="berita-body">
+          <h4>Kapolres Tana Toraja Tinjau Pembangunan Masjid Baiturrahman To' Kaluku dan Serahkan Bantuan</h4>
+          <p>TO' KALUKU – Kepala Kepolisian Resor (Kapolres) Tana Toraja, AKBP Budi Hermawan, S.I.K., melaksanakan kunjungan silaturrahmi ke Masjid Baiturrahman To' Kaluku, Kelurahan Bombongan, Kecamatan Makale, Kabupaten Tana Toraja. Kunjungan ini bermaksud untuk bersilaturrahmi sekaligus meninjau secara langsung progres pembangunan fisik masjid yang sedang berjalan.</p>
+          <a href="berita-kunjungan-kapolres.html" class="berita-link">Baca selengkapnya →</a>
+        </div>
+      </div>
+
+      <!-- BERITA 3: BUKA PUASA BERSAMA -->
+      <div class="berita-card fade-in">
+        <div class="berita-img">
+          <img src="Buka-puasa-bersama.jpg" alt="Buka-puasa-bersama" loading="lazy" />
+          <span class="berita-date">📅 6 Maret 2026</span>
+        </div>
+          <div class="berita-body">
+          <h4>Buka Puasa Bersama Bupati Tana Toraja. dr. Zadrak Tombeg, Sp. A</h4>
+          <p>TO' KALUKU – Bupati Tana Toraja, dr. Zadrak Tombeg, Sp.A, menghadiri kegiatan buka puasa bersama yang digelar di Masjid Baiturrahman To’ Kaluku, Kecamatan Makale, Kamis (6/3/2026). Kegiatan yang berlangsung dalam suasana penuh kebersamaan ini dihadiri pengurus masjid, tokoh agama, serta masyarakat sekitar yang memanfaatkan momentum bulan suci Ramadan untuk mempererat silaturahmi dan ukhuwah.</p>
+          <a href="berita-buka-puasa.html" class="berita-link">Baca selengkapnya →</a>
+        </div>
+      </div>
+
+    </div>
   </div>
 </section>
 
@@ -2220,48 +2260,44 @@ document.getElementById('btn-dashboard').addEventListener('click', function(even
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-    // 1. URL database teks asli di hosting InfinityFree Anda (+ bypass cache waktu)
+    // URL database teks asli di hosting InfinityFree Anda
     const targetURL = "https://masjidbaiturrahmantokaluku.great-site.net/galeri_data.txt?v=" + new Date().getTime();
     
-    // 2. Menggunakan AllOrigins JSON Wrapper (Lebih stabil & lolos dari blokir IP server gratisan)
-    const apiURL = "https://api.allorigins.win/get?url=" + encodeURIComponent(targetURL);
+    // 🟢 GANTI JALUR: Menggunakan AllOrigins API (Bebas limit & Tanpa perlu klik aktivasi)
+    const apiURL = "https://api.allorigins.win/raw?url=" + encodeURIComponent(targetURL);
 
-    // 3. Membidik target kontainer berita (.berita-grid)
     const container = document.querySelector(".berita-grid");
 
     if (container) {
         fetch(apiURL)
             .then(response => {
-                if (!response.ok) throw new Error("Koneksi jaringan AllOrigins terputus");
-                return response.json(); // Mengambil bungkusan JSON dari AllOrigins
+                if (!response.ok) throw new Error("Gagal mengambil data via AllOrigins");
+                return response.text(); // Membaca data sebagai teks mentah (.txt)
             })
-            .then(data => {
-                // Mengambil teks mentah galeri_data.txt yang berada di dalam properti data.contents
-                const textData = data.contents;
+            .then(textData => {
                 if (!textData || textData.trim() === "") return;
 
-                // Memecah dokumen teks menjadi baris-baris berita terpisah
+                // Memecah dokumen menjadi baris-baris terpisah
                 const lines = textData.split("\n").filter(line => line.trim() !== "");
                 
-                // Balik urutan baris agar berita paling baru dari admin tampil di urutan pertama
+                // Membalik urutan baris agar berita paling baru yang Anda ketik muncul duluan
                 lines.reverse();
 
                 let htmlBeritaBaru = "";
                 
                 lines.forEach(line => {
-                    const dataArray = line.split("|");
+                    const data = line.split("|");
                     
-                    // Memastikan format data baris utuh (Minimal ada Foto, Judul, Deskripsi)
-                    if (dataArray.length >= 3) {
-                        const foto = dataArray[0].trim();
-                        const judul = dataArray[1].trim();
-                        const deskripsi = dataArray[2].trim();
-                        const tanggal = dataArray[3] ? dataArray[3].trim() : "Baru";
+                    // Memastikan baris data tersebut sah (Foto, Judul, Deskripsi)
+                    if (data.length >= 3) {
+                        const foto = data[0].trim();
+                        const judul = data[1].trim();
+                        const deskripsi = data[2].trim();
+                        const tanggal = data[3] ? data[3].trim() : "Baru";
 
-                        // Folder upload foto online di hosting InfinityFree Anda
+                        // Folder foto tetap mengarah ke folder uploads online di InfinityFree
                         const urlFotoOnline = `https://masjidbaiturrahmantokaluku.great-site.net/uploads/${foto}`;
 
-                        // Menyusun layout HTML kartu berita sesuai kelas CSS asli website Anda
                         htmlBeritaBaru += `
                             <div class="berita-card fade-in">
                                 <div class="berita-img">
@@ -2271,21 +2307,22 @@ document.addEventListener("DOMContentLoaded", function() {
                                 <div class="berita-body">
                                     <h4>${judul}</h4>
                                     <p>${deskripsi}</p>
-                                    <a href="#" class="berita-link" onclick="alert('Detail cerita sudah ditampilkan sepenuhnya.'); return false;">Baca selengkapnya →</a>
+                                    <a href="#" class="berita-link" onclick="alert('Detail cerita telah ditampilkan sepenuhnya.'); return false;">Baca selengkapnya →</a>
                                 </div>
                             </div>
                         `;
                     }
                 });
 
-                // Menyisipkan tumpukan berita baru secara dinamis ke dalam .berita-grid Anda
-                container.innerHTML = htmlBeritaBaru;
+                // Menyisipkan kartu berita baru secara otomatis ke posisi teratas .berita-grid
+                container.insertAdjacentHTML('afterbegin', htmlBeritaBaru);
             })
             .catch(err => {
-                console.error("Gagal memuat sistem berita dinamis:", err);
+                console.error("Gagal menyinkronkan berita dinamis:", err);
             });
     }
 });
 </script>
+
 </body>
 </html>
