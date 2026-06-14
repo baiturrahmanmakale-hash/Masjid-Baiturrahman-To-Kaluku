@@ -10,6 +10,14 @@
     @import url('https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap');
 
     /* ===== RESET & BASE ===== */
+/* Pastikan ditaruh di dalam blok tag <style> bagian atas file */
+.potong-teks {
+  display: -webkit-box;
+  -webkit-line-clamp: 10;
+  -webkit-box-orient: vertical;  
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
@@ -1651,21 +1659,18 @@ document.getElementById('btn-dashboard').addEventListener('click', function(even
     <p class="section-sub fade-in">Informasi terkini seputar kegiatan dan perkembangan Masjid Baiturrahman To' Kaluku</p>
     <div class="berita-grid">
 
-         <!-- BERITA : PENENTUAN ARAH KIBLAT -->
+      <!-- BERITA : PENENTUAN ARAH KIBLAT -->
       <div class="berita-card fade-in">
-       <div class="berita-img">
+        <div class="berita-img">
           <img src="FOTO/Foto40.jpg" alt="Penentuan Arah Kiblat" loading="lazy" />
           <span class="berita-date">📅 23 November 2024</span>
         </div>
         <div class="berita-body">
           <h4>MENATA ARAH KIBLAT, MEMBUKA PINTU AMAL JARIYAH 🧭🕌</h4>
-          <!-- Menggunakan class potong-teks agar dibatasi maksimal 10 baris oleh CSS -->
           <p class="potong-teks">
             TO' KALUKU - Di balik megahnya kubah dan kokohnya dinding masjid kelak, ada satu hal mendasar yang wajib kita siapkan dengan benar sejak awal. Hal itu adalah ketepatan arah kiblat. Alhamdulillah, hari ini kami memulai tahapan awal pembangunan masjid dengan melakukan pengukuran arah kiblat yang presisi. Kami ingin memastikan bahwa setiap jengkal tanah yang digali dan setiap batu yang ditata berada di jalur yang benar menuju Ka'bah.<br><br>Bayangkan, setiap kali ada jamaah yang bersujud menghadap kiblat di masjid ini kelak, pahalanya akan terus mengalir tanpa putus kepada Anda yang ikut membantu pembangunannya dari awal. Mari ambil bagian dalam membangun rumah Allah di dunia, agar Allah bangunkan istana bagi kita di surga kelak. 🕋✨<br><br>💳 <b>Salurkan Donasi Terbaik Anda Melalui:</b><br>Bank BRI: 341301073669536<br>Bank Mandiri: 1700015569720<br>Bank BNI: 1903009115<br><br>📱 <b>Konfirmasi Donasi & Informasi Lebih Lanjut:</b><br>WhatsApp: 0812-5305-9701<br><br>“Siapa yang membangun masjid karena Allah, maka Allah akan membangunkan baginya rumah di surga.” (HR. Bukhari & Muslim)
           </p>
-         <!-- Mengarahkan link langsung ke file online yang ada di server InfinityFree Anda -->
-<a href="https://great-site.net" target="_blank" class="berita-link">Baca selengkapnya →</a>
-
+          <a href="https://great-site.net" target="_blank" class="berita-link">Baca selengkapnya →</a>
         </div>
       </div>
   
@@ -1677,18 +1682,14 @@ document.getElementById('btn-dashboard').addEventListener('click', function(even
         </div>
         <div class="berita-body">
           <h4>Bupati Tana Toraja, dr. Zadrak Tombeg, Sp.A melakukan Peletakan Batu Pertama Renovasi Total Masjid Baiturrahman To' Kaluku</h4>
-          <p>
-            TO' KALUKU – Pembangunan sarana ibadah yang representatif dan nyaman kembali dimulai di Bumi Lepongan Bulan. Bupati Tana Toraja, dr. Zadrak Tombeg, Sp.A, secara resmi melakukan peletakan batu pertama sebagai tanda dimulainya renovasi total Masjid Baiturrahman To' Kaluku.            <!-- Teks tersembunyi -->
-            <span class="teks-lengkap" style="display: none;">
-              Acara yang berlangsung khidmat ini dihadiri oleh tokoh agama, pengurus masjid, serta masyarakat setempat yang menyambut antusias peremajaan rumah ibadah ini. Renovasi total dilakukan untuk memperluas daya tampung masjid seiring bertambahnya jumlah jamaah.Langkah Awal yang PresisiSebelum peletakan batu pertama dilakukan, panitia pembangunan telah memastikan seluruh kesiapan teknis berjalan matang. Salah satu tahapan krusial yang sudah diselesaikan adalah pengukuran awal titik koordinat dan penentuan arah kiblat yang presisi. Hal ini dilakukan agar pondasi bangunan baru benar-benar lurus menghadap Ka'bah demi keabsahan ibadah jemaah kelak.Dalam sambutannya, Bupati dr. Zadrak Tombeg, Sp.A menyampaikan apresiasi yang tinggi atas semangat gotong royong masyarakat dalam membangun rumah ibadah. Beliau berharap Masjid Baiturrahman To' Kaluku kelak tidak hanya menjadi tempat ibadah ritual, tetapi juga menjadi pusat syiar Islam dan pemersatu umat di Tana Toraja.Membuka Kran Amal JariyahPihak panitia mengundang seluruh lapisan masyarakat, para perantau, serta kaum muslimin di mana pun berada untuk ikut ambil bagian dalam investasi akhirat ini. Pembangunan ini menjadi kesempatan emas untuk mengalirkan amal jariyah yang pahalanya tidak akan terputus.Bagi masyarakat yang ingin menyalurkan bantuan, panitia pembangunan Masjid Baiturrahman To' Kaluku telah membuka rekening resmi melalui beberapa bank berikut:Bank BRI: 341301073669536Bank Mandiri: 1700015569720Bank BNI: 1903009115Setelah melakukan transfer, para donatur diharapkan melakukan konfirmasi demi tertib administrasi melalui kontak layanan panitia:WhatsApp (WA): 0812-5305-9701Mari bersama-sama ulurkan tangan dan satukan niat demi berdirinya rumah Allah yang megah dan nyaman bagi jemaah To' Kaluku.
-            </span>
+          <p class="potong-teks">
+            TO' KALUKU – Pembangunan sarana ibadah yang representatif dan nyaman kembali dimulai di Bumi Lepongan Bulan. Bupati Tana Toraja, dr. Zadrak Tombeg, Sp.A, secara resmi melakukan peletakan batu pertama sebagai tanda dimulainya renovasi total Masjid Baiturrahman To' Kaluku.<br><br>Acara yang berlangsung khidmat ini dihadiri oleh tokoh agama, pengurus masjid, serta masyarakat setempat yang menyambut antusias peremajaan rumah ibadah ini. Renovasi total dilakukan untuk memperluas daya tampung masjid seiring bertambahnya jumlah jamaah.<br><br><b>Langkah Awal yang Presisi</b><br>Sebelum peletakan batu pertama dilakukan, panitia pembangunan telah memastikan seluruh kesiapan teknis berjalan matang. Salah satu tahapan krusial yang sudah diselesaikan adalah pengukuran awal titik koordinat dan penentuan arah kiblat yang presisi. Hal ini dilakukan agar pondasi bangunan baru benar-benar lurus menghadap Ka'bah demi keabsahan ibadah jemaah kelak.<br><br>Dalam sambutannya, Bupati dr. Zadrak Tombeg, Sp.A menyampaikan apresiasi yang tinggi atas semangat gotong royong masyarakat dalam membangun rumah ibadah. Beliau berharap Masjid Baiturrahman To' Kaluku kelak tidak hanya menjadi tempat ibadah ritual, tetapi juga menjadi pusat syiar Islam dan pemersatu umat di Tana Toraja.<br><br><b>Membuka Kran Amal Jariyah</b><br>Pihak panitia mengundang seluruh lapisan masyarakat, para perantau, serta kaum muslimin di mana pun berada untuk ikut ambil bagian dalam investasi akhirat ini. Pembangunan ini menjadi kesempatan emas untuk mengalirkan amal jariyah yang pahalanya tidak akan terputus.<br><br>Bagi masyarakat yang ingin menyalurkan bantuan, panitia pembangunan Masjid Baiturrahman To' Kaluku telah membuka rekening resmi melalui beberapa bank berikut:<br>Bank BRI: 341301073669536<br>Bank Mandiri: 1700015569720<br>Bank BNI: 1903009115<br><br>Setelah melakukan transfer, para donatur diharapkan melakukan konfirmasi demi tertib administrasi melalui kontak layanan panitia:<br>WhatsApp (WA): 0812-5305-9701<br><br>Mari bersama-sama ulurkan tangan dan satukan niat demi berdirinya rumah Allah yang megah dan nyaman bagi jemaah To' Kaluku.
           </p>
-          <a href="javascript:void(0);" class="berita-link" onclick="toggleBerita(this)">Baca selengkapnya →</a>
+          <a href="https://great-site.net" target="_blank" class="berita-link">Baca selengkapnya →</a>
         </div>
       </div>
 
-
-          <!-- BERITA 2: KUNJUNGAN KAPOLRES -->
+      <!-- BERITA 2: KUNJUNGAN KAPOLRES -->
       <div class="berita-card fade-in">
         <div class="berita-img">
           <img src="FOTO/Dukungan Kapolres.jpg" alt="Kunjungan Polres Tana Toraja" loading="lazy" />
@@ -1696,19 +1697,14 @@ document.getElementById('btn-dashboard').addEventListener('click', function(even
         </div>
         <div class="berita-body">
           <h4>SINERGI INDAH DI RUMAH ALLAH: KUNJUNGAN BAPAK KAPOLRES TANA TORAJA DI TO' KALUKU 🧭🕌</h4>
-          <p>
-            TO' KALUKU – Pembangunan Masjid Baiturrahman To' Kaluku kini memasuki babak baru yang penuh berkah. Setelah sebelumnya arah kiblat diukur dengan presisi, hari ini kami mendapat kehormatan atas kunjungan langsung dari Kapolres Tana Toraja, AKBP Budi Hermawan, S.I.K.Beliau hadir untuk melihat langsung proses renovasi total sekaligus menyerahkan bantuan dana/material untuk percepatan pembangunan masjid. Amanah baik ini diterima langsung oleh wakil panitia pembangunan kita, Ustadz Irfan Sappe, S.Pd.
-            <!-- Teks tersembunyi -->
-            <span class="teks-lengkap" style="display: none;">
-              Kehadiran tokoh penting daerah seperti Bapak Bupati dan Bapak Kapolres menjadi bukti nyata bahwa mendirikan rumah Allah adalah gerakan kebaikan bersama. Arah pembangunan sudah benar, dukungan dari berbagai pihak kian mengalir, kini giliran kita untuk ikut mengambil peran!Mari tabung amalan terbaik Anda di masjid ini. Setiap huruf yang dibaca dan setiap sujud jemaah kelak di masjid ini, pahalanya akan ikut mengalir kepada Anda yang membantu pembangunannya sejak awal. 🕋❤️🏛️ Saluran Infaq & Wakaf Pembangunan Masjid:BRI: 341301073669536Mandiri: 1700015569720BNI: 1903009115📞 Konfirmasi WA Transfer: 0812-5305-9701
-            </span>
+          <p class="potong-teks">
+            TO' KALUKU – Pembangunan Masjid Baiturrahman To' Kaluku kini memasuki babak baru yang penuh berkah. Setelah sebelumnya arah kiblat diukur dengan presisi, hari ini kami mendapat kehormatan atas kunjungan langsung dari Kapolres Tana Toraja, AKBP Budi Hermawan, S.I.K. Beliau hadir untuk melihat langsung proses renovasi total sekaligus menyerahkan bantuan dana/material untuk percepatan pembangunan masjid. Amanah baik ini diterima langsung oleh wakil panitia pembangunan kita, Ustadz Irfan Sappe, S.Pd.<br><br>Kehadiran tokoh penting daerah seperti Bapak Bupati dan Bapak Kapolres menjadi bukti nyata bahwa mendirikan rumah Allah adalah gerakan kebaikan bersama. Arah pembangunan sudah benar, dukungan dari berbagai pihak kian mengalir, kini giliran kita untuk ikut mengambil peran!<br><br>Mari tabung amalan terbaik Anda di masjid ini. Setiap huruf yang dibaca dan setiap sujud jemaah kelak di masjid ini, pahalanya akan ikut mengalir kepada Anda yang membantu pembangunannya sejak awal. 🕋❤️<br><br>🏛️ <b>Saluran Infaq & Wakaf Pembangunan Masjid:</b><br>BRI: 341301073669536<br>Mandiri: 1700015569720<br>BNI: 1903009115<br><br>📞 <b>Konfirmasi WA Transfer:</b> 0812-5305-9701
           </p>
-          <a href="javascript:void(0);" class="berita-link" onclick="toggleBerita(this)">Baca selengkapnya →</a>
+          <a href="https://great-site.net" target="_blank" class="berita-link">Baca selengkapnya →</a>
         </div>
       </div>
 
-
-           <!-- BERITA 3: BUKA PUASA BERSAMA -->
+      <!-- BERITA 3: BUKA PUASA BERSAMA -->
       <div class="berita-card fade-in">
         <div class="berita-img">
           <img src="Buka-puasa-bersama.jpg" alt="Buka-puasa-bersama" loading="lazy" />
@@ -1716,22 +1712,17 @@ document.getElementById('btn-dashboard').addEventListener('click', function(even
         </div>
         <div class="berita-body">
           <h4>Buka Puasa Bersama Bupati Tana Toraja. dr. Zadrak Tombeg, Sp. A</h4>
-          <p>
-            TO' KALUKU – Bupati Tana Toraja, dr. Zadrak Tombeg, Sp.A, menghadiri kegiatan buka puasa bersama yang digelar di Masjid Baiturrahman To’ Kaluku, Kecamatan Makale, Kamis (6/3/2026).
-            
-            <!-- Teks tersembunyi -->
-            <span class="teks-lengkap" style="display: none;">
-              Kegiatan yang berlangsung dalam suasana penuh kebersamaan ini dihadiri pengurus masjid, tokoh agama, serta masyarakat sekitar yang memanfaatkan momentum bulan suci Ramadan untuk mempererat silaturahmi dan ukhuwah.
-            </span>
+          <p class="potong-teks">
+            TO' KALUKU – Bupati Tana Toraja, dr. Zadrak Tombeg, Sp.A, menghadiri kegiatan buka puasa bersama yang digelar di Masjid Baiturrahman To’ Kaluku, Kecamatan Makale, Kamis (6/3/2026).<br><br>Kegiatan yang berlangsung dalam suasana penuh kebersamaan ini dihadiri pengurus masjid, tokoh agama, serta masyarakat sekitar yang memanfaatkan momentum bulan suci Ramadan untuk mempererat silaturahmi dan ukhuwah.
           </p>
-          <a href="javascript:void(0);" class="berita-link" onclick="toggleBerita(this)">Baca selengkapnya →</a>
+          <a href="https://great-site.net" target="_blank" class="berita-link">Baca selengkapnya →</a>
         </div>
       </div>
-
       
     </div>
   </div>
 </section>
+
 
 <!-- ===== DONASI ===== -->
 <section id="donasi">
