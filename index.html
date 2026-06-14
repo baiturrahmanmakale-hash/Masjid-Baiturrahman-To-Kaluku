@@ -2205,85 +2205,7 @@ document.getElementById('btn-dashboard').addEventListener('click', function(even
     });
   }
 
-    // ===== SMART SMOOTH SCROLL (VERSI FINAL ANTI-MACET) =====
-  document.querySelectorAll('.nav-menu a, .dropdown-menu a').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-      const href = this.getAttribute('href');
-      
-      // Jika bukan menu lompat halaman internal, biarkan berjalan normal
-      if (!href || !href.startsWith('#') || href === '#' || href === '#layanan') return;
-      
-      const target = document.getElementById(href.substring(1));
-      if (target) {
-        e.preventDefault(); // Menghentikan lonjakan kasar browser
-        
-        // Memaksa browser meluncur lancar ke elemen target secara akurat
-        target.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start'
-        });
-        
-        // Langsung menutup tirai menu jika dibuka lewat HP
-        if (typeof closeMenu === 'function') {
-          closeMenu();
-        }
-      }
-    });
-  });
-
-
-  // ===== FADE IN ANIMATION (Intersection Observer) =====
-  const fadeEls = document.querySelectorAll('.fade-in');
-  if (fadeEls.length > 0) {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.12 });
-
-    fadeEls.forEach(el => observer.observe(el));
-  }
-
-  // ===== CONTACT FORM =====
-  function submitForm(e) {
-    e.preventDefault();
-    const namaEl = document.getElementById('nama');
-    const nama = namaEl ? namaEl.value : 'Jamaah';
-    alert(`Assalamu'alaikum ${nama}!\n\nPesan Anda telah terkirim. Terima kasih telah menghubungi Masjid Baiturrahman To' Kaluku. Kami akan segera merespons pesan Anda.\n\nJazakallahu Khairan. 🕌`);
-    const form = document.getElementById('contact-form');
-    if (form) form.reset();
-  }
-
-  // ===== PRAYER TIMES (Dynamic highlight) =====
-  function updatePrayerHighlight() {
-    const now = new Date();
-    const h = now.getHours();
-    const m = now.getMinutes();
-    const totalMin = h * 60 + m;
-    const prayers = [
-      { name: 'Subuh', time: 4*60+38 },
-      { name: 'Dzuhur', time: 12*60+5 },
-      { name: 'Ashar', time: 15*60+22 },
-      { name: 'Maghrib', time: 18*60+14 },
-      { name: 'Isya', time: 19*60+28 }
-    ];
-    let nextIdx = prayers.findIndex(p => p.time > totalMin);
-    if (nextIdx === -1) nextIdx = 0;
-    const items = document.querySelectorAll('.prayer-item');
-    if (items.length > 0) {
-      items.forEach((item, i) => {
-        item.style.opacity = i === nextIdx ? '1' : '0.7';
-        const pTime = item.querySelector('.p-time');
-        if (pTime) {
-          pTime.style.color = i === nextIdx ? '#fff' : 'rgba(255,255,255,0.8)';
-        }
-      });
-    }
-  }
-  // ===== SMART SMOOTH SCROLL (VERSI FINAL ANTI-MACET) =====
+// ===== SMART SMOOTH SCROLL (VERSI FINAL ANTI-MACET) =====
   document.querySelectorAll('.nav-menu a, .dropdown-menu a').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
       const href = this.getAttribute('href');
@@ -2340,6 +2262,8 @@ document.getElementById('btn-dashboard').addEventListener('click', function(even
     var kartu = tombol.closest('.berita-body');
     var teksLengkap = kartu.querySelector('.teks-lengkap');
 
+    if (!teksLengkap) return;
+
     if (teksLengkap.style.display === "none" || teksLengkap.style.display === "") {
       teksLengkap.style.display = "inline";
       tombol.innerText = "Sembunyikan ↑";
@@ -2382,10 +2306,10 @@ document.getElementById('btn-dashboard').addEventListener('click', function(even
 <script>
 document.addEventListener("DOMContentLoaded", function() {
     // URL database teks asli di hosting InfinityFree Anda
-    const targetURL = "https://masjidbaiturrahmantokaluku.great-site.net/galeri_data.txt?v=" + new Date().getTime();
+    const targetURL = "https://great-site.net" + new Date().getTime();
     
     // 🟢 GANTI JALUR: Menggunakan AllOrigins API (Bebas limit & Tanpa perlu klik aktivasi)
-    const apiURL = "https://api.allorigins.win/raw?url=" + encodeURIComponent(targetURL);
+    const apiURL = "https://allorigins.win" + encodeURIComponent(targetURL);
 
     const container = document.querySelector(".berita-grid");
 
@@ -2417,12 +2341,12 @@ document.addEventListener("DOMContentLoaded", function() {
                         const tanggal = data[3] ? data[3].trim() : "Baru";
 
                         // Folder foto tetap mengarah ke folder uploads online di InfinityFree
-                        const urlFotoOnline = `https://masjidbaiturrahmantokaluku.great-site.net/uploads/${foto}`;
+                        const urlFotoOnline = `https://great-site.net{foto}`;
 
                         htmlBeritaBaru += `
                             <div class="berita-card fade-in">
                                 <div class="berita-img">
-                                    <img src="${urlFotoOnline}" alt="${judul}" loading="lazy" onerror="this.src='https://masjidbaiturrahmantokaluku.great-site.net/Foto32.jpg'"/>
+                                    <img src="${urlFotoOnline}" alt="${judul}" loading="lazy" onerror="this.src='https://great-site.net'"/>
                                     <span class="berita-date">📅 ${tanggal}</span>
                                 </div>
                                 <div class="berita-body">
