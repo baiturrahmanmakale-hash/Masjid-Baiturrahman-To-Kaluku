@@ -2220,46 +2220,48 @@ document.getElementById('btn-dashboard').addEventListener('click', function(even
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-    // URL asli database teks di hosting InfinityFree Anda (+ anti cache waktu)
+    // 1. URL database teks asli di hosting InfinityFree Anda (+ bypass cache waktu)
     const targetURL = "https://masjidbaiturrahmantokaluku.great-site.net/galeri_data.txt?v=" + new Date().getTime();
     
-    // Jalur jembatan proxy AllOrigins agar aman dari blokir CORS browser
-    const apiURL = "https://api.allorigins.win/raw?url=" + encodeURIComponent(targetURL);
+    // 2. Menggunakan AllOrigins JSON Wrapper (Lebih stabil & lolos dari blokir IP server gratisan)
+    const apiURL = "https://api.allorigins.win/get?url=" + encodeURIComponent(targetURL);
 
-    // Membidik target kontainer berita (.berita-grid)
+    // 3. Membidik target kontainer berita (.berita-grid)
     const container = document.querySelector(".berita-grid");
 
     if (container) {
         fetch(apiURL)
             .then(response => {
-                if (!response.ok) throw new Error("Gagal memuat file database teks");
-                return response.text(); // Membaca data sebagai teks mentah (.txt)
+                if (!response.ok) throw new Error("Koneksi jaringan AllOrigins terputus");
+                return response.json(); // Mengambil bungkusan JSON dari AllOrigins
             })
-            .then(textData => {
+            .then(data => {
+                // Mengambil teks mentah galeri_data.txt yang berada di dalam properti data.contents
+                const textData = data.contents;
                 if (!textData || textData.trim() === "") return;
 
                 // Memecah dokumen teks menjadi baris-baris berita terpisah
                 const lines = textData.split("\n").filter(line => line.trim() !== "");
                 
-                // Balik urutan baris agar inputan berita terbaru dari admin tampil di paling depan/kiri
+                // Balik urutan baris agar berita paling baru dari admin tampil di urutan pertama
                 lines.reverse();
 
                 let htmlBeritaBaru = "";
                 
                 lines.forEach(line => {
-                    const data = line.split("|");
+                    const dataArray = line.split("|");
                     
-                    // Memastikan format data valid (Foto, Judul, Deskripsi, Tanggal)
-                    if (data.length >= 3) {
-                        const foto = data[0].trim();
-                        const judul = data[1].trim();
-                        const deskripsi = data[2].trim();
-                        const tanggal = data[3] ? data[3].trim() : "Baru";
+                    // Memastikan format data baris utuh (Minimal ada Foto, Judul, Deskripsi)
+                    if (dataArray.length >= 3) {
+                        const foto = dataArray[0].trim();
+                        const judul = dataArray[1].trim();
+                        const deskripsi = dataArray[2].trim();
+                        const tanggal = dataArray[3] ? dataArray[3].trim() : "Baru";
 
                         // Folder upload foto online di hosting InfinityFree Anda
                         const urlFotoOnline = `https://masjidbaiturrahmantokaluku.great-site.net/uploads/${foto}`;
 
-                        // Menyusun layout HTML kartu berita agar serasi dengan gaya CSS bawaan Anda
+                        // Menyusun layout HTML kartu berita sesuai kelas CSS asli website Anda
                         htmlBeritaBaru += `
                             <div class="berita-card fade-in">
                                 <div class="berita-img">
@@ -2276,11 +2278,11 @@ document.addEventListener("DOMContentLoaded", function() {
                     }
                 });
 
-                // Memasukkan tumpukan berita baru secara bersih ke dalam kontainer .berita-grid
+                // Menyisipkan tumpukan berita baru secara dinamis ke dalam .berita-grid Anda
                 container.innerHTML = htmlBeritaBaru;
             })
             .catch(err => {
-                console.error("Gagal menyinkronkan data berita dinamis:", err);
+                console.error("Gagal memuat sistem berita dinamis:", err);
             });
     }
 });
