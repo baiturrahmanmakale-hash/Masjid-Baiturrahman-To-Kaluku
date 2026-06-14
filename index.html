@@ -2260,62 +2260,62 @@ document.getElementById('btn-dashboard').addEventListener('click', function(even
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-    // Menembak langsung file galeri_data.txt + trik anti-cache browser (getTime)
+    // Menembak langsung ke file teks database + trik anti-cache browser (?v=time)
     const apiURL = "https://masjidbaiturrahmantokaluku.great-site.net/galeri_data.txt?v=" + new Date().getTime(); 
     const container = document.querySelector(".berita-grid");
 
     if (container) {
         fetch(apiURL)
             .then(response => {
-                if (!response.ok) throw new Error("Gagal memuat file database teks");
-                return response.text(); // 🟢 MEMBACA SEBAGAI TEKS MENTAH, BUKAN JSON
+                if (!response.ok) throw new Error("Gagal mengambil file data teks");
+                return response.text(); // 🟢 MEMBACA SEBAGAI TEKS MENTAH (ANTI-BLOKIR)
             })
             .then(textData => {
                 if (!textData || textData.trim() === "") return;
 
-                // Memecah dokumen teks menjadi baris-baris data
+                // Memecah isi file teks menjadi baris-baris terpisah
                 const lines = textData.split("\n").filter(line => line.trim() !== "");
                 
-                // Balik urutan baris agar berita yang baru diinput admin muncul di paling kiri atas
+                // Balik urutan baris agar berita yang baru Anda unggah muncul di paling depan/kiri
                 lines.reverse();
 
                 let htmlBeritaBaru = "";
                 
                 lines.forEach(line => {
-                    // Memecah baris data berdasarkan tanda pembatas garis tegak (|)
-                    const elemenData = line.split("|");
+                    // Memecah data berdasarkan tanda pembatas garis tegak (|)
+                    const data = line.split("|");
                     
-                    // Memastikan baris data tersebut valid (minimal berisi nama foto, judul, deskripsi)
-                    if (elemenData.length >= 3) {
-                        const namaFoto = elemenData[0].trim();
-                        const judulBerita = elemenData[1].trim();
-                        const deskripsiBerita = elemenData[2].trim();
-                        const tanggalRilis = elemenData[3] ? elemenData[3].trim() : "Baru";
+                    // Memastikan baris data tersebut utuh dan sah
+                    if (data.length >= 3) {
+                        const foto = data[0].trim();
+                        const judul = data[1].trim();
+                        const deskripsi = data[2].trim();
+                        const tanggal = data[3] ? data[3].trim() : "Baru";
 
-                        // Mengarahkan folder gambar tepat ke direktori uploads online InfinityFree Anda
-                        const urlFotoOnline = `https://masjidbaiturrahmantokaluku.great-site.net/uploads/${namaFoto}`;
+                        // Alamat folder uploads online di server InfinityFree Anda
+                        const urlFotoOnline = `https://masjidbaiturrahmantokaluku.great-site.net/uploads/${foto}`;
 
                         htmlBeritaBaru += `
                             <div class="berita-card fade-in">
                                 <div class="berita-img">
-                                    <img src="${urlFotoOnline}" alt="${judulBerita}" loading="lazy" onerror="this.src='https://masjidbaiturrahmantokaluku.great-site.net/Foto32.jpg'"/>
-                                    <span class="berita-date">📅 ${tanggalRilis}</span>
+                                    <img src="${urlFotoOnline}" alt="${judul}" loading="lazy" onerror="this.src='https://masjidbaiturrahmantokaluku.great-site.net/Foto32.jpg'"/>
+                                    <span class="berita-date">📅 ${tanggal}</span>
                                 </div>
                                 <div class="berita-body">
-                                    <h4>${judulBerita}</h4>
-                                    <p>${deskripsiBerita}</p>
-                                    <a href="#" class="berita-link" onclick="alert('Detail cerita sudah ditampilkan sepenuhnya.'); return false;">Baca selengkapnya →</a>
+                                    <h4>${judul}</h4>
+                                    <p>${deskripsi}</p>
+                                    <a href="#" class="berita-link" onclick="alert('Detail cerita telah ditampilkan sepenuhnya.'); return false;">Baca selengkapnya →</a>
                                 </div>
                             </div>
                         `;
                     }
                 });
 
-                // Menyisipkan tumpukan berita baru dari admin tepat di barisan awal kelas .berita-grid
+                // Menyisipkan susunan berita baru tepat di barisan pertama .berita-grid
                 container.insertAdjacentHTML('afterbegin', htmlBeritaBaru);
             })
             .catch(err => {
-                console.error("Gagal menyinkronkan berita dinamis:", err);
+                console.error("Sistem keamanan browser menggagalkan sinkronisasi data:", err);
             });
     }
 });
