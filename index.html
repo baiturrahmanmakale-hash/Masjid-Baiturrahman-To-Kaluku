@@ -2260,28 +2260,28 @@ document.getElementById('btn-dashboard').addEventListener('click', function(even
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-    // 1. URL database teks asli di hosting InfinityFree Anda dengan pengaman anti-cache waktu
+    // 1. Ambil data dari hosting InfinityFree dengan trik anti-cache waktu (?v=)
     const targetURL = "https://masjidbaiturrahmantokaluku.great-site.net/galeri_data.txt?v=" + new Date().getTime();
     
-    // 2. Menggunakan jembatan AllOrigins API (Bebas limit, tanpa aktivasi, ampuh lewati CORS)
+    // 2. Menggunakan jembatan AllOrigins agar aman dari blokir CORS browser
     const apiURL = "https://api.allorigins.win/raw?url=" + encodeURIComponent(targetURL);
 
-    // 🟢 KUNCI PERBAIKAN: Menyesuaikan target sasaran ke kontainer asli website Anda (.kegiatan-grid)
-    const container = document.querySelector(".kegiatan-grid");
+    // 🟢 PERBAIKAN: Target dikembalikan dengan benar ke kontainer BERITA (.berita-grid)
+    const container = document.querySelector(".berita-grid");
 
     if (container) {
         fetch(apiURL)
             .then(response => {
-                if (!response.ok) throw new Error("Gagal mengambil data via AllOrigins");
-                return response.text(); // Membaca data mentah sebagai teks biasa
+                if (!response.ok) throw new Error("Gagal memuat file data berita");
+                return response.text(); // Membaca data sebagai teks mentah (.txt)
             })
             .then(textData => {
                 if (!textData || textData.trim() === "") return;
 
-                // Memecah dokumen teks menjadi baris-baris berita terpisah
+                // Memecah isi file menjadi baris-baris terpisah
                 const lines = textData.split("\n").filter(line => line.trim() !== "");
                 
-                // Membalik urutan agar berita pengukuran arah kiblat/info terbaru muncul duluan
+                // Balik urutan baris agar berita yang baru Anda unggah otomatis muncul di paling depan/kiri
                 lines.reverse();
 
                 let htmlBeritaBaru = "";
@@ -2289,34 +2289,35 @@ document.addEventListener("DOMContentLoaded", function() {
                 lines.forEach(line => {
                     const data = line.split("|");
                     
-                    // Memastikan baris data tersebut sah (Foto, Judul, Deskripsi)
+                    // Memastikan data baris utuh dan sah (Foto, Judul, Deskripsi, Tanggal)
                     if (data.length >= 3) {
                         const foto = data[0].trim();
                         const judul = data[1].trim();
                         const deskripsi = data[2].trim();
                         const tanggal = data[3] ? data[3].trim() : "Baru";
 
-                        // Folder foto diarahkan langsung menuju repositori uploads online di InfinityFree Anda
+                        // Mengarahkan folder foto tepat ke direktori uploads online Anda
                         const urlFotoOnline = `https://masjidbaiturrahmantokaluku.great-site.net/uploads/${foto}`;
 
-                        // Menyusun HTML agar serasi dengan gaya kartu kegiatan asli masjid Anda
+                        // Menyusun HTML kartu yang klop dengan gaya .berita-card bawaan CSS Anda
                         htmlBeritaBaru += `
-                            <div class="kegiatan-card fade-in visible" style="padding: 0px; overflow: hidden;">
-                                <div style="position: relative; height: 200px; overflow: hidden;">
-                                    <img src="${urlFotoOnline}" alt="${judul}" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy" onerror="this.src='https://masjidbaiturrahmantokaluku.great-site.net/Foto32.jpg'"/>
-                                    <span style="position: absolute; top: 12px; left: 12px; background: #D4AF37; color: #fff; font-size: 0.72rem; font-weight: 600; padding: 4px 10px; border-radius: 20px;">📅 ${tanggal}</span>
+                            <div class="berita-card fade-in">
+                                <div class="berita-img">
+                                    <img src="${urlFotoOnline}" alt="${judul}" loading="lazy" onerror="this.src='https://masjidbaiturrahmantokaluku.great-site.net/Foto32.jpg'"/>
+                                    <span class="berita-date">📅 ${tanggal}</span>
                                 </div>
-                                <div style="padding: 20px;">
-                                    <h4 style="font-family: 'Amiri', serif; font-size: 1.25rem; color: #1B5E20; margin-bottom: 8px;">${judul}</h4>
-                                    <p style="font-size: 0.85rem; color: #666; line-height: 1.7;">${deskripsi}</p>
+                                <div class="berita-body">
+                                    <h4>${judul}</h4>
+                                    <p>${deskripsi}</p>
+                                    <a href="#" class="berita-link" onclick="alert('Detail cerita telah ditampilkan sepenuhnya.'); return false;">Baca selengkapnya →</a>
                                 </div>
                             </div>
                         `;
                     }
                 });
 
-                // Menyisipkan deretan kartu berita baru langsung ke dalam barisan .kegiatan-grid Anda
-                container.insertAdjacentHTML('afterbegin', htmlBeritaBaru);
+                // Memasukkan berita dinamis dari admin secara bersih ke dalam .berita-grid
+                container.innerHTML = htmlBeritaBaru;
             })
             .catch(err => {
                 console.error("Gagal menyinkronkan data berita dinamis:", err);
