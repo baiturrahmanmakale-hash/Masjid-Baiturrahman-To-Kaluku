@@ -2260,29 +2260,27 @@ document.getElementById('btn-dashboard').addEventListener('click', function(even
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-    // URL asli database teks Anda di InfinityFree
+    // URL database teks asli di hosting InfinityFree Anda
     const targetURL = "https://masjidbaiturrahmantokaluku.great-site.net/galeri_data.txt?v=" + new Date().getTime();
     
-    // 🟢 JALUR PENYELAMAT: Menggunakan CORS Proxy publik untuk menembus blokir server gratisan
-    const apiURL = "https://cors-anywhere.herokuapp.com/" + targetURL;
-    // Jika proxy di atas sibuk, Anda juga bisa menggunakan alternatif di bawah ini (tinggal hapus tanda //):
-    // const apiURL = "https://api.allorigins.win/raw?url=" + encodeURIComponent(targetURL);
+    // 🟢 GANTI JALUR: Menggunakan AllOrigins API (Bebas limit & Tanpa perlu klik aktivasi)
+    const apiURL = "https://api.allorigins.win/raw?url=" + encodeURIComponent(targetURL);
 
     const container = document.querySelector(".berita-grid");
 
     if (container) {
         fetch(apiURL)
             .then(response => {
-                if (!response.ok) throw new Error("Gagal mengambil data lewat jalur proxy");
-                return response.text(); // Membaca data sebagai teks mentah
+                if (!response.ok) throw new Error("Gagal mengambil data via AllOrigins");
+                return response.text(); // Membaca data sebagai teks mentah (.txt)
             })
             .then(textData => {
                 if (!textData || textData.trim() === "") return;
 
-                // Memecah dokumen teks menjadi baris-baris terpisah
+                // Memecah dokumen menjadi baris-baris terpisah
                 const lines = textData.split("\n").filter(line => line.trim() !== "");
                 
-                // Balik urutan baris agar berita yang baru Anda unggah muncul di paling depan/kiri
+                // Membalik urutan baris agar berita paling baru yang Anda ketik muncul duluan
                 lines.reverse();
 
                 let htmlBeritaBaru = "";
@@ -2290,14 +2288,14 @@ document.addEventListener("DOMContentLoaded", function() {
                 lines.forEach(line => {
                     const data = line.split("|");
                     
-                    // Memastikan baris data utuh (Foto, Judul, Deskripsi)
+                    // Memastikan baris data tersebut sah (Foto, Judul, Deskripsi)
                     if (data.length >= 3) {
                         const foto = data[0].trim();
                         const judul = data[1].trim();
                         const deskripsi = data[2].trim();
                         const tanggal = data[3] ? data[3].trim() : "Baru";
 
-                        // Folder penyimpanan gambar tetap diarahkan langsung ke hosting online Anda
+                        // Folder foto tetap mengarah ke folder uploads online di InfinityFree
                         const urlFotoOnline = `https://masjidbaiturrahmantokaluku.great-site.net/uploads/${foto}`;
 
                         htmlBeritaBaru += `
@@ -2316,11 +2314,11 @@ document.addEventListener("DOMContentLoaded", function() {
                     }
                 });
 
-                // Menyisipkan tumpukan kartu berita baru tepat di posisi awal .berita-grid
+                // Menyisipkan kartu berita baru secara otomatis ke posisi teratas .berita-grid
                 container.insertAdjacentHTML('afterbegin', htmlBeritaBaru);
             })
             .catch(err => {
-                console.error("Gagal memuat berita dinamis:", err);
+                console.error("Gagal menyinkronkan berita dinamis:", err);
             });
     }
 });
