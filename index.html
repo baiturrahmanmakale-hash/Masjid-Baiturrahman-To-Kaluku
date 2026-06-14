@@ -1635,6 +1635,15 @@ document.getElementById('btn-dashboard').addEventListener('click', function(even
   </div>
 </section>
 
+  /* Membatasi teks berita maksimal 10 baris */
+.potong-teks {
+  display: -webkit-box;
+  -webkit-line-clamp: 10; /* Membatasi maksimal 10 baris kalimat */
+  -webkit-box-orient: vertical;  
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 <!-- ===== BERITA ===== -->
 <section id="berita">
   <div class="container">
@@ -1654,15 +1663,13 @@ document.getElementById('btn-dashboard').addEventListener('click', function(even
           <p class="potong-teks">
             TO' KALUKU - Di balik megahnya kubah dan kokohnya dinding masjid kelak, ada satu hal mendasar yang wajib kita siapkan dengan benar sejak awal. Hal itu adalah ketepatan arah kiblat. Alhamdulillah, hari ini kami memulai tahapan awal pembangunan masjid dengan melakukan pengukuran arah kiblat yang presisi. Kami ingin memastikan bahwa setiap jengkal tanah yang digali dan setiap batu yang ditata berada di jalur yang benar menuju Ka'bah.<br><br>Bayangkan, setiap kali ada jamaah yang bersujud menghadap kiblat di masjid ini kelak, pahalanya akan terus mengalir tanpa putus kepada Anda yang ikut membantu pembangunannya dari awal. Mari ambil bagian dalam membangun rumah Allah di dunia, agar Allah bangunkan istana bagi kita di surga kelak. 🕋✨<br><br>💳 <b>Salurkan Donasi Terbaik Anda Melalui:</b><br>Bank BRI: 341301073669536<br>Bank Mandiri: 1700015569720<br>Bank BNI: 1903009115<br><br>📱 <b>Konfirmasi Donasi & Informasi Lebih Lanjut:</b><br>WhatsApp: 0812-5305-9701<br><br>“Siapa yang membangun masjid karena Allah, maka Allah akan membangunkan baginya rumah di surga.” (HR. Bukhari & Muslim)
           </p>
-          <!-- Mengarah langsung ke file HTML baru dan membuka tab baru -->
-          <a href="penentuan-arah-kiblat.html" target="_blank" class="berita-link">Baca selengkapnya →</a>
+         <!-- Mengarahkan link langsung ke file online yang ada di server InfinityFree Anda -->
+<a href="https://great-site.net" target="_blank" class="berita-link">Baca selengkapnya →</a>
+
         </div>
       </div>
-
-
-      
-      
-           <!-- BERITA 1: PELETAKAN BATU PERTAMA -->
+  
+      <!-- BERITA 1: PELETAKAN BATU PERTAMA -->
       <div class="berita-card fade-in">
         <div class="berita-img">
           <img src="FOTO/Foto54.jpg" alt="Peletakan Batu Pertama" loading="lazy" />
@@ -1691,7 +1698,6 @@ document.getElementById('btn-dashboard').addEventListener('click', function(even
           <h4>SINERGI INDAH DI RUMAH ALLAH: KUNJUNGAN BAPAK KAPOLRES TANA TORAJA DI TO' KALUKU 🧭🕌</h4>
           <p>
             TO' KALUKU – Pembangunan Masjid Baiturrahman To' Kaluku kini memasuki babak baru yang penuh berkah. Setelah sebelumnya arah kiblat diukur dengan presisi, hari ini kami mendapat kehormatan atas kunjungan langsung dari Kapolres Tana Toraja, AKBP Budi Hermawan, S.I.K.Beliau hadir untuk melihat langsung proses renovasi total sekaligus menyerahkan bantuan dana/material untuk percepatan pembangunan masjid. Amanah baik ini diterima langsung oleh wakil panitia pembangunan kita, Ustadz Irfan Sappe, S.Pd.
-            
             <!-- Teks tersembunyi -->
             <span class="teks-lengkap" style="display: none;">
               Kehadiran tokoh penting daerah seperti Bapak Bupati dan Bapak Kapolres menjadi bukti nyata bahwa mendirikan rumah Allah adalah gerakan kebaikan bersama. Arah pembangunan sudah benar, dukungan dari berbagai pihak kian mengalir, kini giliran kita untuk ikut mengambil peran!Mari tabung amalan terbaik Anda di masjid ini. Setiap huruf yang dibaca dan setiap sujud jemaah kelak di masjid ini, pahalanya akan ikut mengalir kepada Anda yang membantu pembangunannya sejak awal. 🕋❤️🏛️ Saluran Infaq & Wakaf Pembangunan Masjid:BRI: 341301073669536Mandiri: 1700015569720BNI: 1903009115📞 Konfirmasi WA Transfer: 0812-5305-9701
@@ -1783,9 +1789,7 @@ document.getElementById('btn-dashboard').addEventListener('click', function(even
   Konfirmasi via WhatsApp
 </a>
 
-
 <!-- Penutup -->
-
     <p class="donasi-footer">✨ Jazakumullahu khairan atas kepedulian Anda</p>
 
   </div>
