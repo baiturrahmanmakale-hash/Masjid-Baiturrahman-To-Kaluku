@@ -2255,11 +2255,12 @@ document.getElementById('btn-dashboard').addEventListener('click', function(even
 <!-- === SCRIPT PENARIK BERITA OTOMATIS DARI INFINITYFREE === -->
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-    // 🟢 URL database teks asli yang valid di hosting InfinityFree Anda
+       // 1. URL database teks asli yang valid di hosting InfinityFree Anda
     const targetURL = "https://great-site.net" + new Date().getTime();
     
-    // 🟢 Alamat AllOrigins API yang benar dengan format ?url= agar tidak error saat di-parse
+    // 2. Alamat AllOrigins API yang benar (PASTIKAN SAMA PERSIS SEPERTI DI BAWAH INI)
     const apiURL = "https://allorigins.win" + encodeURIComponent(targetURL);
+
 
     const container = document.querySelector(".berita-grid");
 
