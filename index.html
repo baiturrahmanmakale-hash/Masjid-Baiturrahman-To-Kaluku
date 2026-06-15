@@ -2372,18 +2372,18 @@ document.addEventListener("DOMContentLoaded", function() {
                     const data = line.split("|");
                     
                     if (data.length >= 3) {
-                        // 🟢 INDEKS ARRAY YANG BENAR DAN LENGKAP:
+                        // Membaca nomor kolom data dari file galeri_data.txt
                         const foto = data[0].trim();
                         const judul = data[1].trim();
                         const deskripsi = data[2].trim();
                         const tanggal = data[3] ? data[3].trim() : "Baru";
 
                         // Folder foto mengarah ke folder uploads online di InfinityFree
-                        const urlFotoOnline = `https://great-site.net{foto}`;
+                        const urlFotoOnline = "https://great-site.net" + foto;
 
                         // Menggunakan data indeks baris terbalik sebagai acuan halaman detail berita di GitHub
                         const urutanBaris = lines.length - 1 - index; 
-                        const linkHalaman = `detail-berita.html?berita_id=${urutanBaris}`;
+                        const linkHalaman = "detail-berita.html?berita_id=" + urutanBaris;
 
                         htmlBeritaBaru += `
                             <div class="berita-card fade-in">
@@ -2412,8 +2412,6 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 });
 </script>
-
-
 
 </body>
 </html>
