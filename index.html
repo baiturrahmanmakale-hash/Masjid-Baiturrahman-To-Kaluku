@@ -6,23 +6,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Masjid Baiturrahman To' Kaluku — Tana Toraja</title>
   <meta name="description" content="Website resmi Masjid Baiturrahman To' Kaluku, Jl. Tritura No. 11, Kelurahan Bombongan, Kecamatan Makale, Kabupaten Tana Toraja." />
+  
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap');
 
     /* ===== RESET & BASE ===== */
-/* Pastikan ditaruh di dalam blok tag <style> bagian atas file */
-<!-- PASTIKAN DIBUNGKUS TAG STYLE SEPERTI INI AGAR BERSIH DAN JADI KODE RAHASIA BROWSER -->
-<style>
-.potong-teks {
-  display: -webkit-box;
-  -webkit-line-clamp: 10; /* Membatasi teks berita maksimal 10 baris saja */
-  -webkit-box-orient: vertical;  
-  overflow: hidden;
-  text-overflow: ellipsis; /* Memunculkan tanda titik-titik (...) di akhir baris ke-10 */
-}
-</style>
-
-<style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body {
@@ -34,7 +22,17 @@
     a { text-decoration: none; color: inherit; }
     img { max-width: 100%; display: block; }
 
+    /* ===== KUNCI PEMBATAS 10 BARIS BERITA ===== */
+    .potong-teks {
+      display: -webkit-box;
+      -webkit-line-clamp: 10;
+      -webkit-box-orient: vertical;  
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
     /* ===== CSS VARIABLES ===== */
+
     :root {
       --green-dark: #1B5E20;
       --green-mid: #2E7D32;
@@ -1139,8 +1137,7 @@
     border-bottom: none !important;
   }
 }
- 
-  </style>
+   </style>
 </head>
 <body>
 
@@ -2337,54 +2334,19 @@ document.addEventListener("DOMContentLoaded", function() {
                 lines.forEach(line => {
                     const data = line.split("|");
                     
-                    // Memastikan baris data tersebut sah (Foto, Judul, Deskripsi)
-                    if (data.length >= 3) {
-                        const foto = data[0].trim();
-                        const judul = data[1].trim();
-                        const deskripsi = data[2].trim();
-                        const tanggal = data[3] ? data[3].trim() : "Baru";
-
-                        // Folder foto tetap mengarah ke folder uploads online di InfinityFree
-                        const urlFotoOnline = `https://great-site.net{foto}`;
-
-                        htmlBeritaBaru += `
-                            <div class="berita-card fade-in">
-                                <div class="berita-img">
-                                    <img src="${urlFotoOnline}" alt="${judul}" loading="lazy" onerror="this.src='https://great-site.net'"/>
-                                    <span class="berita-date">📅 ${tanggal}</span>
-                                </div>
-                                <div class="berita-body">
-                                    <h4>${judul}</h4>
-                                    <p>${deskripsi}</p>
-                                    <a href="#" class="berita-link" onclick="alert('Detail cerita telah ditampilkan sepenuhnya.'); return false;">Baca selengkapnya →</a>
-                                </div>
-                            </div>
-                        `;
-                    }
-                });
-
-                // Menyisipkan kartu berita baru secara otomatis ke posisi teratas .berita-grid
-                container.insertAdjacentHTML('afterbegin', htmlBeritaBaru);
-            })
-            .catch(err => {
-                console.error("Gagal menyinkronkan berita dinamis:", err);
-            });
-    }
-});
-</script>
-
-</body>
-
+                  <!-- === SCRIPT JADWAL SHALAT === -->
+<script>
   updatePrayerHighlight();
   setInterval(updatePrayerHighlight, 60000);
 </script>
 
+<!-- === SCRIPT PENARIK BERITA OTOMATIS DARI INFINITYFREE === -->
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-    // URL database teks asli di hosting InfinityFree Anda
+    // Menghubungkan ke database teks di server InfinityFree Anda
     const targetURL = "https://masjidbaiturrahmantokaluku.great-site.net/galeri_data.txt?v=" + new Date().getTime();
     
-    // Menggunakan AllOrigins API (Bebas limit & Tanpa perlu klik aktivasi)
+    // Menggunakan AllOrigins API agar bebas dari limit lintas server (CORS)
     const apiURL = "https://api.allorigins.win/raw?url=" + encodeURIComponent(targetURL);
 
     const container = document.querySelector(".berita-grid");
@@ -2393,7 +2355,7 @@ document.addEventListener("DOMContentLoaded", function() {
         fetch(apiURL)
             .then(response => {
                 if (!response.ok) throw new Error("Gagal mengambil data via AllOrigins");
-                return response.text(); // Membaca data sebagai teks mentah (.txt)
+                return response.text(); 
             })
             .then(textData => {
                 if (!textData || textData.trim() === "") return;
@@ -2418,8 +2380,7 @@ document.addEventListener("DOMContentLoaded", function() {
                         // Folder foto mengarah ke folder uploads online di InfinityFree
                         const urlFotoOnline = `https://masjidbaiturrahmantokaluku.great-site.net/uploads/${foto}`;
 
-                        // 🌟 KUNCI OTOMATISASI TAB BARU:
-                        // Menggunakan data indeks baris terbalik (atau tautan kolom ke-5 jika tersedia) sebagai acuan halaman detail
+                        // Menggunakan data indeks baris terbalik sebagai acuan halaman detail berita di GitHub
                         const urutanBaris = lines.length - 1 - index; 
                         const linkHalaman = `detail-berita.html?berita_id=${urutanBaris}`;
 
@@ -2431,9 +2392,9 @@ document.addEventListener("DOMContentLoaded", function() {
                                 </div>
                                 <div class="berita-body">
                                     <h4>${judul}</h4>
-                                    <!-- 🌟 Menambahkan class potong-teks agar tulisan terpotong di halaman beranda -->
+                                    <!-- Menambahkan class potong-teks agar tulisan terpotong maksimal 10 baris -->
                                     <p class="potong-teks">${deskripsi}</p>
-                                    <!-- 🌟 target="_blank" dipasang untuk membuka halaman detail di tab baru -->
+                                    <!-- target="_blank" dipasang untuk membuka halaman detail di tab baru -->
                                     <a href="${linkHalaman}" target="_blank" class="berita-link">Baca selengkapnya →</a>
                                 </div>
                             </div>
@@ -2451,6 +2412,6 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 </script>
 
-
 </body>
 </html>
+
