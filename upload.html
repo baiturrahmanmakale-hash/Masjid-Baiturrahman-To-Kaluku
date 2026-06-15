@@ -14,172 +14,33 @@
         textarea { height: 140px; resize: vertical; }
         button { width: 100%; background: #27ae60; color: white; border: none; padding: 14px; font-size: 1rem; font-weight: bold; border-radius: 6px; cursor: pointer; transition: background 0.2s ease; margin-top: 10px; }
         button:hover { background: #219653; }
-        button:disabled { background: #94a3b8; cursor: not-allowed; }
     </style>
 </head>
 <body>
 
 <div class="box-container">
-    <h2>Form Tambah Berita Kegiatan (Offline Panel)</h2>
+    <h2>Form Tambah Berita Kegiatan Masjid</h2>
     
-    <form id="newsForm">
+    <!-- 🌟 PERBAIKAN: Ganti alamat di bawah dengan tautan Formspree Anda -->
+    <form action="PASTE_TAUTAN_FORMSPREE_ANDA_DI_SINI" method="POST" enctype="multipart/form-data">
         <div class="form-group">
             <label for="judul">Judul Berita:</label>
-            <input type="text" id="judul" placeholder="Tuliskan judul berita kegiatan masjid..." required>
+            <input type="text" id="judul" name="Judul Berita" placeholder="Tuliskan judul berita kegiatan masjid..." required>
         </div>
         
         <div class="form-group">
             <label for="deskripsi">Isi / Detail Pengumuman:</label>
-            <textarea id="deskripsi" placeholder="Tuliskan laporan atau jurnalisme lengkap kegiatannya di sini..." required></textarea>
+            <textarea id="deskripsi" name="Isi Berita" placeholder="Tuliskan laporan lengkap kegiatannya di sini..." required></textarea>
         </div>
         
         <div class="form-group">
             <label for="foto">Foto Dokumentasi:</label>
-            <input type="file" id="foto" accept="image/*" required>
+            <input type="file" id="foto" name="Foto Dokumentasi" accept="image/*" required>
         </div>
         
-        <button type="submit" id="btnSubmit">Simpan & Publikasikan Berita</button>
+        <button type="submit">Kirim & Publikasikan Berita</button>
     </form>
 </div>
 
-<script>
-// ====================================================================
-// CONFIGURATION: DATA RAHASTIA GITHUB ANDA
-// ====================================================================
-const GH_TOKEN = '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'; 
-const GH_REPO = 'baiturrahmanmakale-hash/Masjid-Baiturrahman-To-Kaluku';
-const GH_BRANCH = 'main';
-
-// 🌟 PERBAIKAN ALAMAT URL API GITHUB
-async function uploadToGitHub(path, contentBase64, message) {
-    const url = `https://github.com{GH_REPO}/contents/${path}`;
-    let sha = null;
-    
-    try {
-        let res = await fetch(url + `?ref=${GH_BRANCH}`, {
-            headers: { 'Authorization': `token ${GH_TOKEN}` }
-        });
-        if (res.ok) {
-            let data = await res.json();
-            sha = data.sha;
-        }
-    } catch (e) {
-        console.log("Berkas baru terdeteksi.");
-    }
-
-    let bodyData = { message, content: contentBase64, branch: GH_BRANCH };
-    if (sha) bodyData.sha = sha;
-
-    try {
-        let response = await fetch(url, {
-            method: 'PUT',
-            headers: {
-                'Authorization': `token ${GH_TOKEN}`,
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(bodyData)
-        });
-        
-        if (!response.ok) {
-            let errData = await response.json();
-            alert("Ditolak GitHub: " + (errData.message || "Kesalahan Tidak Diketahui"));
-            return false;
-        }
-        return true;
-    } catch (error) {
-        alert("Koneksi Internet Bermasalah: " + error.message);
-        return false;
-    }
-}
-
-// 🌟 PERBAIKAN ALAMAT URL API GITHUB
-async function getGitHubFile(path) {
-    const url = `https://github.com{GH_REPO}/contents/${path}?ref=${GH_BRANCH}`;
-    try {
-        let res = await fetch(url, { headers: { 'Authorization': `token ${GH_TOKEN}` } });
-        if (res.ok) {
-            let data = await res.json();
-            return decodeURIComponent(escape(atob(data.content.replace(/\s/g, ''))));
-        }
-    } catch (e) {
-        console.log("Membuat baris data pertama.");
-    }
-    return "";
-}
-
-document.getElementById('newsForm').addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const btn = document.getElementById('btnSubmit');
-    btn.disabled = true;
-    btn.innerText = "Sedang Mengirim ke GitHub...";
-
-    try {
-        const judul = document.getElementById('judul').value.trim();
-        const deskripsi = document.getElementById('deskripsi').value.trim().replace(/\n/g, '<br>');
-        const inputKomponen = document.getElementById('foto'); 
-        
-        // Validasi pengaman file
-        if (inputKomponen.files.length === 0) {
-            alert("Silakan pilih foto dokumentasi terlebih dahulu!");
-            btn.disabled = false;
-            btn.innerText = "Simpan & Publikasikan Berita";
-            return;
-        }
-
-        const fileData = inputKomponen.files[0];
-        const reader = new FileReader();
-        
-        // Membaca file gambar lokal komputer
-        reader.readAsDataURL(fileData);
-        reader.onload = async () => {
-            try {
-                // Ekstrak biner data Base64 gambar murni
-                const base64Image = reader.result.split(',')[1];
-                const namaFoto = Date.now() + '_' + fileData.name;
-
-                // 1. Kirim Gambar Ke Folder FOTO di GitHub
-                let fotoSuccess = await uploadToGitHub(`FOTO/${namaFoto}`, base64Image, `Upload foto: ${judul}`);
-                
-                if (fotoSuccess) {
-                    const opsi = { day: 'numeric', month: 'long', year: 'numeric' };
-                    const hariIni = new Date().toLocaleDateString('id-ID', opsi);
-                    const idUnik = Date.now();
-
-                    const dataBaru = `FOTO/${namaFoto}|${judul}|${deskripsi}|${hariIni}|detail-berita.html?id=${idUnik}\n`;
-
-                    // 2. Satukan data dengan galeri_data.txt lama
-                    let kontenLama = await getGitHubFile('galeri_data.txt');
-                    let kontenBaru = kontenLama + dataBaru;
-
-                    const base64Txt = btoa(unescape(encodeURIComponent(kontenBaru)));
-
-                    // 3. Update database teks di GitHub
-                    let txtSuccess = await uploadToGitHub('galeri_data.txt', base64Txt, `Tambah berita: ${judul}`);
-
-                    if (txtSuccess) {
-                        alert('Selamat! Berita Kegiatan Berhasil Terbit di GitHub Pages!');
-                        document.getElementById('newsForm').reset();
-                    }
-                }
-            } catch (innerError) {
-                alert("Gangguan Pengiriman Sistem: " + innerError.message);
-            }
-            btn.disabled = false;
-            btn.innerText = "Simpan & Publikasikan Berita";
-        };
-        
-        reader.onerror = () => {
-            alert("Sistem gagal membaca dokumen gambar lokal komputer Anda.");
-            btn.disabled = false;
-            btn.innerText = "Simpan & Publikasikan Berita";
-        };
-
-    } catch (globalError) {
-        alert("Eror Utama Aplikasi: " + globalError.message);
-        btn.disabled = false;
-        btn.innerText = "Simpan & Publikasikan Berita";
-    }
-});
-</script>
 </body>
 </html>
