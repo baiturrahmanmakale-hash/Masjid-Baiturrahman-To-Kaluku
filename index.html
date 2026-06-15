@@ -2368,17 +2368,18 @@ document.addEventListener("DOMContentLoaded", function() {
 
                 let htmlBeritaBaru = "";
                 
-                lines.forEach((line, index) => {
+                               lines.forEach((line, index) => {
                     const data = line.split("|");
                     
                     if (data.length >= 3) {
+                        // 🌟 PERBAIKAN: Menambahkan nomor urut kolom, [1], [2], [3] yang benar
                         const foto = data[0].trim();
                         const judul = data[1].trim();
                         const deskripsi = data[2].trim();
                         const tanggal = data[3] ? data[3].trim() : "Baru";
 
                         // Folder foto mengarah ke folder uploads online di InfinityFree
-                        const urlFotoOnline = `https://masjidbaiturrahmantokaluku.great-site.net/uploads/${foto}`;
+                        const urlFotoOnline = `https://great-site.net{foto}`;
 
                         // Menggunakan data indeks baris terbalik sebagai acuan halaman detail berita di GitHub
                         const urutanBaris = lines.length - 1 - index; 
@@ -2387,7 +2388,7 @@ document.addEventListener("DOMContentLoaded", function() {
                         htmlBeritaBaru += `
                             <div class="berita-card fade-in">
                                 <div class="berita-img">
-                                    <img src="${urlFotoOnline}" alt="${judul}" loading="lazy" onerror="this.src='https://masjidbaiturrahmantokaluku.great-site.net/Foto32.jpg'"/>
+                                    <img src="${urlFotoOnline}" alt="${judul}" loading="lazy" onerror="this.src='https://great-site.net'"/>
                                     <span class="berita-date">📅 ${tanggal}</span>
                                 </div>
                                 <div class="berita-body">
@@ -2401,6 +2402,7 @@ document.addEventListener("DOMContentLoaded", function() {
                         `;
                     }
                 });
+
 
                 // Menyisipkan kartu berita baru secara otomatis ke posisi teratas .berita-grid
                 container.insertAdjacentHTML('afterbegin', htmlBeritaBaru);
