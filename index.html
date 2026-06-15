@@ -2344,10 +2344,10 @@ document.addEventListener("DOMContentLoaded", function() {
 <script>
 document.addEventListener("DOMContentLoaded", function() {
     // Menghubungkan ke database teks di server InfinityFree Anda
-    const targetURL = "https://masjidbaiturrahmantokaluku.great-site.net/galeri_data.txt?v=" + new Date().getTime();
+    const targetURL = "https://great-site.net" + new Date().getTime();
     
     // Menggunakan AllOrigins API agar bebas dari limit lintas server (CORS)
-    const apiURL = "https://api.allorigins.win/raw?url=" + encodeURIComponent(targetURL);
+    const apiURL = "https://allorigins.win" + encodeURIComponent(targetURL);
 
     const container = document.querySelector(".berita-grid");
 
@@ -2368,11 +2368,11 @@ document.addEventListener("DOMContentLoaded", function() {
 
                 let htmlBeritaBaru = "";
                 
-                               lines.forEach((line, index) => {
+                lines.forEach((line, index) => {
                     const data = line.split("|");
                     
                     if (data.length >= 3) {
-                        // 🌟 PERBAIKAN: Menambahkan nomor urut kolom, [1], [2], [3] yang benar
+                        // 🟢 FIX NYATA: Menyertakan indeks array, [1], [2], dan [3] dengan benar
                         const foto = data[0].trim();
                         const judul = data[1].trim();
                         const deskripsi = data[2].trim();
@@ -2403,7 +2403,6 @@ document.addEventListener("DOMContentLoaded", function() {
                     }
                 });
 
-
                 // Menyisipkan kartu berita baru secara otomatis ke posisi teratas .berita-grid
                 container.insertAdjacentHTML('afterbegin', htmlBeritaBaru);
             })
@@ -2413,6 +2412,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 });
 </script>
+
 
 </body>
 </html>
