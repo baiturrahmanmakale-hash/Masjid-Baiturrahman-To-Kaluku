@@ -2305,36 +2305,7 @@ document.getElementById('btn-dashboard').addEventListener('click', function(even
 </script>
 
 <script>
-document.addEventListener("DOMContentLoaded", function() {
-    // URL database teks asli di hosting InfinityFree Anda
-    const targetURL = "https://great-site.net" + new Date().getTime();
-    
-    // 🟢 GANTI JALUR: Menggunakan AllOrigins API (Bebas limit & Tanpa perlu klik aktivasi)
-    const apiURL = "https://allorigins.win" + encodeURIComponent(targetURL);
-
-    const container = document.querySelector(".berita-grid");
-
-    if (container) {
-        fetch(apiURL)
-            .then(response => {
-                if (!response.ok) throw new Error("Gagal mengambil data via AllOrigins");
-                return response.text(); // Membaca data sebagai teks mentah (.txt)
-            })
-            .then(textData => {
-                if (!textData || textData.trim() === "") return;
-
-                // Memecah dokumen menjadi baris-baris terpisah
-                const lines = textData.split("\n").filter(line => line.trim() !== "");
-                
-                // Membalik urutan baris agar berita paling baru yang Anda ketik muncul duluan
-                lines.reverse();
-
-                let htmlBeritaBaru = "";
-                
-                lines.forEach(line => {
-                    const data = line.split("|");
-                    
-                  <!-- === SCRIPT JADWAL SHALAT === -->
+<!-- === SCRIPT JADWAL SHALAT === -->
 <script>
   updatePrayerHighlight();
   setInterval(updatePrayerHighlight, 60000);
@@ -2343,10 +2314,10 @@ document.addEventListener("DOMContentLoaded", function() {
 <!-- === SCRIPT PENARIK BERITA OTOMATIS DARI INFINITYFREE === -->
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-    // Menghubungkan ke database teks di server InfinityFree Anda
+    // URL database teks asli yang valid di hosting InfinityFree Anda
     const targetURL = "https://great-site.net" + new Date().getTime();
     
-    // Menggunakan AllOrigins API agar bebas dari limit lintas server (CORS)
+    // Alamat AllOrigins API yang benar untuk menarik data secara aman
     const apiURL = "https://allorigins.win" + encodeURIComponent(targetURL);
 
     const container = document.querySelector(".berita-grid");
@@ -2360,7 +2331,7 @@ document.addEventListener("DOMContentLoaded", function() {
             .then(textData => {
                 if (!textData || textData.trim() === "") return;
 
-                // Memecah dokumen menjadi baris-baris terpisah
+                // Memecah berkas teks menjadi baris-baris terpisah
                 const lines = textData.split("\n").filter(line => line.trim() !== "");
                 
                 // Membalik urutan baris agar berita paling baru muncul duluan
@@ -2372,16 +2343,16 @@ document.addEventListener("DOMContentLoaded", function() {
                     const data = line.split("|");
                     
                     if (data.length >= 3) {
-                        // 🟢 MENGGUNAKAN METODE UTUH .at() AGAR AMAN DARI SENSOR SISTEM AI
+                        // Mengambil kolom data teks menggunakan fungsi .at() yang aman
                         const foto = data.at(0).trim();
                         const judul = data.at(1).trim();
                         const deskripsi = data.at(2).trim();
                         const tanggal = data.at(3) ? data.at(3).trim() : "Baru";
 
-                        // Folder foto mengarah ke folder uploads online di InfinityFree
+                        // Alamat lengkap foto online yang tersimpan di server InfinityFree
                         const urlFotoOnline = "https://great-site.net" + foto;
 
-                        // Menggunakan data indeks baris terbalik sebagai acuan halaman detail berita di GitHub
+                        // Menggunakan indeks baris terbalik sebagai penunjuk halaman detail berita
                         const urutanBaris = lines.length - 1 - index; 
                         const linkHalaman = "detail-berita.html?berita_id=" + urutanBaris;
 
@@ -2393,9 +2364,9 @@ document.addEventListener("DOMContentLoaded", function() {
                                 </div>
                                 <div class="berita-body">
                                     <h4>${judul}</h4>
-                                    <!-- Menambahkan class potong-teks agar tulisan terpotong maksimal 10 baris -->
+                                    <!-- Class potong-teks mengunci tampilan maksimal 10 baris di beranda -->
                                     <p class="potong-teks">${deskripsi}</p>
-                                    <!-- target="_blank" dipasang untuk membuka halaman detail di tab baru -->
+                                    <!-- Membuka halaman detail utuh di tab baru -->
                                     <a href="${linkHalaman}" target="_blank" class="berita-link">Baca selengkapnya →</a>
                                 </div>
                             </div>
@@ -2403,7 +2374,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     }
                 });
 
-                // Menyisipkan kartu berita baru secara otomatis ke posisi teratas .berita-grid
+                // Memasukkan hasil susunan kartu berita baru ke bagian atas .berita-grid
                 container.insertAdjacentHTML('afterbegin', htmlBeritaBaru);
             })
             .catch(err => {
@@ -2415,4 +2386,5 @@ document.addEventListener("DOMContentLoaded", function() {
 
 </body>
 </html>
+
 
