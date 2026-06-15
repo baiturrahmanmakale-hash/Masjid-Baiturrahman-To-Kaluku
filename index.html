@@ -1649,33 +1649,100 @@ document.getElementById('btn-dashboard').addEventListener('click', function(even
   <div class="container">
     <h2 class="section-heading fade-in">Berita &amp; Pengumuman</h2>
     <p class="section-sub fade-in">Informasi terkini seputar kegiatan dan perkembangan Masjid Baiturrahman To' Kaluku</p>
-    
-    <!-- 🌟 KUNCINYA DI SINI: Kosongkan isi grid ini agar diisi otomatis oleh JavaScript -->
-       <!-- GRID UTAMA TEMPAT BERITA BERGABUNG -->
-    <div class="berita-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; padding: 0 20px;">
+    <div class="berita-grid">
+
+         <!-- BERITA : PENENTUAN ARAH KIBLAT -->
+      <div class="berita-card fade-in">
+        <div class="berita-img">
+          <img src="FOTO/Foto40.jpg" alt="Penentuan Arah Kiblat" loading="lazy" />
+          <span class="berita-date">📅 23 November 2024</span>
+        </div>
+        <div class="berita-body">
+          <h4>MENATA ARAH KIBLAT, MEMBUKA PINTU AMAL JARIYAH 🧭🕌</h4>
+          <p>
+            TO' KALUKU - Di balik megahnya kubah dan kokohnya dinding masjid kelak, ada satu hal mendasar yang wajib kita siapkan dengan benar sejak awal. Hal itu adalah ketepatan arah kiblat. Alhamdulillah, hari ini kami memulai tahapan awal pembangunan masjid dengan melakukan pengukuran arah kiblat yang presisi. Kami ingin memastikan bahwa setiap jengkal tanah yang digali dan setiap batu yang ditata berada di jalur yang benar menuju Ka'bah.
+            
+            <!-- Teks di bawah ini yang akan disembunyikan dan muncul saat diklik -->
+            <span class="teks-lengkap" style="display: none;">
+              <br><br>Bayangkan, setiap kali ada jamaah yang bersujud menghadap kiblat di masjid ini kelak, pahalanya akan terus mengalir tanpa putus kepada Anda yang ikut membantu pembangunannya dari awal. Mari ambil bagian dalam membangun rumah Allah di dunia, agar Allah bangunkan istana bagi kita di surga kelak. 🕋✨
+              <br><br>💳 <b>Salurkan Donasi Terbaik Anda Melalui:</b>
+              <br>Bank BRI: 341301073669536
+              <br>Bank Mandiri: 1700015569720
+              <br>Bank BNI: 1903009115
+              <br><br>📱 <b>Konfirmasi Donasi & Informasi Lebih Lanjut:</b>
+              <br>WhatsApp: 0812-5305-9701
+              <br><br>“Siapa yang membangun masjid karena Allah, maka Allah akan membangunkan baginya rumah di surga.” (HR. Bukhari & Muslim)
+            </span>
+          </p>
+          <a href="javascript:void(0);" class="berita-link" onclick="toggleBerita(this)">Baca selengkapnya →</a>
+        </div>
+      </div>
+
       
-      <!-- BERITA 1: PENENTUAN ARAH KIBLAT (MANUAL) -->
-      <div class="berita-card fade-in" style="background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.06);">
-        <div class="berita-img" style="position: relative; height: 200px;"><img src="FOTO/Foto40.jpg" alt="Penentuan Arah Kiblat" style="width: 100%; height: 100%; object-fit: cover;" /><span class="berita-date" style="position: absolute; bottom: 10px; left: 10px; background: rgba(0,0,0,0.7); color: white; padding: 4px 8px; font-size: 0.8rem; border-radius: 4px;">📅 23 November 2024</span></div>
-        <div class="berita-body" style="padding: 20px;">
-          <h4 style="font-size: 1.1rem; color: #2c3e50; margin-bottom: 10px;">MENATA ARAH KIBLAT, MEMBUKA PINTU AMAL JARIYAH 🧭🕌</h4>
-          <p class="potong-teks">TO' KALUKU - Di balik megahnya kubah dan kokohnya dinding masjid kelak, ada satu hal mendasar yang wajib kita siapkan dengan benar sejak awal. Hal itu adalah ketepatan arah kiblat. Alhamdulillah, hari ini kami memulai tahapan awal pembangunan masjid dengan melakukan pengukuran arah kiblat yang presisi...</p>
-          <a href="detail-berita.html" target="_blank" class="berita-link" style="color: #27ae60; font-weight: bold;">Baca selengkapnya →</a>
+      
+           <!-- BERITA 1: PELETAKAN BATU PERTAMA -->
+      <div class="berita-card fade-in">
+        <div class="berita-img">
+          <img src="FOTO/Foto54.jpg" alt="Peletakan Batu Pertama" loading="lazy" />
+          <span class="berita-date">📅 19 Desember 2024</span>
         </div>
-      </div>
-  
-      <!-- BERITA 2: PELETAKAN BATU PERTAMA (MANUAL) -->
-      <div class="berita-card fade-in" style="background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.06);">
-        <div class="berita-img" style="position: relative; height: 200px;"><img src="FOTO/Foto54.jpg" alt="Peletakan Batu Pertama" style="width: 100%; height: 100%; object-fit: cover;" /><span class="berita-date" style="position: absolute; bottom: 10px; left: 10px; background: rgba(0,0,0,0.7); color: white; padding: 4px 8px; font-size: 0.8rem; border-radius: 4px;">📅 19 Desember 2024</span></div>
-        <div class="berita-body" style="padding: 20px;">
-          <h4 style="font-size: 1.1rem; color: #2c3e50; margin-bottom: 10px;">Bupati Tana Toraja melakukan Peletakan Batu Pertama Renovasi Total Masjid</h4>
-          <p class="potong-teks">TO' KALUKU – Pembangunan sarana ibadah yang representatif and nyaman kembali dimulai di Bumi Lepongan Bulan. Bupati Tana Toraja, dr. Zadrak Tombeg, Sp.A, secara resmi melakukan peletakan batu pertama sebagai tanda dimulainya renovasi total Masjid Baiturrahman To' Kaluku...</p>
-          <a href="detail-berita.html" target="_blank" class="berita-link" style="color: #27ae60; font-weight: bold;">Baca selengkapnya →</a>
+        <div class="berita-body">
+          <h4>Bupati Tana Toraja, dr. Zadrak Tombeg, Sp.A melakukan Peletakan Batu Pertama Renovasi Total Masjid Baiturrahman To' Kaluku</h4>
+          <p>
+            TO' KALUKU – Pembangunan sarana ibadah yang representatif dan nyaman kembali dimulai di Bumi Lepongan Bulan. Bupati Tana Toraja, dr. Zadrak Tombeg, Sp.A, secara resmi melakukan peletakan batu pertama sebagai tanda dimulainya renovasi total Masjid Baiturrahman To' Kaluku.            <!-- Teks tersembunyi -->
+            <span class="teks-lengkap" style="display: none;">
+              Acara yang berlangsung khidmat ini dihadiri oleh tokoh agama, pengurus masjid, serta masyarakat setempat yang menyambut antusias peremajaan rumah ibadah ini. Renovasi total dilakukan untuk memperluas daya tampung masjid seiring bertambahnya jumlah jamaah.Langkah Awal yang PresisiSebelum peletakan batu pertama dilakukan, panitia pembangunan telah memastikan seluruh kesiapan teknis berjalan matang. Salah satu tahapan krusial yang sudah diselesaikan adalah pengukuran awal titik koordinat dan penentuan arah kiblat yang presisi. Hal ini dilakukan agar pondasi bangunan baru benar-benar lurus menghadap Ka'bah demi keabsahan ibadah jemaah kelak.Dalam sambutannya, Bupati dr. Zadrak Tombeg, Sp.A menyampaikan apresiasi yang tinggi atas semangat gotong royong masyarakat dalam membangun rumah ibadah. Beliau berharap Masjid Baiturrahman To' Kaluku kelak tidak hanya menjadi tempat ibadah ritual, tetapi juga menjadi pusat syiar Islam dan pemersatu umat di Tana Toraja.Membuka Kran Amal JariyahPihak panitia mengundang seluruh lapisan masyarakat, para perantau, serta kaum muslimin di mana pun berada untuk ikut ambil bagian dalam investasi akhirat ini. Pembangunan ini menjadi kesempatan emas untuk mengalirkan amal jariyah yang pahalanya tidak akan terputus.Bagi masyarakat yang ingin menyalurkan bantuan, panitia pembangunan Masjid Baiturrahman To' Kaluku telah membuka rekening resmi melalui beberapa bank berikut:Bank BRI: 341301073669536Bank Mandiri: 1700015569720Bank BNI: 1903009115Setelah melakukan transfer, para donatur diharapkan melakukan konfirmasi demi tertib administrasi melalui kontak layanan panitia:WhatsApp (WA): 0812-5305-9701Mari bersama-sama ulurkan tangan dan satukan niat demi berdirinya rumah Allah yang megah dan nyaman bagi jemaah To' Kaluku.
+            </span>
+          </p>
+          <a href="javascript:void(0);" class="berita-link" onclick="toggleBerita(this)">Baca selengkapnya →</a>
         </div>
       </div>
 
+
+          <!-- BERITA 2: KUNJUNGAN KAPOLRES -->
+      <div class="berita-card fade-in">
+        <div class="berita-img">
+          <img src="FOTO/Dukungan Kapolres.jpg" alt="Kunjungan Polres Tana Toraja" loading="lazy" />
+          <span class="berita-date">📅 10 Oktober 2025</span>
+        </div>
+        <div class="berita-body">
+          <h4>SINERGI INDAH DI RUMAH ALLAH: KUNJUNGAN BAPAK KAPOLRES TANA TORAJA DI TO' KALUKU 🧭🕌</h4>
+          <p>
+            TO' KALUKU – Pembangunan Masjid Baiturrahman To' Kaluku kini memasuki babak baru yang penuh berkah. Setelah sebelumnya arah kiblat diukur dengan presisi, hari ini kami mendapat kehormatan atas kunjungan langsung dari Kapolres Tana Toraja, AKBP Budi Hermawan, S.I.K.Beliau hadir untuk melihat langsung proses renovasi total sekaligus menyerahkan bantuan dana/material untuk percepatan pembangunan masjid. Amanah baik ini diterima langsung oleh wakil panitia pembangunan kita, Ustadz Irfan Sappe, S.Pd.
+            
+            <!-- Teks tersembunyi -->
+            <span class="teks-lengkap" style="display: none;">
+              Kehadiran tokoh penting daerah seperti Bapak Bupati dan Bapak Kapolres menjadi bukti nyata bahwa mendirikan rumah Allah adalah gerakan kebaikan bersama. Arah pembangunan sudah benar, dukungan dari berbagai pihak kian mengalir, kini giliran kita untuk ikut mengambil peran!Mari tabung amalan terbaik Anda di masjid ini. Setiap huruf yang dibaca dan setiap sujud jemaah kelak di masjid ini, pahalanya akan ikut mengalir kepada Anda yang membantu pembangunannya sejak awal. 🕋❤️🏛️ Saluran Infaq & Wakaf Pembangunan Masjid:BRI: 341301073669536Mandiri: 1700015569720BNI: 1903009115📞 Konfirmasi WA Transfer: 0812-5305-9701
+            </span>
+          </p>
+          <a href="javascript:void(0);" class="berita-link" onclick="toggleBerita(this)">Baca selengkapnya →</a>
+        </div>
+      </div>
+
+
+           <!-- BERITA 3: BUKA PUASA BERSAMA -->
+      <div class="berita-card fade-in">
+        <div class="berita-img">
+          <img src="Buka-puasa-bersama.jpg" alt="Buka-puasa-bersama" loading="lazy" />
+          <span class="berita-date">📅 6 Maret 2026</span>
+        </div>
+        <div class="berita-body">
+          <h4>Buka Puasa Bersama Bupati Tana Toraja. dr. Zadrak Tombeg, Sp. A</h4>
+          <p>
+            TO' KALUKU – Bupati Tana Toraja, dr. Zadrak Tombeg, Sp.A, menghadiri kegiatan buka puasa bersama yang digelar di Masjid Baiturrahman To’ Kaluku, Kecamatan Makale, Kamis (6/3/2026).
+            
+            <!-- Teks tersembunyi -->
+            <span class="teks-lengkap" style="display: none;">
+              Kegiatan yang berlangsung dalam suasana penuh kebersamaan ini dihadiri pengurus masjid, tokoh agama, serta masyarakat sekitar yang memanfaatkan momentum bulan suci Ramadan untuk mempererat silaturahmi dan ukhuwah.
+            </span>
+          </p>
+          <a href="javascript:void(0);" class="berita-link" onclick="toggleBerita(this)">Baca selengkapnya →</a>
+        </div>
+      </div>
+
+      
     </div>
-
+  </div>
 </section>
 
 <!-- ===== DONASI ===== -->
@@ -1734,7 +1801,9 @@ document.getElementById('btn-dashboard').addEventListener('click', function(even
   Konfirmasi via WhatsApp
 </a>
 
+
 <!-- Penutup -->
+
     <p class="donasi-footer">✨ Jazakumullahu khairan atas kepedulian Anda</p>
 
   </div>
@@ -2219,8 +2288,6 @@ document.getElementById('btn-dashboard').addEventListener('click', function(even
     if (form) form.reset();
   }
 
- <!-- === SCRIPT UTAMA JADWAL SHALAT & FITUR BERITA === -->
-<script>
   // ===== FITUR BACA SELENGKAPNYA BERITA LOKAL =====
   function toggleBerita(tombol) {
     var kartu = tombol.closest('.berita-body');
@@ -2267,70 +2334,144 @@ document.getElementById('btn-dashboard').addEventListener('click', function(even
   setInterval(updatePrayerHighlight, 60000);
 </script>
 
-<!-- === SCRIPT PENARIK BERITA OTOMATIS DARI INFINITYFREE === -->
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-    // 1. URL database teks asli yang valid di hosting InfinityFree Anda
-    const targetURL = "https://" + "masjidbaiturrahmantokaluku." + "great-site.net" + "/galeri_data.txt?v=" + new Date().getTime();
+    // URL database teks asli di hosting InfinityFree Anda
+    const targetURL = "https://great-site.net" + new Date().getTime();
     
-    // 2. Alamat AllOrigins API yang benar dan bebas dari error parse
-    const apiURL = "https://" + "api." + "allorigins.win" + "/raw?url=" + encodeURIComponent(targetURL);
+    // 🟢 GANTI JALUR: Menggunakan AllOrigins API (Bebas limit & Tanpa perlu klik aktivasi)
+    const apiURL = "https://allorigins.win" + encodeURIComponent(targetURL);
 
     const container = document.querySelector(".berita-grid");
 
     if (container) {
         fetch(apiURL)
             .then(response => {
-                if (!response.ok) throw new Error("Gagal mengambil data");
-                return response.text(); 
+                if (!response.ok) throw new Error("Gagal mengambil data via AllOrigins");
+                return response.text(); // Membaca data sebagai teks mentah (.txt)
             })
             .then(textData => {
                 if (!textData || textData.trim() === "") return;
 
+                // Memecah dokumen menjadi baris-baris terpisah
                 const lines = textData.split("\n").filter(line => line.trim() !== "");
+                
+                // Membalik urutan baris agar berita paling baru yang Anda ketik muncul duluan
                 lines.reverse();
 
                 let htmlBeritaBaru = "";
                 
-                lines.forEach((line, index) => {
+                lines.forEach(line => {
                     const data = line.split("|");
                     
+                    // Memastikan baris data tersebut sah (Foto, Judul, Deskripsi)
                     if (data.length >= 3) {
-                        const foto = data.at(0).trim();
-                        const judul = data.at(1).trim();
-                        const deskripsi = data.at(2).trim();
-                        const tanggal = data.at(3) ? data.at(3).trim() : "Baru";
+                        const foto = data[0].trim();
+                        const judul = data[1].trim();
+                        const deskripsi = data[2].trim();
+                        const tanggal = data[3] ? data[3].trim() : "Baru";
 
-                        const urlFotoOnline = "https://" + "masjidbaiturrahmantokaluku." + "great-site.net" + "/uploads/" + foto;
-
-                        const urutanBaris = lines.length - 1 - index; 
-                        const linkHalaman = "detail-berita.html?berita_id=" + urutanBaris;
+                        // Folder foto tetap mengarah ke folder uploads online di InfinityFree
+                        const urlFotoOnline = `https://great-site.net{foto}`;
 
                         htmlBeritaBaru += `
-                            <div class="berita-card fade-in" style="background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.06);">
-                                <div class="berita-img" style="position: relative; height: 200px;">
-                                    <img src="${urlFotoOnline}" alt="${judul}" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.src='https://great-site.net'"/>
-                                    <span class="berita-date" style="position: absolute; bottom: 10px; left: 10px; background: rgba(0,0,0,0.7); color: white; padding: 4px 8px; font-size: 0.8rem; border-radius: 4px;">📅 ${tanggal}</span>
+                            <div class="berita-card fade-in">
+                                <div class="berita-img">
+                                    <img src="${urlFotoOnline}" alt="${judul}" loading="lazy" onerror="this.src='https://great-site.net'"/>
+                                    <span class="berita-date">📅 ${tanggal}</span>
                                 </div>
-                                <div class="berita-body" style="padding: 20px;">
-                                    <h4 style="font-size: 1.1rem; color: #2c3e50; margin-bottom: 10px;">${judul}</h4>
-                                    <p class="potong-teks">${deskripsi}</p>
-                                    <a href="${linkHalaman}" target="_blank" class="berita-link" style="color: #27ae60; font-weight: bold;">Baca selengkapnya →</a>
+                                <div class="berita-body">
+                                    <h4>${judul}</h4>
+                                    <p>${deskripsi}</p>
+                                    <a href="#" class="berita-link" onclick="alert('Detail cerita telah ditampilkan sepenuhnya.'); return false;">Baca selengkapnya →</a>
                                 </div>
                             </div>
                         `;
                     }
                 });
 
+                // Menyisipkan kartu berita baru secara otomatis ke posisi teratas .berita-grid
                 container.insertAdjacentHTML('afterbegin', htmlBeritaBaru);
             })
             .catch(err => {
-                console.error("Gagal menyinkronkan berita:", err);
+                console.error("Gagal menyinkronkan berita dinamis:", err);
             });
     }
 });
-
 </script>
+
+</body>
+
+  updatePrayerHighlight();
+  setInterval(updatePrayerHighlight, 60000);
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    // URL database teks asli di hosting InfinityFree Anda
+    const targetURL = "https://masjidbaiturrahmantokaluku.great-site.net/galeri_data.txt?v=" + new Date().getTime();
+    
+    // 🟢 GANTI JALUR: Menggunakan AllOrigins API (Bebas limit & Tanpa perlu klik aktivasi)
+    const apiURL = "https://api.allorigins.win/raw?url=" + encodeURIComponent(targetURL);
+
+    const container = document.querySelector(".berita-grid");
+
+    if (container) {
+        fetch(apiURL)
+            .then(response => {
+                if (!response.ok) throw new Error("Gagal mengambil data via AllOrigins");
+                return response.text(); // Membaca data sebagai teks mentah (.txt)
+            })
+            .then(textData => {
+                if (!textData || textData.trim() === "") return;
+
+                // Memecah dokumen menjadi baris-baris terpisah
+                const lines = textData.split("\n").filter(line => line.trim() !== "");
+                
+                // Membalik urutan baris agar berita paling baru yang Anda ketik muncul duluan
+                lines.reverse();
+
+                let htmlBeritaBaru = "";
+                
+                lines.forEach(line => {
+                    const data = line.split("|");
+                    
+                    // Memastikan baris data tersebut sah (Foto, Judul, Deskripsi)
+                    if (data.length >= 3) {
+                        const foto = data[0].trim();
+                        const judul = data[1].trim();
+                        const deskripsi = data[2].trim();
+                        const tanggal = data[3] ? data[3].trim() : "Baru";
+
+                        // Folder foto tetap mengarah ke folder uploads online di InfinityFree
+                        const urlFotoOnline = `https://masjidbaiturrahmantokaluku.great-site.net/uploads/${foto}`;
+
+                        htmlBeritaBaru += `
+                            <div class="berita-card fade-in">
+                                <div class="berita-img">
+                                    <img src="${urlFotoOnline}" alt="${judul}" loading="lazy" onerror="this.src='https://masjidbaiturrahmantokaluku.great-site.net/Foto32.jpg'"/>
+                                    <span class="berita-date">📅 ${tanggal}</span>
+                                </div>
+                                <div class="berita-body">
+                                    <h4>${judul}</h4>
+                                    <p>${deskripsi}</p>
+                                    <a href="#" class="berita-link" onclick="alert('Detail cerita telah ditampilkan sepenuhnya.'); return false;">Baca selengkapnya →</a>
+                                </div>
+                            </div>
+                        `;
+                    }
+                });
+
+                // Menyisipkan kartu berita baru secara otomatis ke posisi teratas .berita-grid
+                container.insertAdjacentHTML('afterbegin', htmlBeritaBaru);
+            })
+            .catch(err => {
+                console.error("Gagal menyinkronkan berita dinamis:", err);
+            });
+    }
+});
+</script>
+
 </body>
 </html>
 
