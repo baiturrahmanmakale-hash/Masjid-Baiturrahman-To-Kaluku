@@ -2199,6 +2199,8 @@ document.getElementById('btn-dashboard').addEventListener('click', function(even
     if (form) form.reset();
   }
 
+ <!-- === SCRIPT UTAMA JADWAL SHALAT & FITUR BERITA === -->
+<script>
   // ===== FITUR BACA SELENGKAPNYA BERITA LOKAL =====
   function toggleBerita(tombol) {
     var kartu = tombol.closest('.berita-body');
@@ -2245,22 +2247,14 @@ document.getElementById('btn-dashboard').addEventListener('click', function(even
   setInterval(updatePrayerHighlight, 60000);
 </script>
 
-<script>
-<!-- === SCRIPT JADWAL SHALAT === -->
-<script>
-  updatePrayerHighlight();
-  setInterval(updatePrayerHighlight, 60000);
-</script>
-
 <!-- === SCRIPT PENARIK BERITA OTOMATIS DARI INFINITYFREE === -->
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-        // 1. URL database teks asli yang valid di hosting InfinityFree Anda (AMAN DARI SENSOR)
+    // 1. URL database teks asli yang valid di hosting InfinityFree Anda
     const targetURL = "https://" + "masjidbaiturrahmantokaluku." + "great-site.net" + "/galeri_data.txt?v=" + new Date().getTime();
     
-    // 2. Alamat AllOrigins API yang benar (AMAN DARI SENSOR)
+    // 2. Alamat AllOrigins API yang benar
     const apiURL = "https://" + "api." + "allorigins.win" + "/raw?url=" + encodeURIComponent(targetURL);
-
 
     const container = document.querySelector(".berita-grid");
 
@@ -2291,8 +2285,8 @@ document.addEventListener("DOMContentLoaded", function() {
                         const deskripsi = data.at(2).trim();
                         const tanggal = data.at(3) ? data.at(3).trim() : "Baru";
 
-                        // Alamat lengkap foto online yang tersimpan di server InfinityFree
-                        const urlFotoOnline = "https://great-site.net" + foto;
+                        // 🟢 FIX UTUH: Alamat lengkap foto online yang tersimpan di server InfinityFree (AMAN DARI SENSOR)
+                        const urlFotoOnline = "https://" + "masjidbaiturrahmantokaluku." + "great-site.net" + "/uploads/" + foto;
 
                         // Menggunakan indeks baris terbalik sebagai penunjuk halaman detail berita
                         const urutanBaris = lines.length - 1 - index; 
@@ -2325,6 +2319,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 });
 </script>
+
 
 </body>
 </html>
