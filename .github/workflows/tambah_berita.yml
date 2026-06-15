@@ -1,0 +1,38 @@
+name: Penambah Berita Otomatis
+
+on:
+  repository_dispatch:
+    types: [formspree_submission]
+
+jobs:
+  update_berita:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ambil Kode Repositori
+        uses: actions/checkout@v4
+
+      - name: Proses dan Tulis Berita Baru
+        run: |
+          # Mengambil data teks dari kiriman Formspree
+          JUDUL="${{ github.event.client_payload.data.judul }}"
+          DESKRIPSI="${{ github.event.client_payload.data.deskripsi }}"
+          FOTO_URL="${{ github.event.client_payload.data.foto }}"
+          
+          # Membuat tanggal otomatis format Indonesia
+          TANGGAL=$(date +'%d %B %Y' | sed -e 's/January/Januari/' -e 's/February/Februari/' -e 's/March/Maret/' -e 's/April/April/' -e 's/May/Mei/' -e 's/June/Juni/' -e 's/July/Juli/' -e 's/August/Agustus/' -e 's/September/September/' -e 's/October/Oktober/' -e 's/November/November/' -e 's/December/Desember/')
+          ID_UNIK=$(date +%s)
+          LINK_DETAIL="detail-berita.html?id=${ID_UNIK}"
+
+          # Menggabungkan data dengan pembatas garis tegak |
+          BARIS_BARU="${FOTO_URL}|${JUDUL}|${DESKRIPSI}|${TANGGAL}|${LINK_DETAIL}"
+          
+          # Memasukkan baris baru ke paling bawah file galeri_data.txt
+          echo -e "${BARIS_BARU}" >> galeri_data.txt
+
+      - name: Simpan Perubahan ke GitHub Pages
+        run: |
+          git config --global user.name "Robot Berita Masjid"
+          git config --global user.email "bot@masjid.internal"
+          git add galeri_data.txt
+          git commit -m "Otomatis: Menambahkan berita kegiatan baru"
+          git push
