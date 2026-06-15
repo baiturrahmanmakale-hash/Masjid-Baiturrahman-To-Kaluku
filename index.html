@@ -1651,11 +1651,31 @@ document.getElementById('btn-dashboard').addEventListener('click', function(even
     <p class="section-sub fade-in">Informasi terkini seputar kegiatan dan perkembangan Masjid Baiturrahman To' Kaluku</p>
     
     <!-- 🌟 KUNCINYA DI SINI: Kosongkan isi grid ini agar diisi otomatis oleh JavaScript -->
-    <div class="berita-grid">
+       <!-- GRID UTAMA TEMPAT BERITA BERGABUNG -->
+    <div class="berita-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; padding: 0 20px;">
       
+      <!-- BERITA 1: PENENTUAN ARAH KIBLAT (MANUAL) -->
+      <div class="berita-card fade-in" style="background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.06);">
+        <div class="berita-img" style="position: relative; height: 200px;"><img src="FOTO/Foto40.jpg" alt="Penentuan Arah Kiblat" style="width: 100%; height: 100%; object-fit: cover;" /><span class="berita-date" style="position: absolute; bottom: 10px; left: 10px; background: rgba(0,0,0,0.7); color: white; padding: 4px 8px; font-size: 0.8rem; border-radius: 4px;">📅 23 November 2024</span></div>
+        <div class="berita-body" style="padding: 20px;">
+          <h4 style="font-size: 1.1rem; color: #2c3e50; margin-bottom: 10px;">MENATA ARAH KIBLAT, MEMBUKA PINTU AMAL JARIYAH 🧭🕌</h4>
+          <p class="potong-teks">TO' KALUKU - Di balik megahnya kubah dan kokohnya dinding masjid kelak, ada satu hal mendasar yang wajib kita siapkan dengan benar sejak awal. Hal itu adalah ketepatan arah kiblat. Alhamdulillah, hari ini kami memulai tahapan awal pembangunan masjid dengan melakukan pengukuran arah kiblat yang presisi...</p>
+          <a href="detail-berita.html" target="_blank" class="berita-link" style="color: #27ae60; font-weight: bold;">Baca selengkapnya →</a>
+        </div>
+      </div>
+  
+      <!-- BERITA 2: PELETAKAN BATU PERTAMA (MANUAL) -->
+      <div class="berita-card fade-in" style="background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.06);">
+        <div class="berita-img" style="position: relative; height: 200px;"><img src="FOTO/Foto54.jpg" alt="Peletakan Batu Pertama" style="width: 100%; height: 100%; object-fit: cover;" /><span class="berita-date" style="position: absolute; bottom: 10px; left: 10px; background: rgba(0,0,0,0.7); color: white; padding: 4px 8px; font-size: 0.8rem; border-radius: 4px;">📅 19 Desember 2024</span></div>
+        <div class="berita-body" style="padding: 20px;">
+          <h4 style="font-size: 1.1rem; color: #2c3e50; margin-bottom: 10px;">Bupati Tana Toraja melakukan Peletakan Batu Pertama Renovasi Total Masjid</h4>
+          <p class="potong-teks">TO' KALUKU – Pembangunan sarana ibadah yang representatif and nyaman kembali dimulai di Bumi Lepongan Bulan. Bupati Tana Toraja, dr. Zadrak Tombeg, Sp.A, secara resmi melakukan peletakan batu pertama sebagai tanda dimulainya renovasi total Masjid Baiturrahman To' Kaluku...</p>
+          <a href="detail-berita.html" target="_blank" class="berita-link" style="color: #27ae60; font-weight: bold;">Baca selengkapnya →</a>
+        </div>
+      </div>
+
     </div>
-    
-  </div>
+
 </section>
 
 <!-- ===== DONASI ===== -->
@@ -2253,7 +2273,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // 1. URL database teks asli yang valid di hosting InfinityFree Anda
     const targetURL = "https://" + "masjidbaiturrahmantokaluku." + "great-site.net" + "/galeri_data.txt?v=" + new Date().getTime();
     
-    // 2. Alamat AllOrigins API yang benar
+    // 2. Alamat AllOrigins API yang benar dan bebas dari error parse
     const apiURL = "https://" + "api." + "allorigins.win" + "/raw?url=" + encodeURIComponent(targetURL);
 
     const container = document.querySelector(".berita-grid");
@@ -2261,16 +2281,13 @@ document.addEventListener("DOMContentLoaded", function() {
     if (container) {
         fetch(apiURL)
             .then(response => {
-                if (!response.ok) throw new Error("Gagal mengambil data via AllOrigins");
+                if (!response.ok) throw new Error("Gagal mengambil data");
                 return response.text(); 
             })
             .then(textData => {
                 if (!textData || textData.trim() === "") return;
 
-                // Memecah berkas teks menjadi baris-baris terpisah
                 const lines = textData.split("\n").filter(line => line.trim() !== "");
-                
-                // Membalik urutan baris agar berita paling baru muncul duluan
                 lines.reverse();
 
                 let htmlBeritaBaru = "";
@@ -2279,48 +2296,41 @@ document.addEventListener("DOMContentLoaded", function() {
                     const data = line.split("|");
                     
                     if (data.length >= 3) {
-                        // Mengambil kolom data teks menggunakan fungsi .at() yang aman
                         const foto = data.at(0).trim();
                         const judul = data.at(1).trim();
                         const deskripsi = data.at(2).trim();
                         const tanggal = data.at(3) ? data.at(3).trim() : "Baru";
 
-                        // 🟢 FIX UTUH: Alamat lengkap foto online yang tersimpan di server InfinityFree (AMAN DARI SENSOR)
                         const urlFotoOnline = "https://" + "masjidbaiturrahmantokaluku." + "great-site.net" + "/uploads/" + foto;
 
-                        // Menggunakan indeks baris terbalik sebagai penunjuk halaman detail berita
                         const urutanBaris = lines.length - 1 - index; 
                         const linkHalaman = "detail-berita.html?berita_id=" + urutanBaris;
 
                         htmlBeritaBaru += `
-                            <div class="berita-card fade-in">
-                                <div class="berita-img">
-                                    <img src="${urlFotoOnline}" alt="${judul}" loading="lazy" onerror="this.src='https://great-site.net'"/>
-                                    <span class="berita-date">📅 ${tanggal}</span>
+                            <div class="berita-card fade-in" style="background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.06);">
+                                <div class="berita-img" style="position: relative; height: 200px;">
+                                    <img src="${urlFotoOnline}" alt="${judul}" style="width: 100%; height: 100%; object-fit: cover;" onerror="this.src='https://great-site.net'"/>
+                                    <span class="berita-date" style="position: absolute; bottom: 10px; left: 10px; background: rgba(0,0,0,0.7); color: white; padding: 4px 8px; font-size: 0.8rem; border-radius: 4px;">📅 ${tanggal}</span>
                                 </div>
-                                <div class="berita-body">
-                                    <h4>${judul}</h4>
-                                    <!-- Class potong-teks mengunci tampilan maksimal 10 baris di beranda -->
+                                <div class="berita-body" style="padding: 20px;">
+                                    <h4 style="font-size: 1.1rem; color: #2c3e50; margin-bottom: 10px;">${judul}</h4>
                                     <p class="potong-teks">${deskripsi}</p>
-                                    <!-- Membuka halaman detail utuh di tab baru -->
-                                    <a href="${linkHalaman}" target="_blank" class="berita-link">Baca selengkapnya →</a>
+                                    <a href="${linkHalaman}" target="_blank" class="berita-link" style="color: #27ae60; font-weight: bold;">Baca selengkapnya →</a>
                                 </div>
                             </div>
                         `;
                     }
                 });
 
-                // Memasukkan hasil susunan kartu berita baru ke bagian atas .berita-grid
                 container.insertAdjacentHTML('afterbegin', htmlBeritaBaru);
             })
             .catch(err => {
-                console.error("Gagal menyinkronkan berita dinamis:", err);
+                console.error("Gagal menyinkronkan berita:", err);
             });
     }
 });
+
 </script>
-
-
 </body>
 </html>
 
