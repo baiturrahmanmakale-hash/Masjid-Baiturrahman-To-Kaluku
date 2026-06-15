@@ -15,10 +15,10 @@
 <style>
 .potong-teks {
   display: -webkit-box;
-  -webkit-line-clamp: 10;
+  -webkit-line-clamp: 10; /* Membatasi teks berita maksimal 10 baris saja */
   -webkit-box-orient: vertical;  
   overflow: hidden;
-  text-overflow: ellipsis;
+  text-overflow: ellipsis; /* Memunculkan tanda titik-titik (...) di akhir baris ke-10 */
 }
 </style>
 
@@ -2384,7 +2384,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // URL database teks asli di hosting InfinityFree Anda
     const targetURL = "https://masjidbaiturrahmantokaluku.great-site.net/galeri_data.txt?v=" + new Date().getTime();
     
-    // 🟢 GANTI JALUR: Menggunakan AllOrigins API (Bebas limit & Tanpa perlu klik aktivasi)
+    // Menggunakan AllOrigins API (Bebas limit & Tanpa perlu klik aktivasi)
     const apiURL = "https://api.allorigins.win/raw?url=" + encodeURIComponent(targetURL);
 
     const container = document.querySelector(".berita-grid");
@@ -2401,23 +2401,27 @@ document.addEventListener("DOMContentLoaded", function() {
                 // Memecah dokumen menjadi baris-baris terpisah
                 const lines = textData.split("\n").filter(line => line.trim() !== "");
                 
-                // Membalik urutan baris agar berita paling baru yang Anda ketik muncul duluan
+                // Membalik urutan baris agar berita paling baru muncul duluan
                 lines.reverse();
 
                 let htmlBeritaBaru = "";
                 
-                lines.forEach(line => {
+                lines.forEach((line, index) => {
                     const data = line.split("|");
                     
-                    // Memastikan baris data tersebut sah (Foto, Judul, Deskripsi)
                     if (data.length >= 3) {
                         const foto = data[0].trim();
                         const judul = data[1].trim();
                         const deskripsi = data[2].trim();
                         const tanggal = data[3] ? data[3].trim() : "Baru";
 
-                        // Folder foto tetap mengarah ke folder uploads online di InfinityFree
+                        // Folder foto mengarah ke folder uploads online di InfinityFree
                         const urlFotoOnline = `https://masjidbaiturrahmantokaluku.great-site.net/uploads/${foto}`;
+
+                        // 🌟 KUNCI OTOMATISASI TAB BARU:
+                        // Menggunakan data indeks baris terbalik (atau tautan kolom ke-5 jika tersedia) sebagai acuan halaman detail
+                        const urutanBaris = lines.length - 1 - index; 
+                        const linkHalaman = `detail-berita.html?berita_id=${urutanBaris}`;
 
                         htmlBeritaBaru += `
                             <div class="berita-card fade-in">
@@ -2427,8 +2431,10 @@ document.addEventListener("DOMContentLoaded", function() {
                                 </div>
                                 <div class="berita-body">
                                     <h4>${judul}</h4>
-                                    <p>${deskripsi}</p>
-                                    <a href="#" class="berita-link" onclick="alert('Detail cerita telah ditampilkan sepenuhnya.'); return false;">Baca selengkapnya →</a>
+                                    <!-- 🌟 Menambahkan class potong-teks agar tulisan terpotong di halaman beranda -->
+                                    <p class="potong-teks">${deskripsi}</p>
+                                    <!-- 🌟 target="_blank" dipasang untuk membuka halaman detail di tab baru -->
+                                    <a href="${linkHalaman}" target="_blank" class="berita-link">Baca selengkapnya →</a>
                                 </div>
                             </div>
                         `;
@@ -2444,6 +2450,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 });
 </script>
+
 
 </body>
 </html>
