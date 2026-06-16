@@ -1224,7 +1224,7 @@ document.getElementById('btn-dashboard').addEventListener('click', function(even
     var password = prompt("Masukkan Kata Sandi Pengelola untuk masuk ke Dashboard:");
     
     // Silakan ganti 'masjid2026' dengan kata sandi rahasia pilihan Anda
-    if (password === 'fuad@2026') { 
+    if (password === 'masjid2026') { 
         window.open('https://github.com', '_blank');
     } else if (password !== null) {
         alert("Kata sandi salah! Akses ditolak.");
@@ -1236,10 +1236,11 @@ document.getElementById('btn-dashboard').addEventListener('click', function(even
 <!-- KONTEN HERO UTAMA (SLIDESHOW BERSANDING JADWAL SHALAT) -->
 <div class="hero-flex-wrapper">
 
-  <!-- HERO SLIDESHOW (9 FOTO) -->
+  <!-- HERO SLIDESHOW (8 FOTO) -->
   <div id="hero">
-        <!-- Slide 1 -->
-    <div class="slide active" data-index="1">
+    
+    <!-- Slide 1 -->
+    <div class="slide active" data-index="0">
       <div class="slide-media-container">
         <img src="FOTO/To'kaluku.png" loading="eager" alt="Foto Kegiatan 1" />
         <div class="slide-overlay"></div>
@@ -1251,7 +1252,7 @@ document.getElementById('btn-dashboard').addEventListener('click', function(even
     </div>
       
     <!-- Slide 2 -->
-    <div class="slide" data-index="2">
+    <div class="slide" data-index="1">
       <div class="slide-media-container">
         <img src="FOTO/Foto19.jpg" loading="lazy" alt="Foto Kegiatan 2" />
         <div class="slide-overlay"></div>
@@ -1263,7 +1264,7 @@ document.getElementById('btn-dashboard').addEventListener('click', function(even
     </div>
 
     <!-- Slide 3 -->
-    <div class="slide" data-index="3">
+    <div class="slide" data-index="2">
       <div class="slide-media-container">
         <img src="FOTO/Foto54.jpg" loading="lazy" alt="Foto Kegiatan 3" />
         <div class="slide-overlay"></div>
@@ -1275,7 +1276,7 @@ document.getElementById('btn-dashboard').addEventListener('click', function(even
     </div>
 
     <!-- Slide 4 -->
-    <div class="slide" data-index="4">
+    <div class="slide" data-index="3">
       <div class="slide-media-container">
         <img src="FOTO/Foto4.jpg" loading="lazy" alt="Foto Kegiatan 4" />
         <div class="slide-overlay"></div>
@@ -1285,8 +1286,9 @@ document.getElementById('btn-dashboard').addEventListener('click', function(even
         <p>Pondasi kuat, iman hebat! Proses penggalian tanah oleh para jamaah hari ini berjalan lancar. Mohon doanya agar pembangunan masjid kita selesai tepat waktu.</p>
       </div>
     </div>
+
     <!-- Slide 5 -->
-    <div class="slide" data-index="5">
+    <div class="slide" data-index="4">
       <div class="slide-media-container">
         <img src="FOTO/Foto20.jpg" loading="lazy" alt="Foto Kegiatan 5" />
         <div class="slide-overlay"></div>
@@ -1296,8 +1298,9 @@ document.getElementById('btn-dashboard').addEventListener('click', function(even
         <p>Hari ini jamaah kompak bergotong royong membangun lantai 2. Ruang ibadah akan semakin luas untuk menampung lebih banyak jamaah.</p>
       </div>
     </div>
+
     <!-- Slide 6 -->
-    <div class="slide" data-index="6">
+    <div class="slide" data-index="5">
       <div class="slide-media-container">
         <img src="FOTO/Foto6.jpg" loading="lazy" alt="Foto Kegiatan 6" />
         <div class="slide-overlay"></div>
@@ -1307,8 +1310,9 @@ document.getElementById('btn-dashboard').addEventListener('click', function(even
         <p>Selamat atas piala yang diraih hari ini, adik-adik. Teruslah tumbuh menjadi anak yang sholeh, cerdas, dan membanggakan orang tua.</p>
       </div>
     </div>
+
     <!-- Slide 7 -->
-    <div class="slide" data-index="7">
+    <div class="slide" data-index="6">
       <div class="slide-media-container">
         <img src="FOTO/Foto10.jpg" loading="lazy" alt="Foto Kegiatan 7" />
         <div class="slide-overlay"></div>
@@ -1318,8 +1322,9 @@ document.getElementById('btn-dashboard').addEventListener('click', function(even
         <p>Selamat untuk para pemenang Lomba Semarak Ramadhan! Bagi yang belum menang, kalian sudah luar biasa karena berani tampil hebat.</p>
       </div>
     </div>
+
     <!-- Slide 8 -->
-    <div class="slide" data-index="8">
+    <div class="slide" data-index="7">
       <div class="slide-media-container">
         <img src="FOTO/Foto8.jpg" loading="lazy" alt="Foto Kegiatan 8" />
         <div class="slide-overlay"></div>
@@ -1328,10 +1333,12 @@ document.getElementById('btn-dashboard').addEventListener('click', function(even
         <h2>Apresiasi yang tinggi untuk anak-anak hebat</h2>
         <p>Terima kasih telah menghidupkan suasana Ramadhan dengan bakat kalian. Selamat atas piala dan penghargaan yang kalian terima!</p>
       </div>
+    </div>
 
-      <!-- Tombol Navigasi Internal Slideshow -->
+    <!-- Tombol Navigasi Internal Slideshow -->
     <button class="slide-arrow prev" onclick="changeSlide(-1)" aria-label="Previous slide">‹</button>
     <button class="slide-arrow next" onclick="changeSlide(1)" aria-label="Next slide">›</button>
+
     <!-- Titik Indikator Bawah -->
     <div class="slide-dots" id="slide-dots">
       <div class="dot active" onclick="goToSlide(0)"></div>
@@ -1342,9 +1349,9 @@ document.getElementById('btn-dashboard').addEventListener('click', function(even
       <div class="dot" onclick="goToSlide(5)"></div>
       <div class="dot" onclick="goToSlide(6)"></div>
       <div class="dot" onclick="goToSlide(7)"></div>
-      </div>
+    </div>
   </div>
- </div>
+
   <!-- DESAIN KOTAK JADWAL SHALAT SIDEBAR -->
   <div class="hero-prayer-sidebar">
     <div class="sidebar-prayer-title">JADWAL SHALAT</div>
