@@ -1233,13 +1233,10 @@ document.getElementById('btn-dashboard').addEventListener('click', function(even
 </script>
 
 
-<!-- KONTEN HERO UTAMA (SLIDESHOW BERSANDING JADWAL SHALAT) -->
 <div class="hero-flex-wrapper">
 
-  <!-- HERO SLIDESHOW (8 FOTO) -->
   <div id="hero">
     
-    <!-- Slide 1 -->
     <div class="slide active" data-index="0">
       <div class="slide-media-container">
         <img src="FOTO/To'kaluku.png" loading="eager" alt="Foto Kegiatan 1" />
@@ -1251,7 +1248,6 @@ document.getElementById('btn-dashboard').addEventListener('click', function(even
       </div>
     </div>
       
-    <!-- Slide 2 -->
     <div class="slide" data-index="1">
       <div class="slide-media-container">
         <img src="FOTO/Foto19.jpg" loading="lazy" alt="Foto Kegiatan 2" />
@@ -1263,7 +1259,6 @@ document.getElementById('btn-dashboard').addEventListener('click', function(even
       </div>
     </div>
 
-    <!-- Slide 3 -->
     <div class="slide" data-index="2">
       <div class="slide-media-container">
         <img src="FOTO/Foto54.jpg" loading="lazy" alt="Foto Kegiatan 3" />
@@ -1275,7 +1270,6 @@ document.getElementById('btn-dashboard').addEventListener('click', function(even
       </div>
     </div>
 
-    <!-- Slide 4 -->
     <div class="slide" data-index="3">
       <div class="slide-media-container">
         <img src="FOTO/Foto4.jpg" loading="lazy" alt="Foto Kegiatan 4" />
@@ -1287,7 +1281,6 @@ document.getElementById('btn-dashboard').addEventListener('click', function(even
       </div>
     </div>
 
-    <!-- Slide 5 -->
     <div class="slide" data-index="4">
       <div class="slide-media-container">
         <img src="FOTO/Foto20.jpg" loading="lazy" alt="Foto Kegiatan 5" />
@@ -1299,7 +1292,6 @@ document.getElementById('btn-dashboard').addEventListener('click', function(even
       </div>
     </div>
 
-    <!-- Slide 6 -->
     <div class="slide" data-index="5">
       <div class="slide-media-container">
         <img src="FOTO/Foto6.jpg" loading="lazy" alt="Foto Kegiatan 6" />
@@ -1311,7 +1303,6 @@ document.getElementById('btn-dashboard').addEventListener('click', function(even
       </div>
     </div>
 
-    <!-- Slide 7 -->
     <div class="slide" data-index="6">
       <div class="slide-media-container">
         <img src="FOTO/Foto10.jpg" loading="lazy" alt="Foto Kegiatan 7" />
@@ -1323,7 +1314,6 @@ document.getElementById('btn-dashboard').addEventListener('click', function(even
       </div>
     </div>
 
-    <!-- Slide 8 -->
     <div class="slide" data-index="7">
       <div class="slide-media-container">
         <img src="FOTO/Foto8.jpg" loading="lazy" alt="Foto Kegiatan 8" />
@@ -1335,11 +1325,19 @@ document.getElementById('btn-dashboard').addEventListener('click', function(even
       </div>
     </div>
 
-    <!-- Tombol Navigasi Internal Slideshow -->
+    <div class="slide" data-index="8">
+      <div class="slide-media-container">
+        <img src="FOTO/NamaFotoBaruAnda.jpg" loading="lazy" alt="Foto Kegiatan 9" />
+        <div class="slide-overlay"></div>
+      </div>
+      <div class="slide-caption">
+        <h2>Judul Foto Baru Anda</h2>
+        <p>Deskripsi atau penjelasan singkat mengenai foto kegiatan yang baru ditambahkan di sini.</p>
+      </div>
+    </div>
     <button class="slide-arrow prev" onclick="changeSlide(-1)" aria-label="Previous slide">‹</button>
     <button class="slide-arrow next" onclick="changeSlide(1)" aria-label="Next slide">›</button>
 
-    <!-- Titik Indikator Bawah -->
     <div class="slide-dots" id="slide-dots">
       <div class="dot active" onclick="goToSlide(0)"></div>
       <div class="dot" onclick="goToSlide(1)"></div>
@@ -1349,6 +1347,7 @@ document.getElementById('btn-dashboard').addEventListener('click', function(even
       <div class="dot" onclick="goToSlide(5)"></div>
       <div class="dot" onclick="goToSlide(6)"></div>
       <div class="dot" onclick="goToSlide(7)"></div>
+      <div class="dot" onclick="goToSlide(8)"></div>
     </div>
   </div>
 
